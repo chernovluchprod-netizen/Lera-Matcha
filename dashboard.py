@@ -109,6 +109,13 @@ if len(_payroll_row):
             PAYROLL_EST_MONTHS.add(_m)
 PAYROLL_EST_MONTHS = sorted(PAYROLL_EST_MONTHS)
 
+# Months where revenue sits in payment-clearing GLs (accounting period not yet closed)
+try:
+    with open(DATA / "transit_months.json") as _f:
+        TRANSIT_MONTHS = set(json.load(_f))
+except Exception:
+    TRANSIT_MONTHS = set()
+
 # ─────────────────────────────────────────────────────────────────────────────
 # COLOUR PALETTE
 # ─────────────────────────────────────────────────────────────────────────────
@@ -911,6 +918,16 @@ def make_pl_table_tab():
                     style={"fontSize": "10px", "color": TAAL_MUTED, "marginTop": "4px",
                            "fontStyle": "italic"}
                 ) if PAYROLL_EST_MONTHS else None,
+                html.Div([
+                    html.Span("* ", style={"color": "#B8860B", "fontWeight": "700"}),
+                    html.Span(
+                        "Revenue includes payment-clearing GL balances (accounts 1204/1205/1206/1207/1208) "
+                        "for months where the accounting period is not yet closed. "
+                        "These will be replaced by formal 8xxx entries once the period is closed.",
+                        style={"color": TAAL_MUTED}
+                    ),
+                ], style={"fontSize": "10px", "marginTop": "4px", "fontStyle": "italic"}
+                ) if TRANSIT_MONTHS else None,
             ], style=CARD_STYLE),
         ], className="mb-4"),
     ], style={"padding": "0 4px"})
@@ -1986,7 +2003,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
     show_months = list(OPERATING_MONTHS)
     months_2025 = [m for m in show_months if m.startswith("2025")]
     months_2026 = [m for m in show_months if m.startswith("2026")]
-    est_m = set(ESTIMATED_MONTHS)
+    est_m     = set(ESTIMATED_MONTHS)
+    transit_m = set(TRANSIT_MONTHS)
 
     thresh_low  = float((thresholds or {}).get("low",  8))
     thresh_high = float((thresholds or {}).get("high", 18))
@@ -2061,7 +2079,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
     LABEL_CELL = {**BASE_CELL, "textAlign": "left", "minWidth": "230px",
                   "fontWeight": "500"}
 
-    def cell_bg(m, row_bg):
+    def cell_bg(m, row_bg, is_transit_rev=False):
+        if is_transit_rev and m in transit_m:
+            return "#FFF3CD"  # amber — revenue from unclosed period clearing accounts
         if row_bg not in ("white", None):
             return "#FDFAF3" if m in est_m else row_bg
         return "#FDFAF3" if m in est_m else "white"
@@ -2243,6 +2263,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
                 return float(vals[m])
             return 0.0
 
+        is_transit_rev_row = (label == "TOTAL REVENUE")
+
         def _build_month_cells(months_group, border_first_left):
             row_group_total = 0.0
             group_cells = []
@@ -2252,8 +2274,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
             for i, m in enumerate(months_group):
                 v = _get_val(m)
                 row_group_total += v
-                bg = cell_bg(m, row_bg)
+                bg = cell_bg(m, row_bg, is_transit_rev=is_transit_rev_row)
                 border_left = border_first_left if i == 0 else "none"
+                is_unclosed = is_transit_rev_row and m in transit_m
 
                 if show_cell_pct and rev_by_month.get(m, 0):
                     m_pct = v / rev_by_month[m] * 100
@@ -2269,6 +2292,12 @@ def render_pl_table(expanded, thresholds, matcha_data):
                             "lineHeight": "1.2", "marginTop": "1px",
                         }),
                     ], style={"textAlign": "right"})
+                elif is_unclosed:
+                    cell_content = html.Span([
+                        fmt_val(v, is_pct),
+                        html.Sup("*", style={"color": "#B8860B", "fontSize": "9px",
+                                             "marginLeft": "2px", "fontWeight": "700"}),
+                    ])
                 else:
                     cell_content = fmt_val(v, is_pct)
 

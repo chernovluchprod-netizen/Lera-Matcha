@@ -877,6 +877,42 @@ def build_monthly_pl():
             log.log(f"  Q4 revenue reallocation applied: "
                     + ", ".join(f"{m} {q4_adj[m]:+,.0f}" for m in _q4))
 
+    # ── Transit revenue (unclosed periods) ───────────────────────────────────
+    # When accounting is not yet closed, revenue sits in payment-clearing accounts
+    # (Ontvangsten Adyen/Stripe/PayPal/Tebi) instead of 8xxx revenue GLs.
+    # Detect AFTER all prior revenue adjustments (incl. Q4 reallocation) so we
+    # compare transit against already-adjusted Revenue totals, avoiding double-count.
+    _TRANSIT_ACCS = {"1204", "1205", "1206", "1207", "1208"}
+    _TRANSIT_MIN  = 2000  # EUR minimum transit balance to consider
+
+    transit_sub     = ledger[ledger["account_code"].isin(_TRANSIT_ACCS)]
+    transit_monthly = transit_sub.groupby("accounting_month")["net_amount"].sum()
+
+    # Revenue already in pl (including Q4 reallocation) per month
+    _pl_rev_now = (pl[pl["section"] == "Revenue"][mc]
+                   .apply(pd.to_numeric, errors="coerce").fillna(0).sum())
+
+    transit_by_month = {}
+    for _m, _v in transit_monthly.items():
+        _transit_amt = round(float(-_v), 2)
+        _rev_now     = float(_pl_rev_now.get(_m, 0))
+        _total       = _transit_amt + max(_rev_now, 0)
+        # Only flag as "unclosed" when transit dominates (> 75% of combined total)
+        # — filters out reconciliation noise in closed months and Q4-reallocated months
+        if _transit_amt > _TRANSIT_MIN and _total > 0 and _transit_amt / _total > 0.75:
+            transit_by_month[_m] = _transit_amt
+
+    if transit_by_month:
+        tr_row = {"section": "Revenue", "subsection": "Transit",
+                  "account_code": "", "line_item": "Transit Revenue (uncleared *)"}
+        for m in mc:
+            tr_row[m] = transit_by_month.get(m, 0.0)
+        pl = pd.concat([pl, pd.DataFrame([tr_row])], ignore_index=True)
+        log.log("  Transit revenue (unclosed periods): "
+                + ", ".join(f"{m} €{v:,.0f}" for m, v in sorted(transit_by_month.items())))
+    with open(OUT / "transit_months.json", "w") as _f:
+        json.dump(sorted(transit_by_month.keys()), _f)
+
     # ── Helpers ───────────────────────────────────────────────────────────────
     def subtotal(section_filter, label, section, subsection="— Total"):
         mask = (pl["section"].isin(section_filter) if isinstance(section_filter, list)
