@@ -1831,7 +1831,10 @@ app = dash.Dash(
     title="LERA",
     suppress_callback_exceptions=True,
 )
-dash_auth.BasicAuth(app, {"lera": "LeraWorld"})
+_dash_user = os.environ.get("DASH_USERNAME", "lera")
+_dash_pass = os.environ.get("DASH_PASSWORD", "")
+if _dash_pass:
+    dash_auth.BasicAuth(app, {_dash_user: _dash_pass})
 
 TAB_STYLE = {
     "padding": "10px 24px",
@@ -3414,6 +3417,8 @@ def render_scheduling(shifts_data, revenue_data, week_iso, hourly_rate, target_p
         ], style=CARD_STYLE),
     ])
 
+
+server = app.server  # exposed for gunicorn: gunicorn dashboard:server
 
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
