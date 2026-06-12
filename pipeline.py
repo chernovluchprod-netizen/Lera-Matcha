@@ -530,7 +530,9 @@ def build_ledger():
     if overlapping_months:
         before = len(ledger)
 
-        # For every month, pick the "winner" file_index (widest span, then latest idx)
+        # For every month, pick the "winner" file_index.
+        # Primary: most rows in that specific month (more rows = more complete export).
+        # Tie-break: highest file_index (later in sorted order = more recent file).
         month_winner: dict[str, int] = {}
         for mo in ledger["month"].dropna().unique():
             mo_rows = ledger[ledger["month"] == mo]
@@ -538,16 +540,13 @@ def build_ledger():
             if len(files_in_month) == 1:
                 month_winner[mo] = files_in_month[0]
                 continue
-            # Pick the file that covers the widest overall date span;
-            # tie-break by highest file_index
-            best_idx = -1
-            best_span = pd.Timedelta(0)
+            best_idx  = -1
+            best_count = -1
             for fi in files_in_month:
-                fi_rows = ledger[ledger["_file_index"] == fi]
-                span = fi_rows["date"].max() - fi_rows["date"].min()
-                if span > best_span or (span == best_span and fi > best_idx):
-                    best_span = span
-                    best_idx  = fi
+                count = (mo_rows["_file_index"] == fi).sum()
+                if count > best_count or (count == best_count and fi > best_idx):
+                    best_count = count
+                    best_idx   = fi
             month_winner[mo] = best_idx
 
         ledger["_winner"] = ledger["month"].map(month_winner)
@@ -561,7 +560,7 @@ def build_ledger():
         after = len(ledger)
         log.log(f"  Removed {before - after} duplicate rows from overlapping files:")
         for mo, cnt in sorted(dropped_months.items()):
-            log.log(f"    {mo}: dropped {cnt} rows (kept from file with widest coverage)")
+            log.log(f"    {mo}: dropped {cnt} rows (kept file with most entries for this month)")
     else:
         log.log("  No overlapping files detected — no deduplication needed.")
 
