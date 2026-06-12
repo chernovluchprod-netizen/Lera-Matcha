@@ -1,0 +1,7 @@
+dash>=2.14.0
+dash-bootstrap-components>=1.5.0
+plotly>=5.18.0
+pandas>=2.1.0
+numpy>=1.26.0
+python-dateutil>=2.8.2
+watchdog>=3.0.0
