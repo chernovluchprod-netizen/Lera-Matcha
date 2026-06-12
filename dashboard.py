@@ -20,6 +20,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import dash
+import dash_auth
 from dash import dcc, html, Input, Output, State, ALL, ctx
 import dash_bootstrap_components as dbc
 
@@ -1830,6 +1831,7 @@ app = dash.Dash(
     title="LERA",
     suppress_callback_exceptions=True,
 )
+dash_auth.BasicAuth(app, {"lera": "LeraWorld"})
 
 TAB_STYLE = {
     "padding": "10px 24px",
@@ -3423,4 +3425,5 @@ if __name__ == "__main__":
 
     threading.Thread(target=open_browser, daemon=True).start()
     print("\nLera World Dashboard  →  http://127.0.0.1:8050\n")
-    app.run(debug=False, port=8050)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(debug=False, host="0.0.0.0", port=port)
