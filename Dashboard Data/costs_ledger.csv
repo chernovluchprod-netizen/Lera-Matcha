@@ -22251,3 +22251,393 @@ look: textured buttercream in matcha green color. (see example)",2024-0119,275.2
 2026-05-08,2026-05,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Sligro Food Group N.V.,10005510994,819.17,0.0,819.17,1600,Crediteuren,9,0
 2026-05-08,2026-05,8111,Omzet laag (Shopify),Matcha Company – E-com,Matcha Company,True,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX58623010500XT batch;102, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX58623010500XT;Valutadatum: 08-05-2026",,0.0,127.67,-127.67,1100,Rekening-courant bank,9,0
 2026-05-08,2026-05,8111,Omzet laag (Shopify),Matcha Company – E-com,Matcha Company,True,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX58612783500XT batch;531, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX58612783500XT;Valutadatum: 08-05-2026",,0.0,1102.46,-1102.46,1100,Rekening-courant bank,9,0
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;IBAN: NL70BUNQ2171894474;Valutadatum: 01-06-2026 LERA WORLD,,0.0,1500.0,-1500.0,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,Allianz Nederland Schadeverzekering Naam: Allianz Benelux N.V.;Omschrijving: BN180001832;IBAN: DE38700202700010011700;Kenmerk: ACE26147-E50287131;Machtiging ID: 01BN0000000000000000000000000043349;Incassant ID: NL13ZZZ593954350002;Doorlopende incasso,,0.0,23.47,-23.47,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-T80H1HTY7OTJCAWOLOT57HL4ZA4;Valutadatum: 01-06-2026,,188.43,0.0,188.43,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,Everybody Taal BV Naam: Everybody Taal;Omschrijving: 10074;IBAN: NL57INGB0111107741;Datum Tijd: 01-06-2026 10:54:54;Valutadatum: 01-06-2026,,340.08,0.0,340.08,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,PayPal Europe S.a.r.l. et Cie S.C.A Naam: PayPal Europe S.a.r.l. et Cie S.C.A;Omschrijving:;YYW1050684668716/PAYPAL;IBAN: LU89751000135104200E;Kenmerk: YYW1050684668716;Valutadatum: 01-06-2026,,49.83,0.0,49.83,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59084717300XT batch;547, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59084717300XT;Valutadatum: 01-06-2026",,1855.57,0.0,1855.57,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59095581900XT batch;118, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59095581900XT;Valutadatum: 01-06-2026",,220.09,0.0,220.09,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1101,NL59BUNQ2160396583,,,False,"Sligro Food Group N.V. ,10005589286 27.5.2026 ,",,0.0,778.01,-778.01,1101,NL59BUNQ2160396583,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,LERA WORLD B.V.,,1500.0,0.0,1500.0,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,Picnic B.V. Picnic 28-05-2026,,0.0,113.84,-113.84,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,"Eurosender SARL Eurosender SARL Luxembourg, LU",,0.0,14.64,-14.64,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,A Matter of Concrete M02068701MRC5A0Q 0380285346122227 Order 30841 amatterofconcrete.com,,0.0,380.41,-380.41,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,Sam s Superfoods 7K0EUL1 7140355043362467 via Stripe Sam s Superfoods,,0.0,44.9,-44.9,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,"Jonkmans Bloemenhandel Jonkmans Bloemenhandel Amsterdam, NL",,0.0,25.0,-25.0,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1102,Bank - stock&supply,,,False,bol.com P1689577279 7051574731182308 bol.com C0005W179T,,0.0,63.32,-63.32,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;IBAN: NL70BUNQ2171894474;Valutadatum: 01-06-2026 LERA WORLD,,1500.0,0.0,1500.0,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1200,Kruisposten,,,False,LERA WORLD B.V.,,0.0,1500.0,-1500.0,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59084717300XT batch;547, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59084717300XT;Valutadatum: 01-06-2026",,0.0,1855.57,-1855.57,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1206,Ontvangsten Stripe (Online),,,False,PayPal Europe S.a.r.l. et Cie S.C.A Naam: PayPal Europe S.a.r.l. et Cie S.C.A;Omschrijving:;YYW1050684668716/PAYPAL;IBAN: LU89751000135104200E;Kenmerk: YYW1050684668716;Valutadatum: 01-06-2026,,0.0,49.83,-49.83,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59095581900XT batch;118, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59095581900XT;Valutadatum: 01-06-2026",,0.0,220.09,-220.09,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1300,Debiteuren,,,False,Everybody Taal BV Naam: Everybody Taal;Omschrijving: 10074;IBAN: NL57INGB0111107741;Datum Tijd: 01-06-2026 10:54:54;Valutadatum: 01-06-2026,10074,0.0,340.08,-340.08,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Vattenfall,46031576228,0.0,378.0,-378.0,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Allianz Nederland Schadeverzekering Naam: Allianz Benelux N.V.;Omschrijving: BN180001832;IBAN: DE38700202700010011700;Kenmerk: ACE26147-E50287131;Machtiging ID: 01BN0000000000000000000000000043349;Incassant ID: NL13ZZZ593954350002;Doorlopende incasso,BN180001832/260518,23.47,0.0,23.47,1100,Rekening-courant bank,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Chef Centraal,202614912,0.0,175.76,-175.76,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Box at Work Amsterdam B.V.,NL-01062026-87664,0.0,20.0,-20.0,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Eurosender SARL,1574638,0.0,14.64,-14.64,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Federico Ogliani,0044,0.0,2453.88,-2453.88,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Eitje B.V.,BON_20260601_9430,0.0,29.04,-29.04,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,"Sligro Food Group N.V. ,10005589286 27.5.2026 ,",10005589286,778.01,0.0,778.01,1101,NL59BUNQ2160396583,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Kseniia Nesterova,2026-0012,0.0,1600.23,-1600.23,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,L.C. Salden,060126,0.0,2388.54,-2388.54,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Myparcel,260304129,0.0,154.27,-154.27,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Telewash Company Amsterdam,2026-41135,0.0,50.0,-50.0,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Ari Creative Consultancy,202605-002,0.0,3723.78,-3723.78,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Anastasiia Poliakova,2026-06-01,0.0,2122.78,-2122.78,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Fri-Jo Lichtreclame B.V.,260841,0.0,859.1,-859.1,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Sam's Superfoods,1072_DUBBEL_5925,0.0,44.9,-44.9,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,A Matter of Concrete,2026-3662,0.0,380.41,-380.41,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,BEMAISA,2026-001,0.0,534.82,-534.82,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Picnic B.V. Picnic 28-05-2026,NL26855,113.84,0.0,113.84,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,"Eurosender SARL Eurosender SARL Luxembourg, LU",1574638,14.64,0.0,14.64,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,A Matter of Concrete M02068701MRC5A0Q 0380285346122227 Order 30841 amatterofconcrete.com,2026-3662,380.41,0.0,380.41,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Sam s Superfoods 7K0EUL1 7140355043362467 via Stripe Sam s Superfoods,1072_DUBBEL_5925,44.9,0.0,44.9,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,"Jonkmans Bloemenhandel Jonkmans Bloemenhandel Amsterdam, NL",1-6-26,25.0,0.0,25.0,1102,Bank - stock&supply,0,2026
+2026-06-01,2026-06,1600,Crediteuren,,,False,Spotify Netherlands B.V.,790338,0.0,12.99,-12.99,1600,Crediteuren,0,2026
+2026-06-01,2026-06,1670,Btw af te dragen laag (verkopen),,,False,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-T80H1HTY7OTJCAWOLOT57HL4ZA4;Valutadatum: 01-06-2026,,0.0,15.56,-15.56,1100,Rekening-courant bank,9,2026
+2026-06-01,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Chef Centraal,202614912,14.51,0.0,14.51,1600,Crediteuren,9,2026
+2026-06-01,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Sam's Superfoods,1072_DUBBEL_5925,3.21,0.0,3.21,1600,Crediteuren,9,2026
+2026-06-01,2026-06,1679,Btw te vorderen laag (inkopen),,,False,A Matter of Concrete,2026-3662,31.41,0.0,31.41,1600,Crediteuren,9,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Vattenfall,46031576228,65.61,0.0,65.61,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Box at Work Amsterdam B.V.,NL-01062026-87664,3.47,0.0,3.47,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Federico Ogliani,0044,425.88,0.0,425.88,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Eitje B.V.,BON_20260601_9430,5.04,0.0,5.04,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Kseniia Nesterova,2026-0012,277.73,0.0,277.73,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,L.C. Salden,060126,414.54,0.0,414.54,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Myparcel,260304129,13.67,0.0,13.67,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Telewash Company Amsterdam,2026-41135,8.68,0.0,8.68,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Ari Creative Consultancy,202605-002,646.28,0.0,646.28,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Anastasiia Poliakova,2026-06-01,368.41,0.0,368.41,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Fri-Jo Lichtreclame B.V.,260841,149.1,0.0,149.1,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Sam's Superfoods,1072_DUBBEL_5925,1.04,0.0,1.04,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,bol.com P1689577279 7051574731182308 bol.com C0005W179T,,10.99,0.0,10.99,1102,Bank - stock&supply,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,BEMAISA,2026-001,92.82,0.0,92.82,1600,Crediteuren,21,2026
+2026-06-01,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Spotify Netherlands B.V.,790338,2.25,0.0,2.25,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4208,Schoonmaakkosten,Occupancy – Maintenance,Occupancy,True,Telewash Company Amsterdam,2026-41135,41.32,0.0,41.32,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4210,"Gas, water en elektra",Occupancy – Utilities,Occupancy,True,Vattenfall,46031576228,312.43,0.0,312.43,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4210,"Gas, water en elektra",Occupancy – Utilities,Occupancy,True,Vattenfall,46031576228,0.0,0.04,-0.04,1600,Crediteuren,0,2026
+2026-06-01,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Box at Work Amsterdam B.V.,NL-01062026-87664,16.53,0.0,16.53,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,bol.com P1689577279 7051574731182308 bol.com C0005W179T,,52.33,0.0,52.33,1102,Bank - stock&supply,21,2026
+2026-06-01,2026-06,4400,Reclame- en advertentiekosten,SG&A – Marketing,SG&A,True,Fri-Jo Lichtreclame B.V.,260841,710.0,0.0,710.0,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4601,Porti,SG&A – Shipping,SG&A,True,Eurosender SARL,1574638,14.64,0.0,14.64,1600,Crediteuren,0,2026
+2026-06-01,2026-06,4601,Porti,SG&A – Shipping,SG&A,True,Myparcel,260304129,65.1,0.0,65.1,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4601,Porti,SG&A – Shipping,SG&A,True,Myparcel,260304129,75.5,0.0,75.5,1600,Crediteuren,0,2026
+2026-06-01,2026-06,4601,Porti,SG&A – Shipping,SG&A,True,Sam's Superfoods,1072_DUBBEL_5925,4.95,0.0,4.95,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4606,Contributies en abonnementen,SG&A – Subscriptions,SG&A,True,Eitje B.V.,BON_20260601_9430,24.0,0.0,24.0,1600,Crediteuren,21,2026
+2026-06-01,2026-06,4606,Contributies en abonnementen,SG&A – Subscriptions,SG&A,True,Spotify Netherlands B.V.,790338,10.74,0.0,10.74,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Chef Centraal,202614912,161.25,0.0,161.25,1600,Crediteuren,9,2026
+2026-06-01,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Sam's Superfoods,1072_DUBBEL_5925,35.7,0.0,35.7,1600,Crediteuren,9,2026
+2026-06-01,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,A Matter of Concrete,2026-3662,349.0,0.0,349.0,1600,Crediteuren,9,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,Federico Ogliani,0044,2028.0,0.0,2028.0,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,Kseniia Nesterova; Bar service,2026-0012,1322.5,0.0,1322.5,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,L.C. Salden,060126,1974.0,0.0,1974.0,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,Ari Creative Consultancy,202605-002,3077.5,0.0,3077.5,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,Anastasiia Poliakova,2026-06-01,1754.37,0.0,1754.37,1600,Crediteuren,21,2026
+2026-06-01,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,BEMAISA,2026-001,442.0,0.0,442.0,1600,Crediteuren,21,2026
+2026-06-01,2026-06,8111,Omzet laag (Shopify),Matcha Company – E-com,Matcha Company,True,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-T80H1HTY7OTJCAWOLOT57HL4ZA4;Valutadatum: 01-06-2026,,0.0,172.87,-172.87,1100,Rekening-courant bank,9,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,SpotifyAB Naam: SpotifyAB;Omschrijving: SpotifyAB P42FBFA1E5;IBAN: NL79DEUT7370000670;Kenmerk: PG38CR6BXL8V42KZ3P;Machtiging ID: C3TG65RR5FJVVNX3;Incassant ID: NL48ZZZ342764500000;Doorlopende incasso;Overige partij: ADYEN N.V.;Valutadatum: 02-06-2026,,0.0,12.99,-12.99,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 15:14:08;Valutadatum: 02-06-2026 LERA WORLD,,0.0,3000.0,-3000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 12:48:08;Valutadatum: 02-06-2026 LERA WORLD,,0.0,10000.0,-10000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 12:34:55;Valutadatum: 02-06-2026 LERA WORLD,,0.0,15000.0,-15000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,Julie De Vrieze Naam: De Vrieze Julie;Omschrijving: Invoice 10077;IBAN: BE58068959403179;Datum Tijd: 02-06-2026 12:48:04;Valutadatum: 02-06-2026,,295.99,0.0,295.99,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59129582600XT batch;119, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59129582600XT;Valutadatum: 02-06-2026",,872.21,0.0,872.21,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59116731100XT batch;548, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59116731100XT;Valutadatum: 02-06-2026",,8373.07,0.0,8373.07,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1100,Rekening-courant bank,,,False,Humens Naam: Humens;Omschrijving: 2026-0172;RF30T6WZC5Y2;IBAN: NL34ABNA0860424383;Valutadatum: 02-06-2026,,0.0,173.03,-173.03,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,7704IJF 7140175925119803 BOLIA,,0.0,145.0,-145.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,3000.0,0.0,3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,10000.0,0.0,10000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,15000.0,0.0,15000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0033,,0.0,355.0,-355.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0032,,0.0,308.0,-308.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0034,,0.0,154.0,-154.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Polina Gorbatenko 2026-0012,,0.0,128.08,-128.08,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Aleksandra Fedorova 10026,,0.0,605.0,-605.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Kseniia Nesterova 2026-0012,,0.0,1600.23,-1600.23,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Federico Ogliani 0044,,0.0,2453.88,-2453.88,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Ugnė Grabliauskaitė 2026-008,,0.0,2094.06,-2094.06,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,L.C. Salden 060126,,0.0,2388.54,-2388.54,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Ari Creative Consultancy 202605-002,,0.0,3723.78,-3723.78,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Aleksandra Fedorova 10032,,0.0,847.0,-847.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Myparcel 1558611795 8151125628329404 MyParcel factuur - 260304129 MyParcel.nl,,0.0,154.27,-154.27,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Oatly Netherlands B.V. 3020600025662,,0.0,1294.92,-1294.92,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Anastasiia Poliakova INV-2026-06-01,,0.0,2122.78,-2122.78,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,Mikita Muryn May 2026 receipt,,0.0,1080.0,-1080.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,GRENKEFINANCE N.V. 06434134 Kundennummer 01.06.26-30.06.26 0000102291,,0.0,364.77,-364.77,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1101,NL59BUNQ2160396583,,,False,BoxAtWork BoxAtWork Boxie24,,0.0,20.0,-20.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1102,Bank - stock&supply,,,False,"Eurosender SARL Eurosender SARL Luxembourg, LU",,0.0,12.53,-12.53,1102,Bank - stock&supply,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 15:14:08;Valutadatum: 02-06-2026 LERA WORLD,,3000.0,0.0,3000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 12:48:08;Valutadatum: 02-06-2026 LERA WORLD,,10000.0,0.0,10000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 02-06-2026 12:34:55;Valutadatum: 02-06-2026 LERA WORLD,,15000.0,0.0,15000.0,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,0.0,3000.0,-3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,0.0,10000.0,-10000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1200,Kruisposten,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,0.0,15000.0,-15000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59116731100XT batch;548, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59116731100XT;Valutadatum: 02-06-2026",,0.0,8373.07,-8373.07,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59129582600XT batch;119, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59129582600XT;Valutadatum: 02-06-2026",,0.0,872.21,-872.21,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1300,Debiteuren,,,False,Julie De Vrieze Naam: De Vrieze Julie;Omschrijving: Invoice 10077;IBAN: BE58068959403179;Datum Tijd: 02-06-2026 12:48:04;Valutadatum: 02-06-2026,10077,0.0,295.99,-295.99,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,SpotifyAB Naam: SpotifyAB;Omschrijving: SpotifyAB P42FBFA1E5;IBAN: NL79DEUT7370000670;Kenmerk: PG38CR6BXL8V42KZ3P;Machtiging ID: C3TG65RR5FJVVNX3;Incassant ID: NL48ZZZ342764500000;Doorlopende incasso;Overige partij: ADYEN N.V.;Valutadatum: 02-06-2026,790338,12.99,0.0,12.99,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,7704IJF 7140175925119803 BOLIA,701941140,145.0,0.0,145.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Sligro Food Group N.V.,10005615203,0.0,836.93,-836.93,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Aleksandra Fedorova,10031,0.0,605.0,-605.0,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Aleksandra Fedorova,10032,0.0,847.0,-847.0,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Eurosender SARL,1578322,0.0,12.53,-12.53,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Gemeente Amsterdam,2047131004,0.0,25.0,-25.0,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0033,2026-0033,355.0,0.0,355.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0032,2026-0032,308.0,0.0,308.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0034,2026-0034,154.0,0.0,154.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Polina Gorbatenko 2026-0012,2026-0012,128.08,0.0,128.08,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Aleksandra Fedorova 10026,10026,605.0,0.0,605.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Kseniia Nesterova 2026-0012,2026-0012,1600.23,0.0,1600.23,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Federico Ogliani 0044,0044,2453.88,0.0,2453.88,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Ugnė Grabliauskaitė 2026-008,2026-008,2094.06,0.0,2094.06,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,L.C. Salden 060126,060126,2388.54,0.0,2388.54,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Ari Creative Consultancy 202605-002,202605-002,3723.78,0.0,3723.78,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Aleksandra Fedorova 10032,10032,847.0,0.0,847.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Myparcel 1558611795 8151125628329404 MyParcel factuur - 260304129 MyParcel.nl,260304129,154.27,0.0,154.27,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Oatly Netherlands B.V. 3020600025662,8543490,1294.92,0.0,1294.92,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Anastasiia Poliakova INV-2026-06-01,2026-06-01,2122.78,0.0,2122.78,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,GRENKEFINANCE N.V. 06434134 Kundennummer 01.06.26-30.06.26 0000102291,BON_20260522_465,364.77,0.0,364.77,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,BoxAtWork BoxAtWork Boxie24,NL-01062026-87664,20.0,0.0,20.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,BBW Rodriguez,02062026,0.0,2141.7,-2141.7,1600,Crediteuren,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,Humens Naam: Humens;Omschrijving: 2026-0172;RF30T6WZC5Y2;IBAN: NL34ABNA0860424383;Valutadatum: 02-06-2026,2026-0172,173.03,0.0,173.03,1100,Rekening-courant bank,0,2026
+2026-06-02,2026-06,1600,Crediteuren,,,False,"Eurosender SARL Eurosender SARL Luxembourg, LU",1578322,12.53,0.0,12.53,1102,Bank - stock&supply,0,2026
+2026-06-02,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Sligro Food Group N.V.,10005615203,62.8,0.0,62.8,1600,Crediteuren,9,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Sligro Food Group N.V.,10005615203,13.92,0.0,13.92,1600,Crediteuren,21,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Aleksandra Fedorova,10031,105.0,0.0,105.0,1600,Crediteuren,21,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Aleksandra Fedorova,10032,147.0,0.0,147.0,1600,Crediteuren,21,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Gemeente Amsterdam,2047131004,2.06,0.0,2.06,1600,Crediteuren,21,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Mikita Muryn May 2026 receipt,,187.44,0.0,187.44,1101,NL59BUNQ2160396583,21,2026
+2026-06-02,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,BBW Rodriguez,02062026,371.7,0.0,371.7,1600,Crediteuren,21,2026
+2026-06-02,2026-06,3090,Emballage,,,False,Sligro Food Group N.V.,10005615203,0.0,3.86,-3.86,1600,Crediteuren,0,2026
+2026-06-02,2026-06,4210,"Gas, water en elektra",Occupancy – Utilities,Occupancy,True,Gemeente Amsterdam,2047131004,22.94,0.0,22.94,1600,Crediteuren,21,2026
+2026-06-02,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Sligro Food Group N.V.,10005615203,66.28,0.0,66.28,1600,Crediteuren,21,2026
+2026-06-02,2026-06,4601,Porti,SG&A – Shipping,SG&A,True,Eurosender SARL,1578322,12.53,0.0,12.53,1600,Crediteuren,0,2026
+2026-06-02,2026-06,4704,Overige advieskosten,SG&A – Professional Services,SG&A,True,Aleksandra Fedorova,10031,500.0,0.0,500.0,1600,Crediteuren,21,2026
+2026-06-02,2026-06,4704,Overige advieskosten,SG&A – Professional Services,SG&A,True,Aleksandra Fedorova,10032,700.0,0.0,700.0,1600,Crediteuren,21,2026
+2026-06-02,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Sligro Food Group N.V.,10005615203,697.79,0.0,697.79,1600,Crediteuren,9,2026
+2026-06-02,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,Mikita Muryn May 2026 receipt,,892.56,0.0,892.56,1101,NL59BUNQ2160396583,21,2026
+2026-06-02,2026-06,7100,Kosten uitbesteed werk,Labor – Freelancers,Labor,True,BBW Rodriguez,02062026,1770.0,0.0,1770.0,1600,Crediteuren,21,2026
+2026-06-03,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 03-06-2026 09:16:05;Valutadatum: 03-06-2026 LERA WORLD,,0.0,1000.0,-1000.0,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59149223100XT batch;549, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59149223100XT;Valutadatum: 03-06-2026",,1238.84,0.0,1238.84,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59159094000XT batch;120, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59159094000XT;Valutadatum: 03-06-2026",,265.87,0.0,265.87,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,1000.0,0.0,1000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0038,,0.0,344.0,-344.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0036,,0.0,184.0,-184.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Twentyfourseven service 2026-542,,0.0,544.5,-544.5,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Chiever B.V 9826621,,0.0,254.1,-254.1,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,B.V. Centraal Huizen Beheer 26.06.00114,,0.0,5564.75,-5564.75,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,BBW Rodriguez 02062026,,0.0,2141.7,-2141.7,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,Tatiana Shepetina 2026002,,0.0,120.0,-120.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,"Leverancier onbekend Pipoos Amsterdam CB AMSTERDAM, NL",,0.0,9.95,-9.95,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,"Skins Cosmetics SKINS Amsterdam Amsterdam, NL",,0.0,95.0,-95.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1101,NL59BUNQ2160396583,,,False,"CapCut SINGAPORE, SG
+",,0.0,19.0,-19.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1102,Bank - stock&supply,,,False,Picnic B.V. Picnic 01-06-2026,,0.0,71.75,-71.75,1102,Bank - stock&supply,0,2026
+2026-06-03,2026-06,1200,Kruisposten,,,False,Intercompany transfer between own accounts LERA WORLD B.V.,,0.0,1000.0,-1000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;Omschrijving: Intercompany transfer;between own accounts;IBAN: NL59BUNQ2160396583;Datum Tijd: 03-06-2026 09:16:05;Valutadatum: 03-06-2026 LERA WORLD,,1000.0,0.0,1000.0,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59149223100XT batch;549, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59149223100XT;Valutadatum: 03-06-2026",,0.0,1238.84,-1238.84,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59159094000XT batch;120, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59159094000XT;Valutadatum: 03-06-2026",,0.0,265.87,-265.87,1100,Rekening-courant bank,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Box at Work Amsterdam B.V.,NL-03062026-87765,0.0,40.0,-40.0,1600,Crediteuren,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0038,2026-0038,344.0,0.0,344.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0036,2026-0036,184.0,0.0,184.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Twentyfourseven service 2026-542,2026-542,544.5,0.0,544.5,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Chiever B.V 9826621,9826621,254.1,0.0,254.1,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,B.V. Centraal Huizen Beheer 26.06.00114,26.06.00114,5564.75,0.0,5564.75,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,BBW Rodriguez 02062026,02062026,2141.7,0.0,2141.7,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Tatiana Shepetina 2026002,BON_20260507_1301,120.0,0.0,120.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Skins Cosmetics,BON_20260603_3748,0.0,95.0,-95.0,1600,Crediteuren,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Pipoos,BON_20260603_2622,0.0,9.95,-9.95,1600,Crediteuren,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,"Leverancier onbekend Pipoos Amsterdam CB AMSTERDAM, NL",BON_20260603_2622,9.95,0.0,9.95,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,"Skins Cosmetics SKINS Amsterdam Amsterdam, NL",BON_20260603_3748,95.0,0.0,95.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Bolia,701941140,0.0,145.0,-145.0,1600,Crediteuren,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,"CapCut SINGAPORE, SG
+",048583,19.0,0.0,19.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,Picnic B.V. Picnic 01-06-2026,NL261297,71.75,0.0,71.75,1102,Bank - stock&supply,0,2026
+2026-06-03,2026-06,1600,Crediteuren,,,False,ByteDance Pte. Ltd,048583,0.0,19.0,-19.0,1600,Crediteuren,0,2026
+2026-06-03,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Box at Work Amsterdam B.V.,NL-03062026-87765,6.94,0.0,6.94,1600,Crediteuren,21,2026
+2026-06-03,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Skins Cosmetics,BON_20260603_3748,16.49,0.0,16.49,1600,Crediteuren,21,2026
+2026-06-03,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Pipoos,BON_20260603_2622,1.73,0.0,1.73,1600,Crediteuren,21,2026
+2026-06-03,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Bolia,701941140,25.17,0.0,25.17,1600,Crediteuren,21,2026
+2026-06-03,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Box at Work Amsterdam B.V.,NL-03062026-87765,33.06,0.0,33.06,1600,Crediteuren,21,2026
+2026-06-03,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Skins Cosmetics,BON_20260603_3748,78.51,0.0,78.51,1600,Crediteuren,21,2026
+2026-06-03,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Pipoos,BON_20260603_2622,8.22,0.0,8.22,1600,Crediteuren,21,2026
+2026-06-03,2026-06,4303,Kleine aanschaffingen inventaris,SG&A – Equipment & Repairs,SG&A,True,Bolia,701941140,119.83,0.0,119.83,1600,Crediteuren,21,2026
+2026-06-03,2026-06,4606,Contributies en abonnementen,SG&A – Subscriptions,SG&A,True,ByteDance Pte. Ltd,048583,19.0,0.0,19.0,1600,Crediteuren,0,2026
+2026-06-04,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59187318800XT batch;121, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59187318800XT;Valutadatum: 04-06-2026",,34.07,0.0,34.07,1100,Rekening-courant bank,0,2026
+2026-06-04,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59178692200XT batch;550, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59178692200XT;Valutadatum: 04-06-2026",,1142.85,0.0,1142.85,1100,Rekening-courant bank,0,2026
+2026-06-04,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59178692200XT batch;550, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59178692200XT;Valutadatum: 04-06-2026",,0.0,1142.85,-1142.85,1100,Rekening-courant bank,0,2026
+2026-06-04,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59187318800XT batch;121, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59187318800XT;Valutadatum: 04-06-2026",,0.0,34.07,-34.07,1100,Rekening-courant bank,0,2026
+2026-06-04,2026-06,1600,Crediteuren,,,False,Picnic B.V.,NL261297,0.0,71.75,-71.75,1600,Crediteuren,0,2026
+2026-06-04,2026-06,1600,Crediteuren,,,False,Strawberriya,2026-0045,0.0,217.0,-217.0,1600,Crediteuren,0,2026
+2026-06-04,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Picnic B.V.,NL261297,5.92,0.0,5.92,1600,Crediteuren,9,2026
+2026-06-04,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Strawberriya,2026-0045,17.92,0.0,17.92,1600,Crediteuren,9,2026
+2026-06-04,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Picnic B.V.,NL261297,65.83,0.0,65.83,1600,Crediteuren,9,2026
+2026-06-04,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Strawberriya,2026-0045,199.08,0.0,199.08,1600,Crediteuren,9,2026
+2026-06-05,2026-06,1100,Rekening-courant bank,,,False,Google Cloud EMEA Limited Naam: Google Cloud EMEA Limited;Omschrijving: APPS;COMMERCE:leraworld.com:GG104EM;IBAN: IE35CITI99005132549640;Kenmerk: GG104EMSZ7;Machtiging ID: 91115353;Incassant ID: IE34ZZZ362297;Doorlopende incasso;Valutadatum: 05-06-20,,0.0,64.8,-64.8,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59208115900XT batch;551, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59208115900XT;Valutadatum: 05-06-2026",,1383.12,0.0,1383.12,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59219950600XT batch;122, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59219950600XT;Valutadatum: 05-06-2026",,245.98,0.0,245.98,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1102,Bank - stock&supply,,,False,"Hema HEMA EV0012 Amsterdam AMSTERDAM, NL",,0.0,6.49,-6.49,1102,Bank - stock&supply,0,2026
+2026-06-05,2026-06,1102,Bank - stock&supply,,,False,"UBER   * EATS PENDING UBER   * EATS PENDING Amsterdam, NL",,0.0,42.5,-42.5,1102,Bank - stock&supply,0,2026
+2026-06-05,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59208115900XT batch;551, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59208115900XT;Valutadatum: 05-06-2026",,0.0,1383.12,-1383.12,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59219950600XT batch;122, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59219950600XT;Valutadatum: 05-06-2026",,0.0,245.98,-245.98,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1600,Crediteuren,,,False,Google Cloud EMEA Limited Naam: Google Cloud EMEA Limited;Omschrijving: APPS;COMMERCE:leraworld.com:GG104EM;IBAN: IE35CITI99005132549640;Kenmerk: GG104EMSZ7;Machtiging ID: 91115353;Incassant ID: IE34ZZZ362297;Doorlopende incasso;Valutadatum: 05-06-20,5588503408,64.8,0.0,64.8,1100,Rekening-courant bank,0,2026
+2026-06-05,2026-06,1600,Crediteuren,,,False,Hema,BON_20260605_633,0.0,6.49,-6.49,1600,Crediteuren,0,2026
+2026-06-05,2026-06,1600,Crediteuren,,,False,"Hema HEMA EV0012 Amsterdam AMSTERDAM, NL",BON_20260605_633,6.49,0.0,6.49,1102,Bank - stock&supply,0,2026
+2026-06-05,2026-06,1600,Crediteuren,,,False,"UBER   * EATS PENDING UBER   * EATS PENDING Amsterdam, NL",1127,42.5,0.0,42.5,1102,Bank - stock&supply,0,2026
+2026-06-05,2026-06,1600,Crediteuren,,,False,Polina Gorbatenko,2026-0016,0.0,193.8,-193.8,1600,Crediteuren,0,2026
+2026-06-05,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Polina Gorbatenko,2026-0016,16.0,0.0,16.0,1600,Crediteuren,9,2026
+2026-06-05,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Hema,BON_20260605_633,1.13,0.0,1.13,1600,Crediteuren,21,2026
+2026-06-05,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Hema,BON_20260605_633,5.36,0.0,5.36,1600,Crediteuren,21,2026
+2026-06-05,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Polina Gorbatenko,2026-0016,177.8,0.0,177.8,1600,Crediteuren,9,2026
+2026-06-06,2026-06,1101,NL59BUNQ2160396583,,,False,bunq BV invoice 40316456,,0.0,27.76,-27.76,1101,NL59BUNQ2160396583,0,2026
+2026-06-06,2026-06,1600,Crediteuren,,,False,Doist Inc,98CF26FB-0019,0.0,7.0,-7.0,1600,Crediteuren,0,2026
+2026-06-06,2026-06,1600,Crediteuren,,,False,Uber Eats NL B.V.,1127,0.0,42.5,-42.5,1600,Crediteuren,0,2026
+2026-06-06,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Uber Eats NL B.V.,1127,3.51,0.0,3.51,1600,Crediteuren,9,2026
+2026-06-06,2026-06,4408,Kantinekosten,SG&A – Other,SG&A,True,uber eats,1127,38.99,0.0,38.99,1600,Crediteuren,9,2026
+2026-06-06,2026-06,4611,Contributies en abonnementen binnen EU,SG&A – Subscriptions,SG&A,True,Doist Inc,98CF26FB-0019,7.0,0.0,7.0,1600,Crediteuren,0,2026
+2026-06-06,2026-06,4753,Bankkosten,SG&A – Bank Charges,SG&A,True,bunq BV invoice 40316456,,27.76,0.0,27.76,1101,NL59BUNQ2160396583,0,2026
+2026-06-07,2026-06,1100,Rekening-courant bank,,,False,Merchery Naam: Merchery;Omschrijving: F6TXOKV;0220486234194857 Order ?2026794475;IBAN: NL58CITI2032329913;Kenmerk: 07-06-2026 20:20 0220486234194857;Valutadatum: 07-06-2026,,0.0,605.14,-605.14,1100,Rekening-courant bank,0,2026
+2026-06-07,2026-06,1102,Bank - stock&supply,,,False,"Albert Heijn Albert Heijn 1562 AMSTERDAM, NL",,0.0,5.24,-5.24,1102,Bank - stock&supply,0,2026
+2026-06-07,2026-06,1102,Bank - stock&supply,,,False,"UBER   * EATS PENDING UBER   * EATS PENDING Amsterdam, NL",,0.0,37.5,-37.5,1102,Bank - stock&supply,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,Albert Heijn,BON_20260607_4175,0.0,5.24,-5.24,1600,Crediteuren,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,Merchery Naam: Merchery;Omschrijving: F6TXOKV;0220486234194857 Order ?2026794475;IBAN: NL58CITI2032329913;Kenmerk: 07-06-2026 20:20 0220486234194857;Valutadatum: 07-06-2026,26/06/0203,605.14,0.0,605.14,1100,Rekening-courant bank,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,"Albert Heijn Albert Heijn 1562 AMSTERDAM, NL",BON_20260607_4175,5.24,0.0,5.24,1102,Bank - stock&supply,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,"UBER   * EATS PENDING UBER   * EATS PENDING Amsterdam, NL",1072,37.5,0.0,37.5,1102,Bank - stock&supply,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,Merchery SRL,26/06/0203,0.0,605.14,-605.14,1600,Crediteuren,0,2026
+2026-06-07,2026-06,1600,Crediteuren,,,False,Uber Eats NL B.V.,1072,0.0,37.5,-37.5,1600,Crediteuren,0,2026
+2026-06-07,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Albert Heijn,BON_20260607_4175,0.43,0.0,0.43,1600,Crediteuren,9,2026
+2026-06-07,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Uber Eats NL B.V.,1072,3.1,0.0,3.1,1600,Crediteuren,9,2026
+2026-06-07,2026-06,4408,Kantinekosten,SG&A – Other,SG&A,True,Uber Eats NL B.V.,1072,34.4,0.0,34.4,1600,Crediteuren,9,2026
+2026-06-07,2026-06,4421,Bedrijfskleding,SG&A – Other,SG&A,True,Merchery SRL,26/06/0203,605.14,0.0,605.14,1600,Crediteuren,0,2026
+2026-06-07,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Albert Heijn,BON_20260607_4175,4.81,0.0,4.81,1600,Crediteuren,9,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;IBAN: NL70BUNQ2171894474;Valutadatum: 08-06-2026 LERA WORLD,,0.0,1500.0,-1500.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-UDXIUUIJLE1NQYQIZGVYSJVJIC0;Valutadatum: 08-06-2026,,83.71,0.0,83.71,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;IBAN: NL59BUNQ2160396583;Datum Tijd: 08-06-2026 15:43:12;Valutadatum: 08-06-2026 LERA WORLD,,0.0,3000.0,-3000.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,Naam: LERA WORLD;IBAN: NL59BUNQ2160396583;Datum Tijd: 08-06-2026 15:42:37;Valutadatum: 08-06-2026 LERA WORLD,,0.0,3000.0,-3000.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59235857900XT batch;552, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59235857900XT;Valutadatum: 08-06-2026",,1669.5,0.0,1669.5,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59246150200XT batch;123, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59246150200XT;Valutadatum: 08-06-2026",,145.3,0.0,145.3,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1101,NL59BUNQ2160396583,,,False,LERA WORLD B.V.,,3000.0,0.0,3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1101,NL59BUNQ2160396583,,,False,LERA WORLD B.V.,,3000.0,0.0,3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1101,NL59BUNQ2160396583,,,False,BoxAtWork BoxAtWork Boxie24,,0.0,40.0,-40.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1102,Bank - stock&supply,,,False,LERA WORLD B.V.,,1500.0,0.0,1500.0,1102,Bank - stock&supply,0,2026
+2026-06-08,2026-06,1102,Bank - stock&supply,,,False,P1691976343 7051456249311542 bol.com BUN1801338657973,,0.0,28.01,-28.01,1102,Bank - stock&supply,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;IBAN: NL70BUNQ2171894474;Valutadatum: 08-06-2026 LERA WORLD,,1500.0,0.0,1500.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,LERA WORLD B.V.,,0.0,3000.0,-3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,LERA WORLD B.V.,,0.0,3000.0,-3000.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;IBAN: NL59BUNQ2160396583;Datum Tijd: 08-06-2026 15:43:12;Valutadatum: 08-06-2026 LERA WORLD,,3000.0,0.0,3000.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,Naam: LERA WORLD;IBAN: NL59BUNQ2160396583;Datum Tijd: 08-06-2026 15:42:37;Valutadatum: 08-06-2026 LERA WORLD,,3000.0,0.0,3000.0,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1200,Kruisposten,,,False,LERA WORLD B.V.,,0.0,1500.0,-1500.0,1102,Bank - stock&supply,0,2026
+2026-06-08,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59235857900XT batch;552, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59235857900XT;Valutadatum: 08-06-2026",,0.0,1669.5,-1669.5,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59246150200XT batch;123, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59246150200XT;Valutadatum: 08-06-2026",,0.0,145.3,-145.3,1100,Rekening-courant bank,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,Box at Work Amsterdam B.V.,NL-08062026-88000,0.0,17.0,-17.0,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,BoxAtWork BoxAtWork Boxie24,NL-03062026-87765,40.0,0.0,40.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,Picnic B.V.,NL261758,0.0,92.25,-92.25,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,IJzerhandel Zuid,BON_20260608_3855,0.0,15.63,-15.63,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,P1691976343 7051456249311542 bol.com BUN1801338657973,_2026_64082,56.02,0.0,56.02,1102,Bank - stock&supply,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,P1691976343 7051456249311542 bol.com BUN1801338657973,3915613985270,0.0,28.01,-28.01,1102,Bank - stock&supply,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,Doist Inc,476D38F8-0018,0.0,20.0,-20.0,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,Yuliia Samokhina,BON_20260608_574,0.0,300.0,-300.0,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1600,Crediteuren,,,False,Holland & Barret,9029952374,0.0,32.99,-32.99,1600,Crediteuren,0,2026
+2026-06-08,2026-06,1670,Btw af te dragen laag (verkopen),,,False,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-UDXIUUIJLE1NQYQIZGVYSJVJIC0;Valutadatum: 08-06-2026,,0.0,6.91,-6.91,1100,Rekening-courant bank,9,2026
+2026-06-08,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Picnic B.V.,NL261758,7.62,0.0,7.62,1600,Crediteuren,9,2026
+2026-06-08,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Holland & Barret,9029952374,2.72,0.0,2.72,1600,Crediteuren,9,2026
+2026-06-08,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Box at Work Amsterdam B.V.,NL-08062026-88000,2.95,0.0,2.95,1600,Crediteuren,21,2026
+2026-06-08,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,IJzerhandel Zuid,BON_20260608_3855,2.71,0.0,2.71,1600,Crediteuren,21,2026
+2026-06-08,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Box at Work Amsterdam B.V.,NL-08062026-88000,14.05,0.0,14.05,1600,Crediteuren,21,2026
+2026-06-08,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,IJzerhandel Zuid,BON_20260608_3855,12.92,0.0,12.92,1600,Crediteuren,21,2026
+2026-06-08,2026-06,4606,Contributies en abonnementen,SG&A – Subscriptions,SG&A,True,Doist Inc,476D38F8-0018,20.0,0.0,20.0,1600,Crediteuren,0,2026
+2026-06-08,2026-06,4704,Overige advieskosten,SG&A – Professional Services,SG&A,True,Yuliia Samokhina,BON_20260608_574,300.0,0.0,300.0,1600,Crediteuren,0,2026
+2026-06-08,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Picnic B.V.,NL261758,84.63,0.0,84.63,1600,Crediteuren,9,2026
+2026-06-08,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Holland & Barret,9029952374,30.27,0.0,30.27,1600,Crediteuren,9,2026
+2026-06-08,2026-06,8111,Omzet laag (Shopify),Matcha Company – E-com,Matcha Company,True,STRIPE Naam: STRIPE;Omschrijving: SHOPIFY;IBAN: NL41CITI2032304805;Kenmerk: SHOPIFY-UDXIUUIJLE1NQYQIZGVYSJVJIC0;Valutadatum: 08-06-2026,,0.0,76.8,-76.8,1100,Rekening-courant bank,9,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,Tebi Naam: Tebi;Omschrijving: Tebi NL20260500026773;IBAN: NL65ADYB2006011162;Kenmerk: RQ8FHBPQ7DHFCCF3;Machtiging ID: SZ2XWH9MVBXCC4R9;Incassant ID: NL48ZZZ342764500000;Doorlopende incasso;Valutadatum: 09-06-2026,,0.0,11.31,-11.31,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,Todoist Naam: Todoist;Omschrijving: TODOIST;IBAN: IE30CITI99005132956548;Kenmerk: STR16NAUECUXAJ3XB9QQCRANPJZYBWDKQV;Machtiging ID: 7TUHWKZZRRGVDCFT;Incassant ID: DE16ZZZ00001941136;Doorlopende incasso;Valutadatum: 09-06-2026,,0.0,7.0,-7.0,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,MVM Technical Services via Mollie Naam: MVM Technical Services via Mollie;Omschrijving: MVM x LERA service;agreement 24.07.2025;IBAN: NL22DEUT7022590764;Kenmerk: SD62-1847-8942-9474;Machtiging ID: MD94-7763-7622-6408;Incassant ID: NL08ZZZ502057730000,,0.0,114.95,-114.95,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59281985800XT batch;124, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59281985800XT;Valutadatum: 09-06-2026",,782.05,0.0,782.05,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59266180000XT batch;553, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59266180000XT;Valutadatum: 09-06-2026",,7056.39,0.0,7056.39,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1100,Rekening-courant bank,,,False,Taxes & More Naam: Taxes + More;Omschrijving: 2026251;IBAN: NL62KNAB0620322616;Datum Tijd: 09-06-2026 20:29:10;Valutadatum: 09-06-2026,,0.0,816.75,-816.75,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,Eitje B.V. Eitje invoice 2026-007616,,0.0,29.04,-29.04,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,BoxAtWork BoxAtWork Boxie24,,0.0,17.0,-17.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,M04834534MREXU2W 0380656233947624 Factuur 2026-41135,,0.0,50.35,-50.35,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,Aleksandra Fedorova 10028,,0.0,605.0,-605.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,BEMAISA 2026-001,,0.0,534.82,-534.82,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,Polina Gorbatenko 2026-0014,,0.0,248.57,-248.57,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,Strawberriya 2026-0042,,0.0,312.0,-312.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1101,NL59BUNQ2160396583,,,False,Duralight 2026038,,0.0,151.25,-151.25,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,"Duikelman B.V. CCV*Duikelman BV AMSTERDAM, NL",,0.0,88.9,-88.9,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,Koffiecentrale.nl 1000238169 8030084139949769 Nederlands,,0.0,65.8,-65.8,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,7K4CWCM 7140285643039358 Temu,,0.0,116.11,-116.11,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,7K4CLK6 7140445339979352 Temu,,0.0,222.98,-222.98,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,"IJZERHANDEL ZUID AMSTERDAM, NL
+",,0.0,15.63,-15.63,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1102,Bank - stock&supply,,,False,PVS29CVQJZG4GLG32K8A2 7180886228342382 49dc07a5-09f6-4daf-98de-855c4415e50,,0.0,32.99,-32.99,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59266180000XT batch;553, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59266180000XT;Valutadatum: 09-06-2026",,0.0,7056.39,-7056.39,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59281985800XT batch;124, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59281985800XT;Valutadatum: 09-06-2026",,0.0,782.05,-782.05,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Tebi Naam: Tebi;Omschrijving: Tebi NL20260500026773;IBAN: NL65ADYB2006011162;Kenmerk: RQ8FHBPQ7DHFCCF3;Machtiging ID: SZ2XWH9MVBXCC4R9;Incassant ID: NL48ZZZ342764500000;Doorlopende incasso;Valutadatum: 09-06-2026,NL20260500026773,11.31,0.0,11.31,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Todoist Naam: Todoist;Omschrijving: TODOIST;IBAN: IE30CITI99005132956548;Kenmerk: STR16NAUECUXAJ3XB9QQCRANPJZYBWDKQV;Machtiging ID: 7TUHWKZZRRGVDCFT;Incassant ID: DE16ZZZ00001941136;Doorlopende incasso;Valutadatum: 09-06-2026,98CF26FB-0019,7.0,0.0,7.0,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Koffiecentrale.nl,1000220407,0.0,65.8,-65.8,1600,Crediteuren,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Eitje B.V. Eitje invoice 2026-007616,BON_20260601_9430,29.04,0.0,29.04,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,BoxAtWork BoxAtWork Boxie24,NL-08062026-88000,17.0,0.0,17.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Temu,BON_20260609_128,0.0,339.0,-339.0,1600,Crediteuren,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Duikelman B.V.,BON_20260609_9662,0.0,88.9,-88.9,1600,Crediteuren,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,"Duikelman B.V. CCV*Duikelman BV AMSTERDAM, NL",BON_20260609_9662,88.9,0.0,88.9,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Koffiecentrale.nl 1000238169 8030084139949769 Nederlands,1000220407,65.8,0.0,65.8,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,7K4CLK6 7140445339979352 Temu,BON_20260609_128,222.98,0.0,222.98,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,"IJZERHANDEL ZUID AMSTERDAM, NL
+",BON_20260608_3855,15.63,0.0,15.63,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,7K4CWCM 7140285643039358 Temu,BON_20260609_128,116.02,0.0,116.02,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,M04834534MREXU2W 0380656233947624 Factuur 2026-41135,2026-41135,50.0,0.0,50.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Aleksandra Fedorova 10028,10028,605.0,0.0,605.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,BEMAISA 2026-001,2026-001,534.82,0.0,534.82,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Polina Gorbatenko 2026-0014,2026-0014,248.57,0.0,248.57,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Strawberriya 2026-0042,2026-0042,312.0,0.0,312.0,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Duralight 2026038,2026038,151.25,0.0,151.25,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Taxes & More Naam: Taxes + More;Omschrijving: 2026251;IBAN: NL62KNAB0620322616;Datum Tijd: 09-06-2026 20:29:10;Valutadatum: 09-06-2026,2026251,816.75,0.0,816.75,1100,Rekening-courant bank,0,2026
+2026-06-09,2026-06,1600,Crediteuren,,,False,Sligro Food Group N.V.,10005642921,0.0,864.87,-864.87,1600,Crediteuren,0,2026
+2026-06-09,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Sligro Food Group N.V.,10005642921,71.41,0.0,71.41,1600,Crediteuren,9,2026
+2026-06-09,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,MVM Technical Services via Mollie Naam: MVM Technical Services via Mollie;Omschrijving: MVM x LERA service;agreement 24.07.2025;IBAN: NL22DEUT7022590764;Kenmerk: SD62-1847-8942-9474;Machtiging ID: MD94-7763-7622-6408;Incassant ID: NL08ZZZ502057730000,,19.95,0.0,19.95,1100,Rekening-courant bank,21,2026
+2026-06-09,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Koffiecentrale.nl,1000220407,11.42,0.0,11.42,1600,Crediteuren,21,2026
+2026-06-09,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Duikelman B.V.,BON_20260609_9662,15.43,0.0,15.43,1600,Crediteuren,21,2026
+2026-06-09,2026-06,1799,Onbekende betalingen,,,False,PVS29CVQJZG4GLG32K8A2 7180886228342382 49dc07a5-09f6-4daf-98de-855c4415e50,,32.99,0.0,32.99,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,MVM Technical Services via Mollie Naam: MVM Technical Services via Mollie;Omschrijving: MVM x LERA service;agreement 24.07.2025;IBAN: NL22DEUT7022590764;Kenmerk: SD62-1847-8942-9474;Machtiging ID: MD94-7763-7622-6408;Incassant ID: NL08ZZZ502057730000,,95.0,0.0,95.0,1100,Rekening-courant bank,21,2026
+2026-06-09,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Koffiecentrale.nl,1000220407,54.38,0.0,54.38,1600,Crediteuren,21,2026
+2026-06-09,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Duikelman B.V.,BON_20260609_9662,73.47,0.0,73.47,1600,Crediteuren,21,2026
+2026-06-09,2026-06,4756,Betalingsverschillen,SG&A – Other,SG&A,True,7K4CWCM 7140285643039358 Temu,,0.09,0.0,0.09,1102,Bank - stock&supply,0,2026
+2026-06-09,2026-06,4756,Betalingsverschillen,SG&A – Other,SG&A,True,M04834534MREXU2W 0380656233947624 Factuur 2026-41135,,0.35,0.0,0.35,1101,NL59BUNQ2160396583,0,2026
+2026-06-09,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Sligro Food Group N.V.,10005642921,793.46,0.0,793.46,1600,Crediteuren,9,2026
+2026-06-09,2026-06,7021,Inkopen Retail buiten EU hoog,COGS – Retail & Other,COGS,True,Temu,BON_20260609_128,339.0,0.0,339.0,1600,Crediteuren,0,2026
+2026-06-10,2026-06,1100,Rekening-courant bank,,,False,Todoist Naam: Todoist;Omschrijving: TODOIST;IBAN: IE30CITI99005132956548;Kenmerk: STR16NAUFNMLCFQVNNESVRANP8SZCUR815;Machtiging ID: GCAXWOVFJLSWZLFX;Incassant ID: DE16ZZZ00001941136;Doorlopende incasso;Valutadatum: 10-06-2026,,0.0,20.0,-20.0,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59311298900XT batch;125, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59311298900XT;Valutadatum: 10-06-2026",,82.38,0.0,82.38,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59300465500XT batch;554, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59300465500XT;Valutadatum: 10-06-2026",,1495.08,0.0,1495.08,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59300465500XT batch;554, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59300465500XT;Valutadatum: 10-06-2026",,0.0,1495.08,-1495.08,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59311298900XT batch;125, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59311298900XT;Valutadatum: 10-06-2026",,0.0,82.38,-82.38,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1600,Crediteuren,,,False,Todoist Naam: Todoist;Omschrijving: TODOIST;IBAN: IE30CITI99005132956548;Kenmerk: STR16NAUFNMLCFQVNNESVRANP8SZCUR815;Machtiging ID: GCAXWOVFJLSWZLFX;Incassant ID: DE16ZZZ00001941136;Doorlopende incasso;Valutadatum: 10-06-2026,476D38F8-0018,20.0,0.0,20.0,1100,Rekening-courant bank,0,2026
+2026-06-10,2026-06,1600,Crediteuren,,,False,Box at Work Amsterdam B.V.,NL-10062026-88136,0.0,63.24,-63.24,1600,Crediteuren,0,2026
+2026-06-10,2026-06,1680,Btw te vorderen hoog (inkopen),,,False,Box at Work Amsterdam B.V.,NL-10062026-88136,10.29,0.0,10.29,1600,Crediteuren,21,2026
+2026-06-10,2026-06,4290,Overige huisvestingskosten,Occupancy – Other,Occupancy,True,Box at Work Amsterdam B.V.,NL-10062026-88136,48.99,0.0,48.99,1600,Crediteuren,21,2026
+2026-06-10,2026-06,4651,Overige verzekeringen,SG&A – Other,SG&A,True,Box at Work Amsterdam B.V.,NL-10062026-88136,3.96,0.0,3.96,1600,Crediteuren,0,2026
+2026-06-11,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59340698800XT batch;126, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59340698800XT;Valutadatum: 11-06-2026",,73.83,0.0,73.83,1100,Rekening-courant bank,0,2026
+2026-06-11,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59326280600XT batch;555, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59326280600XT;Valutadatum: 11-06-2026",,1354.42,0.0,1354.42,1100,Rekening-courant bank,0,2026
+2026-06-11,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59326280600XT batch;555, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59326280600XT;Valutadatum: 11-06-2026",,0.0,1354.42,-1354.42,1100,Rekening-courant bank,0,2026
+2026-06-11,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59340698800XT batch;126, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59340698800XT;Valutadatum: 11-06-2026",,0.0,73.83,-73.83,1100,Rekening-courant bank,0,2026
+2026-06-11,2026-06,1600,Crediteuren,,,False,Picnic B.V.,NL262026,0.0,72.14,-72.14,1600,Crediteuren,0,2026
+2026-06-11,2026-06,1600,Crediteuren,,,False,Strawberriya,2026-0047,0.0,305.5,-305.5,1600,Crediteuren,0,2026
+2026-06-11,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Strawberriya,2026-0047,25.22,0.0,25.22,1600,Crediteuren,9,2026
+2026-06-11,2026-06,1679,Btw te vorderen laag (inkopen),,,False,Picnic B.V.,NL262026,5.92,0.0,5.92,1600,Crediteuren,9,2026
+2026-06-11,2026-06,3090,Emballage,,,False,Picnic B.V.,NL262026,0.39,0.0,0.39,1600,Crediteuren,0,2026
+2026-06-11,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Picnic B.V.,NL262026,65.83,0.0,65.83,1600,Crediteuren,9,2026
+2026-06-11,2026-06,7001,Inkopen eten en drinken laag (Kiosk),COGS – Food & Bev Kiosk,COGS,True,Strawberriya,2026-0047,280.28,0.0,280.28,1600,Crediteuren,9,2026
+2026-06-12,2026-06,1100,Rekening-courant bank,,,False,Horometrie B.V. Naam: Horometrie B.V.;Omschrijving: CLA early repayment;instalment 1 12 - Horometrie BV;IBAN: NL77RABO0363163565;Datum Tijd: 12-06-2026 11:14:38;Valutadatum: 12-06-2026,,0.0,4833.0,-4833.0,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1100,Rekening-courant bank,,,False,Everybody Taal BV Naam: Everybody Taal;Omschrijving: 10078;IBAN: NL57INGB0111107741;Datum Tijd: 12-06-2026 15:17:57;Valutadatum: 12-06-2026,,301.93,0.0,301.93,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59361254000XT batch;556, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59361254000XT;Valutadatum: 12-06-2026",,1553.84,0.0,1553.84,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1100,Rekening-courant bank,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59367249900XT batch;127, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59367249900XT;Valutadatum: 12-06-2026",,86.04,0.0,86.04,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1204,Ontvangsten Adyen (Kiosk),,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59361254000XT batch;556, Lera-Amsterdam;IBAN: NL92ADYB2017400998;Kenmerk: TX59361254000XT;Valutadatum: 12-06-2026",,0.0,1553.84,-1553.84,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1208,Ontvangsten Tebi,,,False,Horometrie B.V. Naam: Horometrie B.V.;Omschrijving: CLA early repayment;instalment 1 12 - Horometrie BV;IBAN: NL77RABO0363163565;Datum Tijd: 12-06-2026 11:14:38;Valutadatum: 12-06-2026,,4833.0,0.0,4833.0,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1208,Ontvangsten Tebi,,,False,"Adyen N.V. Naam: Adyen N.V.;Omschrijving: TX59367249900XT batch;127, TEBI?LERA?WORLD?BV;IBAN: NL92ADYB2017400998;Kenmerk: TX59367249900XT;Valutadatum: 12-06-2026",,0.0,86.04,-86.04,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1300,Debiteuren,,,False,Everybody Taal BV Naam: Everybody Taal;Omschrijving: 10078;IBAN: NL57INGB0111107741;Datum Tijd: 12-06-2026 15:17:57;Valutadatum: 12-06-2026,10078,0.0,301.93,-301.93,1100,Rekening-courant bank,0,2026
+2026-06-12,2026-06,1300,Debiteuren,,,False,Everybody Taal BV,10079,301.93,0.0,301.93,1300,Debiteuren,0,2026
+2026-06-12,2026-06,1670,Btw af te dragen laag (verkopen),,,False,Everybody Taal BV,10079,0.0,24.48,-24.48,1300,Debiteuren,9,2026
+2026-06-12,2026-06,1671,Btw af te dragen hoog (verkopen),,,False,Everybody Taal BV,10079,0.0,0.95,-0.95,1300,Debiteuren,21,2026
+2026-06-12,2026-06,8110,Omzet laag (Kiosk),Revenue – Kiosk,Revenue,False,Everybody Taal BV,10079,0.0,272.0,-272.0,1300,Debiteuren,9,2026
+2026-06-12,2026-06,8200,Omzet hoog (diensten),Revenue – Services,Revenue,False,Everybody Taal BV,10079,0.0,4.5,-4.5,1300,Debiteuren,21,2026
