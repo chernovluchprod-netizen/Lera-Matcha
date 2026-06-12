@@ -1,0 +1,987 @@
+
+============================================================
+Pipeline run: 2026-04-08T14:12:03.721406
+[14:11:58] Lera World Pipeline  –  2026-04-08 14:11:58
+[14:11:58] New files     (4): lera_completed_orders.xlsx, lera_products.xlsx, lera_revenue_by_product (1).pdf, Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx
+
+[14:11:58] ───────────────────────────────────────
+[14:11:58]   STEP 1 – Daily Summary (DayReports)
+[14:11:58] ───────────────────────────────────────
+[14:11:58]   No DayReport files found in Sales Retail – skipping.
+
+[14:11:58] ────────────────────────────────────────
+[14:11:58]   STEP 2 – Transactions (SalesReports)
+[14:11:58] ────────────────────────────────────────
+[14:11:58]   No SalesReport files found in Sales Retail – skipping.
+
+[14:11:58] ──────────────────────────────────
+[14:11:58]   STEP 5b – Kiosk Sales (Onesix)
+[14:11:58] ──────────────────────────────────
+[14:12:02]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[14:12:02]   24 months of kiosk data, avg monthly revenue €39,895
+
+[14:12:02] ────────────────────────
+[14:12:02]   STEP 3 – Labor Hours
+[14:12:02] ────────────────────────
+[14:12:02]   No Hours files found – skipping.
+
+[14:12:02] ───────────────────────────────────
+[14:12:02]   STEP 4 – General Ledger (Costs)
+[14:12:02] ───────────────────────────────────
+[14:12:03]   Parsed [0]: Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx  (5116 rows)
+[14:12:03]   No overlapping files detected — no deduplication needed.
+[14:12:03]   costs_ledger.csv → 5116 entries, 2025-02-10 to 2026-04-08
+
+[14:12:03] ─────────────────────────────
+[14:12:03]   STEP 4b – Payroll Journal
+[14:12:03] ─────────────────────────────
+
+[14:12:03] ────────────────────────
+[14:12:03]   STEP 5 – Monthly P&L
+[14:12:03] ────────────────────────
+[14:12:03]   Reallocated 43 outsourced-staff entries to prior month
+[14:12:03]   POS revenue substituted for 1 months (GL revenue absent): 2026-04
+[14:12:03]   No payroll_journal.csv found – wage substitution skipped.
+[14:12:03]   monthly_pl.csv → 70 rows × 13 months
+[14:12:03]   TOTAL REVENUE                         0       618    13,572    20,617    26,480    27,222    30,777    30,705    22,931    24,396    26,469    32,909         0
+[14:12:03]   TOTAL COGS                            0       544     5,942     6,233     9,662     8,742    11,028    10,309     6,841     7,385     8,386    12,714       719
+[14:12:03]   GROSS PROFIT                          0        74     7,630    14,384    16,818    18,480    19,749    20,396    16,090    17,011    18,084    20,196      -719
+[14:12:03]   GROSS MARGIN %                     nan%     12.0%     56.2%     69.8%     63.5%     67.9%     64.2%     66.4%     70.2%     69.7%     68.3%     61.4%      nan%
+[14:12:03]   EBITDA                           -5,064    -5,460    -5,140     2,232     4,748         0     2,468     4,870      -256       538     1,913      -774    -1,791
+[14:12:03]   EBITDA MARGIN %                    nan%   -883.2%    -37.9%     10.8%     17.9%      0.0%      8.0%     15.9%     -1.1%      2.2%      7.2%     -2.4%      nan%
+[14:12:03]   NET PROFIT                       -5,064    -5,460    -5,140     2,232     4,748         0     2,468     4,870    -6,429       538     1,913      -774    -1,791
+
+[14:12:03] ─────────────────────────
+[14:12:03]   STEP 6 – Monthly KPIs
+[14:12:03] ─────────────────────────
+[14:12:03]   monthly_kpis.csv → 25 months × 24 KPIs
+
+[14:12:03] ──────────────────────────
+[14:12:03]   STEP 7 – Product Sales
+[14:12:03] ──────────────────────────
+[14:12:03]   No ProductReport files found – skipping.
+[14:12:03] 
+Done. Manifest updated with 4 source files.
+
+============================================================
+Pipeline run: 2026-04-08T14:19:46.145157
+[14:19:42] Lera World Pipeline  –  2026-04-08 14:19:42
+[14:19:42] New files     (4): lera_completed_orders.xlsx, lera_products.xlsx, lera_revenue_by_product (1).pdf, Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx
+
+[14:19:42] ───────────────────────────────────────
+[14:19:42]   STEP 1 – Daily Summary (DayReports)
+[14:19:42] ───────────────────────────────────────
+[14:19:42]   No DayReport files found in Sales Retail – skipping.
+
+[14:19:42] ────────────────────────────────────────
+[14:19:42]   STEP 2 – Transactions (SalesReports)
+[14:19:42] ────────────────────────────────────────
+[14:19:42]   No SalesReport files found in Sales Retail – skipping.
+
+[14:19:42] ──────────────────────────────────
+[14:19:42]   STEP 5b – Kiosk Sales (Onesix)
+[14:19:42] ──────────────────────────────────
+[14:19:45]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[14:19:45]   24 months of kiosk data, avg monthly revenue €39,895
+
+[14:19:45] ────────────────────────
+[14:19:45]   STEP 3 – Labor Hours
+[14:19:45] ────────────────────────
+[14:19:45]   No Hours files found – skipping.
+
+[14:19:45] ───────────────────────────────────
+[14:19:45]   STEP 4 – General Ledger (Costs)
+[14:19:45] ───────────────────────────────────
+[14:19:45]   Parsed [0]: Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx  (5116 rows)
+[14:19:45]   No overlapping files detected — no deduplication needed.
+[14:19:45]   costs_ledger.csv → 5116 entries, 2025-02-10 to 2026-04-08
+
+[14:19:45] ─────────────────────────────
+[14:19:45]   STEP 4b – Payroll Journal
+[14:19:45] ─────────────────────────────
+
+[14:19:45] ────────────────────────
+[14:19:45]   STEP 5 – Monthly P&L
+[14:19:45] ────────────────────────
+[14:19:45]   Reallocated 62 outsourced-staff entries to prior month
+[14:19:45]   Kiosk revenue added: 12 months, €533,964 total in GL period
+[14:19:45]   Bar POS revenue estimated for 1 months (GL absent): 2026-04
+[14:19:45]   No payroll_journal.csv found – wage substitution skipped.
+[14:19:46]   monthly_pl.csv → 76 rows × 13 months
+[14:19:46]   TOTAL REVENUE                    47,620    49,402    61,601    69,544    79,869    72,830    75,602    72,475    56,061    58,457    64,256    82,944         0
+[14:19:46]   TOTAL COGS                            0       544     5,942     6,233     9,662     8,742    11,028    10,309     1,951     7,385     8,386    12,714       719
+[14:19:46]   GROSS PROFIT                     47,620    48,858    55,660    63,311    70,207    64,089    64,574    62,166    54,110    51,071    55,870    70,231      -719
+[14:19:46]   GROSS MARGIN %                   100.0%     98.9%     90.4%     91.0%     87.9%     88.0%     85.4%     85.8%     96.5%     87.4%     86.9%     84.7%      nan%
+[14:19:46]   EBITDA                           42,556    43,323    42,890    50,502    57,460    44,724    47,293    45,800    36,959    33,994    39,052    48,571    -1,791
+[14:19:46]   EBITDA MARGIN %                   89.4%     87.7%     69.6%     72.6%     71.9%     61.4%     62.6%     63.2%     65.9%     58.2%     60.8%     58.6%      nan%
+[14:19:46]   NET PROFIT                       42,556    43,323    42,890    50,502    57,460    44,724    47,293    45,800    30,786    33,994    39,052    48,571    -1,791
+
+[14:19:46] ─────────────────────────
+[14:19:46]   STEP 6 – Monthly KPIs
+[14:19:46] ─────────────────────────
+[14:19:46]   monthly_kpis.csv → 25 months × 24 KPIs
+
+[14:19:46] ──────────────────────────
+[14:19:46]   STEP 7 – Product Sales
+[14:19:46] ──────────────────────────
+[14:19:46]   No ProductReport files found – skipping.
+[14:19:46] 
+Done. Manifest updated with 4 source files.
+
+============================================================
+Pipeline run: 2026-04-08T14:22:55.684782
+[14:22:51] Lera World Pipeline  –  2026-04-08 14:22:51
+[14:22:51] New files     (4): lera_completed_orders.xlsx, lera_products.xlsx, lera_revenue_by_product (1).pdf, Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx
+
+[14:22:51] ───────────────────────────────────────
+[14:22:51]   STEP 1 – Daily Summary (DayReports)
+[14:22:51] ───────────────────────────────────────
+[14:22:51]   No DayReport files found in Sales Retail – skipping.
+
+[14:22:51] ────────────────────────────────────────
+[14:22:51]   STEP 2 – Transactions (SalesReports)
+[14:22:51] ────────────────────────────────────────
+[14:22:51]   No SalesReport files found in Sales Retail – skipping.
+
+[14:22:51] ──────────────────────────────────
+[14:22:51]   STEP 5b – Kiosk Sales (Onesix)
+[14:22:51] ──────────────────────────────────
+[14:22:54]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[14:22:54]   24 months of kiosk data, avg monthly revenue €39,895
+
+[14:22:54] ────────────────────────
+[14:22:54]   STEP 3 – Labor Hours
+[14:22:54] ────────────────────────
+[14:22:54]   No Hours files found – skipping.
+
+[14:22:54] ───────────────────────────────────
+[14:22:54]   STEP 4 – General Ledger (Costs)
+[14:22:54] ───────────────────────────────────
+[14:22:55]   Parsed [0]: Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx  (5116 rows)
+[14:22:55]   No overlapping files detected — no deduplication needed.
+[14:22:55]   costs_ledger.csv → 5116 entries, 2025-02-10 to 2026-04-08
+
+[14:22:55] ─────────────────────────────
+[14:22:55]   STEP 4b – Payroll Journal
+[14:22:55] ─────────────────────────────
+
+[14:22:55] ────────────────────────
+[14:22:55]   STEP 5 – Monthly P&L
+[14:22:55] ────────────────────────
+[14:22:55]   Reallocated 62 outsourced-staff entries to prior month
+[14:22:55]   Kiosk revenue added: 12 months, €533,964 total in GL period
+[14:22:55]   Bar POS revenue estimated for 1 months (GL absent): 2026-04
+[14:22:55]   No payroll_journal.csv found – wage substitution skipped.
+[14:22:55]   monthly_pl.csv → 76 rows × 13 months
+[14:22:55]   TOTAL REVENUE                    47,620    49,402    61,601    69,544    79,869    72,830    75,602    72,475    56,061    58,457    64,256    82,944         0
+[14:22:55]   TOTAL COGS                            0       544     5,942     6,233     9,662     8,742    11,028    10,309     1,951     7,385     8,386    12,714       719
+[14:22:55]   GROSS PROFIT                     47,620    48,858    55,660    63,311    70,207    64,089    64,574    62,166    54,110    51,071    55,870    70,231      -719
+[14:22:55]   GROSS MARGIN %                   100.0%     98.9%     90.4%     91.0%     87.9%     88.0%     85.4%     85.8%     96.5%     87.4%     86.9%     84.7%      nan%
+[14:22:55]   EBITDA                           42,556    43,323    42,890    50,502    57,460    44,724    47,293    45,800    36,959    33,994    39,052    48,571    -1,791
+[14:22:55]   EBITDA MARGIN %                   89.4%     87.7%     69.6%     72.6%     71.9%     61.4%     62.6%     63.2%     65.9%     58.2%     60.8%     58.6%      nan%
+[14:22:55]   NET PROFIT                       42,556    43,323    42,890    50,502    57,460    44,724    47,293    45,800    30,786    33,994    39,052    48,571    -1,791
+
+[14:22:55] ─────────────────────────
+[14:22:55]   STEP 6 – Monthly KPIs
+[14:22:55] ─────────────────────────
+[14:22:55]   monthly_kpis.csv → 25 months × 24 KPIs
+
+[14:22:55] ──────────────────────────
+[14:22:55]   STEP 7 – Product Sales
+[14:22:55] ──────────────────────────
+[14:22:55]   No ProductReport files found – skipping.
+[14:22:55] 
+Done. Manifest updated with 4 source files.
+
+============================================================
+Pipeline run: 2026-04-08T14:29:21.881221
+[14:29:16] Lera World Pipeline  –  2026-04-08 14:29:16
+[14:29:16] New files     (1): Grootboekmutatiekaarten. Periode 01-01-2023 tot en met 31-12-2026.xlsx
+[14:29:16] Removed files  (1): Grootboekmutatiekaarten. Periode 01-01-2025 tot en met 31-12-2026.xlsx
+
+[14:29:16] ───────────────────────────────────────
+[14:29:16]   STEP 1 – Daily Summary (DayReports)
+[14:29:16] ───────────────────────────────────────
+[14:29:16]   No DayReport files found in Sales Retail – skipping.
+
+[14:29:16] ────────────────────────────────────────
+[14:29:16]   STEP 2 – Transactions (SalesReports)
+[14:29:16] ────────────────────────────────────────
+[14:29:16]   No SalesReport files found in Sales Retail – skipping.
+
+[14:29:16] ──────────────────────────────────
+[14:29:16]   STEP 5b – Kiosk Sales (Onesix)
+[14:29:16] ──────────────────────────────────
+[14:29:19]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[14:29:19]   24 months of kiosk data, avg monthly revenue €39,895
+
+[14:29:19] ────────────────────────
+[14:29:19]   STEP 3 – Labor Hours
+[14:29:19] ────────────────────────
+[14:29:19]   No Hours files found – skipping.
+
+[14:29:19] ───────────────────────────────────
+[14:29:19]   STEP 4 – General Ledger (Costs)
+[14:29:19] ───────────────────────────────────
+[14:29:21]   Parsed [0]: Grootboekmutatiekaarten. Periode 01-01-2023 tot en met 31-12-2026.xlsx  (20604 rows)
+[14:29:21]   No overlapping files detected — no deduplication needed.
+[14:29:21]   costs_ledger.csv → 20604 entries, 2023-08-25 to 2026-04-08
+
+[14:29:21] ─────────────────────────────
+[14:29:21]   STEP 4b – Payroll Journal
+[14:29:21] ─────────────────────────────
+
+[14:29:21] ────────────────────────
+[14:29:21]   STEP 5 – Monthly P&L
+[14:29:21] ────────────────────────
+[14:29:21]   Reallocated 341 outsourced-staff entries to prior month
+[14:29:21]   Kiosk revenue added: 12 months, €533,964 total in GL period
+[14:29:21]   Bar POS revenue estimated for 1 months (GL absent): 2026-02
+[14:29:21]   No payroll_journal.csv found – wage substitution skipped.
+[14:29:21]   monthly_pl.csv → 76 rows × 13 months
+[14:29:21]   TOTAL REVENUE                    91,308    97,253    92,331    94,632   103,492    88,040    45,621    42,529   143,792    67,488    37,786    50,984       917
+[14:29:21]   TOTAL COGS                       13,237     9,859    11,531     9,145     9,872    10,052     8,130     7,981     7,469     4,042     7,276     7,700     1,286
+[14:29:21]   GROSS PROFIT                     78,071    87,394    80,800    85,487    93,620    77,989    37,491    34,548   136,323    63,447    30,511    43,284      -369
+[14:29:21]   GROSS MARGIN %                    85.5%     89.9%     87.5%     90.3%     90.5%     88.6%     82.2%     81.2%     94.8%     94.0%     80.7%     84.9%    -40.2%
+[14:29:21]   EBITDA                           53,336    59,415    56,689    61,064    72,822    45,162     8,857    11,693   111,033    41,376    -3,859    21,373    -2,227
+[14:29:21]   EBITDA MARGIN %                   58.4%     61.1%     61.4%     64.5%     70.4%     51.3%     19.4%     27.5%     77.2%     61.3%    -10.2%     41.9%   -242.9%
+[14:29:21]   NET PROFIT                       53,336    59,415    56,689    61,064    72,822    45,162     8,857    11,693   111,033    41,376    -3,859    21,373    -2,227
+
+[14:29:21] ─────────────────────────
+[14:29:21]   STEP 6 – Monthly KPIs
+[14:29:21] ─────────────────────────
+[14:29:21]   monthly_kpis.csv → 31 months × 20 KPIs
+
+[14:29:21] ──────────────────────────
+[14:29:21]   STEP 7 – Product Sales
+[14:29:21] ──────────────────────────
+[14:29:21]   No ProductReport files found – skipping.
+[14:29:21] 
+Done. Manifest updated with 4 source files.
+
+============================================================
+Pipeline run: 2026-04-08T15:27:26.420267
+[15:27:20] Lera World Pipeline  –  2026-04-08 15:27:20
+[15:27:20] New files     (4): lera_completed_orders.xlsx, lera_products.xlsx, lera_revenue_by_product (1).pdf, Grootboekmutatiekaarten. Periode 01-01-2023 tot en met 31-12-2026.xlsx
+
+[15:27:20] ───────────────────────────────────────
+[15:27:20]   STEP 1 – Daily Summary (DayReports)
+[15:27:20] ───────────────────────────────────────
+[15:27:20]   No DayReport files found in Sales Retail – skipping.
+
+[15:27:20] ────────────────────────────────────────
+[15:27:20]   STEP 2 – Transactions (SalesReports)
+[15:27:20] ────────────────────────────────────────
+[15:27:20]   No SalesReport files found in Sales Retail – skipping.
+
+[15:27:20] ──────────────────────────────────
+[15:27:20]   STEP 5b – Kiosk Sales (Onesix)
+[15:27:20] ──────────────────────────────────
+[15:27:23]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[15:27:23]   24 months of kiosk data, avg monthly revenue €39,895
+
+[15:27:23] ────────────────────────
+[15:27:23]   STEP 3 – Labor Hours
+[15:27:23] ────────────────────────
+[15:27:23]   No Hours files found – skipping.
+
+[15:27:23] ───────────────────────────────────
+[15:27:23]   STEP 4 – General Ledger (Costs)
+[15:27:23] ───────────────────────────────────
+[15:27:25]   Parsed [0]: Grootboekmutatiekaarten. Periode 01-01-2023 tot en met 31-12-2026.xlsx  (20604 rows)
+[15:27:25]   No overlapping files detected — no deduplication needed.
+[15:27:25]   costs_ledger.csv → 20604 entries, 2023-08-25 to 2026-04-08
+
+[15:27:25] ─────────────────────────────
+[15:27:25]   STEP 4b – Payroll Journal
+[15:27:25] ─────────────────────────────
+
+[15:27:25] ────────────────────────
+[15:27:25]   STEP 5 – Monthly P&L
+[15:27:25] ────────────────────────
+[15:27:26]   Reallocated 341 outsourced-staff entries to prior month
+[15:27:26]   Kiosk revenue added: 24 months, €957,489 total in GL period
+[15:27:26]   All months have GL bar revenue – no POS substitution needed.
+[15:27:26]   monthly_pl.csv → 95 rows × 28 months
+[15:27:26]   TOTAL REVENUE                         0         0         0    73,595    91,204    81,223    76,652    64,689    74,759    78,463    73,102    70,874    62,572    68,088    96,744   104,000   120,695   100,269   107,869   112,673    94,270    45,621    42,639   166,101    72,628    39,050    50,984       917
+[15:27:26]   TOTAL COGS                        4,252     4,519     3,380    19,246    17,976    13,930     6,242    11,324    15,487    14,705    11,717        91    21,174    14,677    10,440    21,175    23,304    22,677    13,134    15,080    12,314    15,284    12,804    23,814     4,130    14,557    13,710     1,286
+[15:27:26]   GROSS PROFIT                     -4,252    -4,519    -3,380    54,348    73,228    67,293    70,410    53,365    59,272    63,759    61,385    70,782    41,398    53,411    86,304    82,825    97,391    77,593    94,735    97,593    81,956    30,337    29,835   142,286    68,497    24,494    37,274      -369
+[15:27:26]   GROSS MARGIN %                     nan%      nan%      nan%     73.8%     80.3%     82.9%     91.9%     82.5%     79.3%     81.3%     84.0%     99.9%     66.2%     78.4%     89.2%     79.6%     80.7%     77.4%     87.8%     86.6%     86.9%     66.5%     70.0%     85.7%     94.3%     62.7%     73.1%    -40.2%
+[15:27:26]   EBITDA                          -36,965   -15,999   -19,681    37,315    49,732    39,450    44,202    31,903    35,776    26,788    39,547    44,330    14,992    27,220    55,097    48,546    62,801    41,918    56,086    64,494    34,804   -11,088     2,751   114,654    42,416   -14,584    12,999    -2,227
+[15:27:26]   EBITDA MARGIN %                    nan%      nan%      nan%     50.7%     54.5%     48.6%     57.7%     49.3%     47.9%     34.1%     54.1%     62.5%     24.0%     40.0%     57.0%     46.7%     52.0%     41.8%     52.0%     57.2%     36.9%    -24.3%      6.5%     69.0%     58.4%    -37.3%     25.5%   -242.9%
+[15:27:26]   NET PROFIT                      -36,965   -15,999   -19,681    37,315    49,732    37,180    42,552    29,633    33,506    26,788    37,277       242    14,992    27,220    55,097    48,546    62,801    41,918    56,086    64,494    34,804   -11,088     2,751   114,654    42,416   -14,584    12,999    -2,227
+
+[15:27:26] ─────────────────────────
+[15:27:26]   STEP 6 – Monthly KPIs
+[15:27:26] ─────────────────────────
+[15:27:26]   monthly_kpis.csv → 32 months × 23 KPIs
+
+[15:27:26] ──────────────────────────
+[15:27:26]   STEP 7 – Product Sales
+[15:27:26] ──────────────────────────
+[15:27:26]   No ProductReport files found – skipping.
+[15:27:26] 
+Done. Manifest updated with 4 source files.
+
+============================================================
+Pipeline run: 2026-05-11T12:27:30.104125
+[12:27:30] Taal Cafe Pipeline  –  2026-05-11 12:27:30
+[12:27:30] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[12:27:30] ───────────────────────────────────────
+[12:27:30]   STEP 1 – Daily Summary (DayReports)
+[12:27:30] ───────────────────────────────────────
+[12:27:30] 
+ ERROR: No objects to concatenate
+[12:27:30] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1100, in run
+    build_daily_summary()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 178, in build_daily_summary
+    daily = pd.concat(frames, ignore_index=True)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 382, in concat
+    op = _Concatenator(
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 445, in __init__
+    objs, keys = self._clean_keys_and_objs(objs, keys)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 507, in _clean_keys_and_objs
+    raise ValueError("No objects to concatenate")
+ValueError: No objects to concatenate
+
+
+============================================================
+Pipeline run: 2026-05-11T17:07:41.853547
+[17:07:39] Lera World Pipeline  –  2026-05-11 17:07:39
+[17:07:39] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[17:07:39] ───────────────────────────────────────
+[17:07:39]   STEP 1 – Daily Summary (DayReports)
+[17:07:39] ───────────────────────────────────────
+[17:07:39]   No DayReport files found in Sales Retail – skipping.
+
+[17:07:39] ────────────────────────────────────────
+[17:07:39]   STEP 2 – Transactions (SalesReports)
+[17:07:39] ────────────────────────────────────────
+[17:07:39]   No SalesReport files found in Sales Retail – skipping.
+
+[17:07:39] ──────────────────────────────────
+[17:07:39]   STEP 5b – Kiosk Sales (Onesix)
+[17:07:39] ──────────────────────────────────
+[17:07:41] 
+ ERROR: 'int' object has no attribute 'fillna'
+[17:07:41] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1216, in run
+    build_kiosk_sales()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1173, in build_kiosk_sales
+    df["amount_eur"] = pd.to_numeric(df.get("amount_eur", 0), errors="coerce").fillna(0)
+AttributeError: 'int' object has no attribute 'fillna'
+
+
+============================================================
+Pipeline run: 2026-05-11T17:12:00.952409
+[17:11:58] Lera World Pipeline  –  2026-05-11 17:11:58
+[17:11:58] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[17:11:58] ───────────────────────────────────────
+[17:11:58]   STEP 1 – Daily Summary (DayReports)
+[17:11:58] ───────────────────────────────────────
+[17:11:58]   No DayReport files found in Sales Retail – skipping.
+
+[17:11:58] ────────────────────────────────────────
+[17:11:58]   STEP 2 – Transactions (SalesReports)
+[17:11:58] ────────────────────────────────────────
+[17:11:58]   No SalesReport files found in Sales Retail – skipping.
+
+[17:11:58] ──────────────────────────────────
+[17:11:58]   STEP 5b – Kiosk Sales (Onesix)
+[17:11:58] ──────────────────────────────────
+[17:12:00]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €0 total
+[17:12:00]   24 months of kiosk data, avg monthly revenue €0
+
+[17:12:00] ────────────────────────
+[17:12:00]   STEP 3 – Labor Hours
+[17:12:00] ────────────────────────
+[17:12:00]   No Hours files found – skipping.
+
+[17:12:00] ───────────────────────────────────
+[17:12:00]   STEP 4 – General Ledger (Costs)
+[17:12:00] ───────────────────────────────────
+[17:12:00] 
+ ERROR: No objects to concatenate
+[17:12:00] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1218, in run
+    build_ledger()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 486, in build_ledger
+    ledger = pd.concat(frames, ignore_index=True)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 382, in concat
+    op = _Concatenator(
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 445, in __init__
+    objs, keys = self._clean_keys_and_objs(objs, keys)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/core/reshape/concat.py", line 507, in _clean_keys_and_objs
+    raise ValueError("No objects to concatenate")
+ValueError: No objects to concatenate
+
+
+============================================================
+Pipeline run: 2026-05-11T17:20:48.090522
+[17:20:42] Lera World Pipeline  –  2026-05-11 17:20:42
+[17:20:42] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[17:20:42] ───────────────────────────────────────
+[17:20:42]   STEP 1 – Daily Summary (DayReports)
+[17:20:42] ───────────────────────────────────────
+[17:20:42]   No DayReport files found in Sales Retail – skipping.
+
+[17:20:42] ────────────────────────────────────────
+[17:20:42]   STEP 2 – Transactions (SalesReports)
+[17:20:42] ────────────────────────────────────────
+[17:20:42]   No SalesReport files found in Sales Retail – skipping.
+
+[17:20:42] ──────────────────────────────────
+[17:20:42]   STEP 5b – Kiosk Sales (Onesix)
+[17:20:42] ──────────────────────────────────
+[17:20:45]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €0 total
+[17:20:45]   24 months of kiosk data, avg monthly revenue €0
+
+[17:20:45] ────────────────────────
+[17:20:45]   STEP 3 – Labor Hours
+[17:20:45] ────────────────────────
+[17:20:45]   No Hours files found – skipping.
+
+[17:20:45] ───────────────────────────────────
+[17:20:45]   STEP 4 – General Ledger (Costs)
+[17:20:45] ───────────────────────────────────
+[17:20:47]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[17:20:47]   No overlapping files detected — no deduplication needed.
+[17:20:47]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[17:20:47] ────────────────────────
+[17:20:47]   STEP 5 – Monthly P&L
+[17:20:47] ────────────────────────
+[17:20:47]   Reallocated 347 outsourced-staff entries to prior month
+[17:20:47]   monthly_pl.csv → 105 rows × 29 months
+[17:20:47]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    42,082    34,223    41,352    42,943    37,875    41,111    32,478    33,914    56,066    56,380    71,912    52,240    58,942    59,284    48,661       796       869   132,971    38,567    39,482    52,359     3,400     2,212
+[17:20:47]   TOTAL COGS                        4,252     5,177     5,992    19,943    19,119    16,173     7,899    11,709    17,382    15,808    12,000     1,285    22,138    15,371    11,329    23,201    24,077    24,784    14,277    15,867    13,329    16,410    13,663    24,135     8,548    21,983    14,383    16,531     2,357
+[17:20:47]   GROSS PROFIT                     -4,252    -5,177    -5,992    18,025    27,809    25,329    34,182    22,514    23,970    27,134    25,874    39,825    10,340    18,543    44,738    33,179    47,835    27,456    44,665    43,417    35,333   -15,614   -12,794   108,836    30,019    17,499    37,976   -13,131      -145
+[17:20:47]   GROSS MARGIN %                     nan%      nan%      nan%     47.5%     59.3%     61.0%     81.2%     65.8%     58.0%     63.2%     68.3%     96.9%     31.8%     54.7%     79.8%     58.8%     66.5%     52.6%     75.8%     73.2%     72.6%  -1961.1%  -1472.3%     81.8%     77.8%     44.3%     72.5%   -386.2%     -6.6%
+[17:20:47]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[17:20:47]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[17:20:47]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[17:20:47]   EBIT                            -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436   -11,866   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:20:47]   EBIT MARGIN %                      nan%      nan%      nan%      4.4%     18.7%      9.8%     30.7%      4.2%      5.7%     -7.6%     14.4%    -28.9%    -46.5%    -11.7%     25.7%      6.5%     22.6%     -2.6%     26.1%     20.8%    -16.2%  -7199.1%  -4494.8%     61.3%     13.0%     -5.0%     13.3%  -1196.9%   -137.5%
+[17:20:47]   EBITDA                          -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436    15,662   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:20:47]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873   -57,350   -39,069    81,473     4,922    -1,989     6,983   -50,759    -3,040
+
+[17:20:47] ─────────────────────────
+[17:20:47]   STEP 6 – Monthly KPIs
+[17:20:47] ─────────────────────────
+[17:20:48] 
+ ERROR: 'int' object has no attribute 'fillna'
+[17:20:48] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1220, in run
+    build_monthly_kpis()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1058, in build_monthly_kpis
+    monthly.get("revenue_gross_eur", 0).fillna(0) -
+AttributeError: 'int' object has no attribute 'fillna'
+
+
+============================================================
+Pipeline run: 2026-05-11T17:21:30.659055
+[17:21:25] Lera World Pipeline  –  2026-05-11 17:21:25
+[17:21:25] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[17:21:25] ───────────────────────────────────────
+[17:21:25]   STEP 1 – Daily Summary (DayReports)
+[17:21:25] ───────────────────────────────────────
+[17:21:25]   No DayReport files found in Sales Retail – skipping.
+
+[17:21:25] ────────────────────────────────────────
+[17:21:25]   STEP 2 – Transactions (SalesReports)
+[17:21:25] ────────────────────────────────────────
+[17:21:25]   No SalesReport files found in Sales Retail – skipping.
+
+[17:21:25] ──────────────────────────────────
+[17:21:25]   STEP 5b – Kiosk Sales (Onesix)
+[17:21:25] ──────────────────────────────────
+[17:21:28]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €0 total
+[17:21:28]   24 months of kiosk data, avg monthly revenue €0
+
+[17:21:28] ────────────────────────
+[17:21:28]   STEP 3 – Labor Hours
+[17:21:28] ────────────────────────
+[17:21:28]   No Hours files found – skipping.
+
+[17:21:28] ───────────────────────────────────
+[17:21:28]   STEP 4 – General Ledger (Costs)
+[17:21:28] ───────────────────────────────────
+[17:21:30]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[17:21:30]   No overlapping files detected — no deduplication needed.
+[17:21:30]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[17:21:30] ────────────────────────
+[17:21:30]   STEP 5 – Monthly P&L
+[17:21:30] ────────────────────────
+[17:21:30]   Reallocated 347 outsourced-staff entries to prior month
+[17:21:30]   monthly_pl.csv → 105 rows × 29 months
+[17:21:30]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    42,082    34,223    41,352    42,943    37,875    41,111    32,478    33,914    56,066    56,380    71,912    52,240    58,942    59,284    48,661       796       869   132,971    38,567    39,482    52,359     3,400     2,212
+[17:21:30]   TOTAL COGS                        4,252     5,177     5,992    19,943    19,119    16,173     7,899    11,709    17,382    15,808    12,000     1,285    22,138    15,371    11,329    23,201    24,077    24,784    14,277    15,867    13,329    16,410    13,663    24,135     8,548    21,983    14,383    16,531     2,357
+[17:21:30]   GROSS PROFIT                     -4,252    -5,177    -5,992    18,025    27,809    25,329    34,182    22,514    23,970    27,134    25,874    39,825    10,340    18,543    44,738    33,179    47,835    27,456    44,665    43,417    35,333   -15,614   -12,794   108,836    30,019    17,499    37,976   -13,131      -145
+[17:21:30]   GROSS MARGIN %                     nan%      nan%      nan%     47.5%     59.3%     61.0%     81.2%     65.8%     58.0%     63.2%     68.3%     96.9%     31.8%     54.7%     79.8%     58.8%     66.5%     52.6%     75.8%     73.2%     72.6%  -1961.1%  -1472.3%     81.8%     77.8%     44.3%     72.5%   -386.2%     -6.6%
+[17:21:30]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[17:21:30]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[17:21:30]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[17:21:30]   EBIT                            -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436   -11,866   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:21:30]   EBIT MARGIN %                      nan%      nan%      nan%      4.4%     18.7%      9.8%     30.7%      4.2%      5.7%     -7.6%     14.4%    -28.9%    -46.5%    -11.7%     25.7%      6.5%     22.6%     -2.6%     26.1%     20.8%    -16.2%  -7199.1%  -4494.8%     61.3%     13.0%     -5.0%     13.3%  -1196.9%   -137.5%
+[17:21:30]   EBITDA                          -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436    15,662   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:21:30]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873   -57,350   -39,069    81,473     4,922    -1,989     6,983   -50,759    -3,040
+
+[17:21:30] ─────────────────────────
+[17:21:30]   STEP 6 – Monthly KPIs
+[17:21:30] ─────────────────────────
+[17:21:30]   monthly_kpis.csv → 33 months × 11 KPIs
+
+[17:21:30] ──────────────────────────
+[17:21:30]   STEP 7 – Product Sales
+[17:21:30] ──────────────────────────
+[17:21:30]   No ProductReport files found – skipping.
+[17:21:30] 
+Done. Manifest updated with 1 source files.
+
+============================================================
+Pipeline run: 2026-05-11T17:52:58.590344
+[17:52:53] Lera World Pipeline  –  2026-05-11 17:52:53
+[17:52:53] New files     (2): L Grootboekmutatiekaarten.xlsx, ~$L Grootboekmutatiekaarten.xlsx
+
+[17:52:53] ───────────────────────────────────────
+[17:52:53]   STEP 1 – Daily Summary (DayReports)
+[17:52:53] ───────────────────────────────────────
+[17:52:53]   No DayReport files found in Sales Retail – skipping.
+
+[17:52:53] ────────────────────────────────────────
+[17:52:53]   STEP 2 – Transactions (SalesReports)
+[17:52:53] ────────────────────────────────────────
+[17:52:53]   No SalesReport files found in Sales Retail – skipping.
+
+[17:52:53] ──────────────────────────────────
+[17:52:53]   STEP 5b – Kiosk Sales (Onesix)
+[17:52:53] ──────────────────────────────────
+[17:52:56]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[17:52:56]   24 months of kiosk data, avg monthly revenue €39,895
+
+[17:52:56] ────────────────────────
+[17:52:56]   STEP 3 – Labor Hours
+[17:52:56] ────────────────────────
+[17:52:56]   No Hours files found – skipping.
+
+[17:52:56] ───────────────────────────────────
+[17:52:56]   STEP 4 – General Ledger (Costs)
+[17:52:56] ───────────────────────────────────
+[17:52:58]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[17:52:58] 
+ ERROR: Excel file format cannot be determined, you must specify an engine manually.
+[17:52:58] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1221, in run
+    build_ledger()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 480, in build_ledger
+    df = parse_ledger_file(f, year)
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 444, in parse_ledger_file
+    df = pd.read_excel(filepath, sheet_name="Sheet", header=None)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 1554, in __init__
+    raise ValueError(
+ValueError: Excel file format cannot be determined, you must specify an engine manually.
+
+
+============================================================
+Pipeline run: 2026-05-11T17:53:08.246331
+[17:53:03] Lera World Pipeline  –  2026-05-11 17:53:03
+[17:53:03] New files     (2): L Grootboekmutatiekaarten.xlsx, ~$L Grootboekmutatiekaarten.xlsx
+
+[17:53:03] ───────────────────────────────────────
+[17:53:03]   STEP 1 – Daily Summary (DayReports)
+[17:53:03] ───────────────────────────────────────
+[17:53:03]   No DayReport files found in Sales Retail – skipping.
+
+[17:53:03] ────────────────────────────────────────
+[17:53:03]   STEP 2 – Transactions (SalesReports)
+[17:53:03] ────────────────────────────────────────
+[17:53:03]   No SalesReport files found in Sales Retail – skipping.
+
+[17:53:03] ──────────────────────────────────
+[17:53:03]   STEP 5b – Kiosk Sales (Onesix)
+[17:53:03] ──────────────────────────────────
+[17:53:06]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[17:53:06]   24 months of kiosk data, avg monthly revenue €39,895
+
+[17:53:06] ────────────────────────
+[17:53:06]   STEP 3 – Labor Hours
+[17:53:06] ────────────────────────
+[17:53:06]   No Hours files found – skipping.
+
+[17:53:06] ───────────────────────────────────
+[17:53:06]   STEP 4 – General Ledger (Costs)
+[17:53:06] ───────────────────────────────────
+[17:53:08]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[17:53:08] 
+ ERROR: Excel file format cannot be determined, you must specify an engine manually.
+[17:53:08] Traceback (most recent call last):
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 1221, in run
+    build_ledger()
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 480, in build_ledger
+    df = parse_ledger_file(f, year)
+  File "/Users/alexanderchernov/Calude code VS/Lera Data v.1.0/pipeline.py", line 444, in parse_ledger_file
+    df = pd.read_excel(filepath, sheet_name="Sheet", header=None)
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+  File "/Users/alexanderchernov/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 1554, in __init__
+    raise ValueError(
+ValueError: Excel file format cannot be determined, you must specify an engine manually.
+
+
+============================================================
+Pipeline run: 2026-05-11T17:53:28.964486
+[17:53:23] Lera World Pipeline  –  2026-05-11 17:53:23
+[17:53:23] New files     (2): L Grootboekmutatiekaarten.xlsx, ~$L Grootboekmutatiekaarten.xlsx
+
+[17:53:23] ───────────────────────────────────────
+[17:53:23]   STEP 1 – Daily Summary (DayReports)
+[17:53:23] ───────────────────────────────────────
+[17:53:23]   No DayReport files found in Sales Retail – skipping.
+
+[17:53:23] ────────────────────────────────────────
+[17:53:23]   STEP 2 – Transactions (SalesReports)
+[17:53:23] ────────────────────────────────────────
+[17:53:23]   No SalesReport files found in Sales Retail – skipping.
+
+[17:53:23] ──────────────────────────────────
+[17:53:23]   STEP 5b – Kiosk Sales (Onesix)
+[17:53:23] ──────────────────────────────────
+[17:53:26]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[17:53:26]   24 months of kiosk data, avg monthly revenue €39,895
+
+[17:53:26] ────────────────────────
+[17:53:26]   STEP 3 – Labor Hours
+[17:53:26] ────────────────────────
+[17:53:26]   No Hours files found – skipping.
+
+[17:53:26] ───────────────────────────────────
+[17:53:26]   STEP 4 – General Ledger (Costs)
+[17:53:26] ───────────────────────────────────
+[17:53:28]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[17:53:28]   No overlapping files detected — no deduplication needed.
+[17:53:28]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[17:53:28] ────────────────────────
+[17:53:28]   STEP 5 – Monthly P&L
+[17:53:28] ────────────────────────
+[17:53:28]   Reallocated 347 outsourced-staff entries to prior month
+[17:53:28]   monthly_pl.csv → 105 rows × 29 months
+[17:53:28]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    42,082    34,223    41,352    42,943    37,875    41,111    32,478    33,914    56,066    56,380    71,912    52,240    58,942    59,284    48,661       796       869   132,971    38,567    39,482    52,359     3,400     2,212
+[17:53:28]   TOTAL COGS                        4,252     5,177     5,992    19,943    19,119    16,173     7,899    11,709    17,382    15,808    12,000     1,285    22,138    15,371    11,329    23,201    24,077    24,784    14,277    15,867    13,329    16,410    13,663    24,135     8,548    21,983    14,383    16,531     2,357
+[17:53:28]   GROSS PROFIT                     -4,252    -5,177    -5,992    18,025    27,809    25,329    34,182    22,514    23,970    27,134    25,874    39,825    10,340    18,543    44,738    33,179    47,835    27,456    44,665    43,417    35,333   -15,614   -12,794   108,836    30,019    17,499    37,976   -13,131      -145
+[17:53:28]   GROSS MARGIN %                     nan%      nan%      nan%     47.5%     59.3%     61.0%     81.2%     65.8%     58.0%     63.2%     68.3%     96.9%     31.8%     54.7%     79.8%     58.8%     66.5%     52.6%     75.8%     73.2%     72.6%  -1961.1%  -1472.3%     81.8%     77.8%     44.3%     72.5%   -386.2%     -6.6%
+[17:53:28]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[17:53:28]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[17:53:28]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[17:53:28]   EBIT                            -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436   -11,866   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:53:28]   EBIT MARGIN %                      nan%      nan%      nan%      4.4%     18.7%      9.8%     30.7%      4.2%      5.7%     -7.6%     14.4%    -28.9%    -46.5%    -11.7%     25.7%      6.5%     22.6%     -2.6%     26.1%     20.8%    -16.2%  -7199.1%  -4494.8%     61.3%     13.0%     -5.0%     13.3%  -1196.9%   -137.5%
+[17:53:28]   EBITDA                          -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436    15,662   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884   -57,319   -39,060    81,473     5,014    -1,989     6,983   -40,696    -3,040
+[17:53:28]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873   -57,350   -39,069    81,473     4,922    -1,989     6,983   -50,759    -3,040
+
+[17:53:28] ─────────────────────────
+[17:53:28]   STEP 6 – Monthly KPIs
+[17:53:28] ─────────────────────────
+[17:53:28]   monthly_kpis.csv → 33 months × 11 KPIs
+
+[17:53:28] ──────────────────────────
+[17:53:28]   STEP 7 – Product Sales
+[17:53:28] ──────────────────────────
+[17:53:28]   No ProductReport files found – skipping.
+[17:53:28] 
+Done. Manifest updated with 2 source files.
+
+============================================================
+Pipeline run: 2026-05-19T13:46:01.071598
+[13:45:55] Lera World Pipeline  –  2026-05-19 13:45:55
+[13:45:55] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[13:45:55] ───────────────────────────────────────
+[13:45:55]   STEP 1 – Daily Summary (DayReports)
+[13:45:55] ───────────────────────────────────────
+[13:45:55]   No DayReport files found in Sales Retail – skipping.
+
+[13:45:55] ────────────────────────────────────────
+[13:45:55]   STEP 2 – Transactions (SalesReports)
+[13:45:55] ────────────────────────────────────────
+[13:45:55]   No SalesReport files found in Sales Retail – skipping.
+
+[13:45:55] ──────────────────────────────────
+[13:45:55]   STEP 5b – Kiosk Sales (Onesix)
+[13:45:55] ──────────────────────────────────
+[13:45:58]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[13:45:58]   24 months of kiosk data, avg monthly revenue €39,895
+
+[13:45:58] ────────────────────────
+[13:45:58]   STEP 3 – Labor Hours
+[13:45:58] ────────────────────────
+[13:45:58]   No Hours files found – skipping.
+
+[13:45:58] ───────────────────────────────────
+[13:45:58]   STEP 4 – General Ledger (Costs)
+[13:45:58] ───────────────────────────────────
+[13:46:00]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[13:46:00]   No overlapping files detected — no deduplication needed.
+[13:46:00]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[13:46:00] ────────────────────────
+[13:46:00]   STEP 5 – Monthly P&L
+[13:46:00] ────────────────────────
+[13:46:00]   Reallocated 347 outsourced-staff entries to prior month
+[13:46:00]   Q4 revenue reallocation applied: 2025-10 +51,526, 2025-11 +35,080, 2025-12 -86,606
+[13:46:00]   monthly_pl.csv → 106 rows × 29 months
+[13:46:00]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    42,082    34,223    41,352    42,943    37,875    41,111    32,478    33,914    56,066    56,380    71,912    52,240    58,942    59,284    48,661    52,322    35,949    46,364    38,567    39,482    52,359     3,400     2,212
+[13:46:00]   TOTAL COGS                        4,252     5,177     5,992    19,943    19,119    16,173     7,899    11,709    17,382    15,808    12,000     1,285    22,138    15,371    11,329    23,201    24,077    24,784    14,277    15,867    13,329    16,410    13,663    24,135     8,548    21,983    14,383    16,531     2,357
+[13:46:00]   GROSS PROFIT                     -4,252    -5,177    -5,992    18,025    27,809    25,329    34,182    22,514    23,970    27,134    25,874    39,825    10,340    18,543    44,738    33,179    47,835    27,456    44,665    43,417    35,333    35,912    22,286    22,230    30,019    17,499    37,976   -13,131      -145
+[13:46:00]   GROSS MARGIN %                     nan%      nan%      nan%     47.5%     59.3%     61.0%     81.2%     65.8%     58.0%     63.2%     68.3%     96.9%     31.8%     54.7%     79.8%     58.8%     66.5%     52.6%     75.8%     73.2%     72.6%     68.6%     62.0%     47.9%     77.8%     44.3%     72.5%   -386.2%     -6.6%
+[13:46:00]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[13:46:00]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[13:46:00]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[13:46:00]   EBIT                            -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436   -11,866   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884    -5,793    -3,980    -5,133     5,014    -1,989     6,983   -40,696    -3,040
+[13:46:00]   EBIT MARGIN %                      nan%      nan%      nan%      4.4%     18.7%      9.8%     30.7%      4.2%      5.7%     -7.6%     14.4%    -28.9%    -46.5%    -11.7%     25.7%      6.5%     22.6%     -2.6%     26.1%     20.8%    -16.2%    -11.1%    -11.1%    -11.1%     13.0%     -5.0%     13.3%  -1196.9%   -137.5%
+[13:46:00]   EBITDA                          -33,165   -14,108   -19,681     1,660     8,798     4,075    12,906     1,437     2,369    -3,259     5,436    15,662   -15,102    -3,954    14,419     3,671    16,281    -1,349    15,358    12,321    -7,884    -5,793    -3,980    -5,133     5,014    -1,989     6,983   -40,696    -3,040
+[13:46:00]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873    -5,824    -3,989    -5,133     4,922    -1,989     6,983   -50,759    -3,040
+
+[13:46:00] ─────────────────────────
+[13:46:00]   STEP 6 – Monthly KPIs
+[13:46:00] ─────────────────────────
+[13:46:01]   monthly_kpis.csv → 33 months × 11 KPIs
+
+[13:46:01] ──────────────────────────
+[13:46:01]   STEP 7 – Product Sales
+[13:46:01] ──────────────────────────
+[13:46:01]   No ProductReport files found – skipping.
+[13:46:01] 
+Done. Manifest updated with 1 source files.
+
+============================================================
+Pipeline run: 2026-05-26T12:54:08.605756
+[12:54:08] Lera World Pipeline  –  2026-05-26 12:54:08
+[12:54:08] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[12:54:08] ───────────────────────────────────────
+[12:54:08]   STEP 1 – Daily Summary (DayReports)
+[12:54:08] ───────────────────────────────────────
+[12:54:08]   No DayReport files found in Sales Retail – skipping.
+
+[12:54:08] ────────────────────────────────────────
+[12:54:08]   STEP 2 – Transactions (SalesReports)
+[12:54:08] ────────────────────────────────────────
+[12:54:08]   No SalesReport files found in Sales Retail – skipping.
+
+[12:54:08] ──────────────────────────────────
+[12:54:08]   STEP 5b – Kiosk Sales (Onesix)
+[12:54:08] ──────────────────────────────────
+[12:54:08] 
+ ERROR: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+[12:54:08] Traceback (most recent call last):
+  File "/Users/yulianikitina/Library/Python/3.9/lib/python/site-packages/pandas/compat/_optional.py", line 135, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yulianikitina/Desktop/Claude VS/Lera Data v.1.0/pipeline.py", line 1273, in run
+    build_kiosk_sales()
+  File "/Users/yulianikitina/Desktop/Claude VS/Lera Data v.1.0/pipeline.py", line 1208, in build_kiosk_sales
+    df = pd.read_excel(kiosk_file)
+  File "/Users/yulianikitina/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+  File "/Users/yulianikitina/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 1567, in __init__
+    self._reader = self._engines[engine](
+  File "/Users/yulianikitina/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_openpyxl.py", line 552, in __init__
+    import_optional_dependency("openpyxl")
+  File "/Users/yulianikitina/Library/Python/3.9/lib/python/site-packages/pandas/compat/_optional.py", line 138, in import_optional_dependency
+    raise ImportError(msg)
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+
+
+============================================================
+Pipeline run: 2026-05-26T12:54:27.473677
+[12:54:20] Lera World Pipeline  –  2026-05-26 12:54:20
+[12:54:20] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[12:54:20] ───────────────────────────────────────
+[12:54:20]   STEP 1 – Daily Summary (DayReports)
+[12:54:20] ───────────────────────────────────────
+[12:54:20]   No DayReport files found in Sales Retail – skipping.
+
+[12:54:20] ────────────────────────────────────────
+[12:54:20]   STEP 2 – Transactions (SalesReports)
+[12:54:20] ────────────────────────────────────────
+[12:54:20]   No SalesReport files found in Sales Retail – skipping.
+
+[12:54:20] ──────────────────────────────────
+[12:54:20]   STEP 5b – Kiosk Sales (Onesix)
+[12:54:20] ──────────────────────────────────
+[12:54:24]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[12:54:24]   24 months of kiosk data, avg monthly revenue €39,895
+
+[12:54:24] ────────────────────────
+[12:54:24]   STEP 3 – Labor Hours
+[12:54:24] ────────────────────────
+[12:54:24]   No Hours files found – skipping.
+
+[12:54:24] ───────────────────────────────────
+[12:54:24]   STEP 4 – General Ledger (Costs)
+[12:54:24] ───────────────────────────────────
+[12:54:27]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[12:54:27]   No overlapping files detected — no deduplication needed.
+[12:54:27]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[12:54:27] ────────────────────────
+[12:54:27]   STEP 5 – Monthly P&L
+[12:54:27] ────────────────────────
+[12:54:27]   Reallocated 347 outsourced-staff entries to prior month
+[12:54:27]   Q4 revenue reallocation applied: 2025-10 +54,138, 2025-11 +38,260, 2025-12 -92,398
+[12:54:27] 
+ ERROR: name 'matcha_co_t' is not defined
+[12:54:27] Traceback (most recent call last):
+  File "/Users/yulianikitina/Desktop/Claude VS/Lera Data v.1.0/pipeline.py", line 1276, in run
+    build_monthly_pl()
+  File "/Users/yulianikitina/Desktop/Claude VS/Lera Data v.1.0/pipeline.py", line 986, in build_monthly_pl
+    df_row(matcha_co_t), df_row(blank),
+NameError: name 'matcha_co_t' is not defined
+
+
+============================================================
+Pipeline run: 2026-05-26T12:55:27.078384
+[12:55:21] Lera World Pipeline  –  2026-05-26 12:55:21
+[12:55:21] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[12:55:21] ───────────────────────────────────────
+[12:55:21]   STEP 1 – Daily Summary (DayReports)
+[12:55:21] ───────────────────────────────────────
+[12:55:21]   No DayReport files found in Sales Retail – skipping.
+
+[12:55:21] ────────────────────────────────────────
+[12:55:21]   STEP 2 – Transactions (SalesReports)
+[12:55:21] ────────────────────────────────────────
+[12:55:21]   No SalesReport files found in Sales Retail – skipping.
+
+[12:55:21] ──────────────────────────────────
+[12:55:21]   STEP 5b – Kiosk Sales (Onesix)
+[12:55:21] ──────────────────────────────────
+[12:55:24]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[12:55:24]   24 months of kiosk data, avg monthly revenue €39,895
+
+[12:55:24] ────────────────────────
+[12:55:24]   STEP 3 – Labor Hours
+[12:55:24] ────────────────────────
+[12:55:24]   No Hours files found – skipping.
+
+[12:55:24] ───────────────────────────────────
+[12:55:24]   STEP 4 – General Ledger (Costs)
+[12:55:24] ───────────────────────────────────
+[12:55:26]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[12:55:26]   No overlapping files detected — no deduplication needed.
+[12:55:26]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[12:55:26] ────────────────────────
+[12:55:26]   STEP 5 – Monthly P&L
+[12:55:26] ────────────────────────
+[12:55:26]   Reallocated 347 outsourced-staff entries to prior month
+[12:55:26]   Q4 revenue reallocation applied: 2025-10 +54,138, 2025-11 +38,260, 2025-12 -92,398
+[12:55:26]   monthly_pl.csv → 107 rows × 29 months
+[12:55:26]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    42,082    34,223    41,352    42,943    37,875    41,111    32,478    33,914    56,066    56,380    71,912    52,240    58,942    59,284    48,661    54,935    39,129    40,573    38,567    39,482    52,359     3,400     2,212
+[12:55:26]   TOTAL COGS                        1,568     5,177     5,992    18,686    13,721    12,827     6,993    10,398     8,996    12,650     8,530      -929    13,348     8,813     8,947    16,425    15,469    14,906    10,288    10,813    11,230     9,341    10,094    10,338     8,548     9,745     8,167    16,531     2,357
+[12:55:26]   GROSS PROFIT                     -1,568    -5,177    -5,992    19,282    33,206    28,675    35,088    23,825    32,355    30,293    29,345    42,040    19,130    25,101    47,120    39,955    56,443    37,334    48,654    48,471    37,431    45,593    29,035    30,235    30,019    29,737    44,192   -13,131      -145
+[12:55:26]   GROSS MARGIN %                     nan%      nan%      nan%     50.8%     70.8%     69.1%     83.4%     69.6%     78.2%     70.5%     77.5%    102.3%     58.9%     74.0%     84.0%     70.9%     78.5%     71.5%     82.5%     81.8%     76.9%     83.0%     74.2%     74.5%     77.8%     75.3%     84.4%   -386.2%     -6.6%
+[12:55:26]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[12:55:26]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[12:55:26]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[12:55:26]   EBIT                            -30,481   -14,108   -19,681     2,917    14,195     7,421    13,812     2,748    10,754      -100     8,907    -9,651    -6,312     2,604    16,801    10,448    24,890     8,529    19,347    17,375    -5,785     3,888     2,770     2,872     5,014    10,249    13,200   -40,696    -3,040
+[12:55:26]   EBIT MARGIN %                      nan%      nan%      nan%      7.7%     30.2%     17.9%     32.8%      8.0%     26.0%     -0.2%     23.5%    -23.5%    -19.4%      7.7%     30.0%     18.5%     34.6%     16.3%     32.8%     29.3%    -11.9%      7.1%      7.1%      7.1%     13.0%     26.0%     25.2%  -1196.9%   -137.5%
+[12:55:26]   EBITDA                          -30,481   -14,108   -19,681     2,917    14,195     7,421    13,812     2,748    10,754      -100     8,907    17,877    -6,312     2,604    16,801    10,448    24,890     8,529    19,347    17,375    -5,785     3,888     2,770     2,872     5,014    10,249    13,200   -40,696    -3,040
+[12:55:26]   TOTAL MATCHA COMPANY              6,484     1,900         0     1,257     8,747     9,962     5,831     3,581    10,655     8,632     6,857    19,870     8,790     9,558     2,382    12,206    11,974    14,641    13,768     7,927     7,088     7,100     3,579    13,797        92    12,238     6,217    10,064         0
+[12:55:26]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873    -3,211      -809   -10,925     4,922    -1,989     6,983   -50,759    -3,040
+
+[12:55:26] ─────────────────────────
+[12:55:26]   STEP 6 – Monthly KPIs
+[12:55:26] ─────────────────────────
+[12:55:27]   monthly_kpis.csv → 33 months × 11 KPIs
+
+[12:55:27] ──────────────────────────
+[12:55:27]   STEP 7 – Product Sales
+[12:55:27] ──────────────────────────
+[12:55:27]   No ProductReport files found – skipping.
+[12:55:27] 
+Done. Manifest updated with 1 source files.
+
+============================================================
+Pipeline run: 2026-05-26T13:42:15.641905
+[13:42:09] Lera World Pipeline  –  2026-05-26 13:42:09
+[13:42:10] New files     (1): L Grootboekmutatiekaarten.xlsx
+
+[13:42:10] ───────────────────────────────────────
+[13:42:10]   STEP 1 – Daily Summary (DayReports)
+[13:42:10] ───────────────────────────────────────
+[13:42:10]   No DayReport files found in Sales Retail – skipping.
+
+[13:42:10] ────────────────────────────────────────
+[13:42:10]   STEP 2 – Transactions (SalesReports)
+[13:42:10] ────────────────────────────────────────
+[13:42:10]   No SalesReport files found in Sales Retail – skipping.
+
+[13:42:10] ──────────────────────────────────
+[13:42:10]   STEP 5b – Kiosk Sales (Onesix)
+[13:42:10] ──────────────────────────────────
+[13:42:12]   kiosk_transactions.csv → 101,035 orders, 2024-04-04 to 2026-03-31, €957,489 total
+[13:42:12]   24 months of kiosk data, avg monthly revenue €39,895
+
+[13:42:12] ────────────────────────
+[13:42:12]   STEP 3 – Labor Hours
+[13:42:12] ────────────────────────
+[13:42:12]   No Hours files found – skipping.
+
+[13:42:12] ───────────────────────────────────
+[13:42:12]   STEP 4 – General Ledger (Costs)
+[13:42:12] ───────────────────────────────────
+[13:42:15]   Parsed [0]: L Grootboekmutatiekaarten.xlsx  (21695 rows)
+[13:42:15]   No overlapping files detected — no deduplication needed.
+[13:42:15]   costs_ledger.csv → 21695 entries, 2023-08-25 to 2026-05-08
+
+[13:42:15] ────────────────────────
+[13:42:15]   STEP 5 – Monthly P&L
+[13:42:15] ────────────────────────
+[13:42:15]   Reallocated 347 outsourced-staff entries to prior month
+[13:42:15]   Q4 revenue reallocation applied: 2025-10 +53,254, 2025-11 +37,630, 2025-12 -90,884
+[13:42:15]   monthly_pl.csv → 107 rows × 29 months
+[13:42:15]   TOTAL REVENUE                         0         0         0    37,968    46,927    41,502    41,937    33,929    40,293    42,603    37,181    41,111    32,478    33,914    54,938    56,172    71,465    52,142    58,688    58,672    47,837    54,050    38,499    39,920    37,827    38,846    51,192     3,400       889
+[13:42:15]   TOTAL COGS                        1,568     5,177     5,992    18,686    13,721    12,827     6,993    10,398     8,996    12,650     8,530      -929    13,348     8,813     8,947    16,425    15,469    14,906    10,288    10,813    11,230     9,341    10,094    10,338     8,548     9,745     8,167    16,531     2,357
+[13:42:15]   GROSS PROFIT                     -1,568    -5,177    -5,992    19,282    33,206    28,675    34,943    23,531    31,297    29,953    28,652    42,040    19,130    25,101    45,991    39,747    55,997    37,236    48,400    47,859    36,607    44,709    28,405    29,582    29,279    29,100    43,026   -13,131    -1,468
+[13:42:15]   GROSS MARGIN %                     nan%      nan%      nan%     50.8%     70.8%     69.1%     83.3%     69.4%     77.7%     70.3%     77.1%    102.3%     58.9%     74.0%     83.7%     70.8%     78.4%     71.4%     82.5%     81.6%     76.5%     82.7%     73.8%     74.1%     77.4%     74.9%     84.0%   -386.2%   -165.1%
+[13:42:15]   TOTAL LABOR                       7,495         0         0     3,406     7,987     8,427     8,418     7,862     7,871     9,617     8,411     9,075     8,504    13,122    11,770    11,094    12,501    10,455    10,640    11,805    14,389    19,586    11,685    15,561     9,861     9,847    13,340    10,683         0
+[13:42:15]   TOTAL OCCUPANCY                   5,316     5,319     7,178     6,714     5,728     5,295     5,222     5,087     5,399     5,531     5,396    14,162     6,901     5,146     7,248     8,048     8,098     6,066     7,471     6,059     7,082     6,002     6,698     6,202     5,774     5,473    10,689     7,519       669
+[13:42:15]   TOTAL SG&A                       16,101     3,612     6,511     6,244     5,296     7,532     7,637     8,128     8,332    15,245     6,631    28,454    10,037     4,229    11,301    10,365    10,954    12,284    11,197    13,233    21,745    16,116     7,882     5,600     9,370     4,167     6,964     9,363     2,226
+[13:42:15]   EBIT                            -30,481   -14,108   -19,681     2,917    14,195     7,421    13,667     2,453     9,695      -439     8,213    -9,651    -6,312     2,604    15,672    10,239    24,443     8,431    19,093    16,762    -6,609     3,004     2,140     2,219     4,273     9,613    12,033   -40,696    -4,362
+[13:42:15]   EBIT MARGIN %                      nan%      nan%      nan%      7.7%     30.2%     17.9%     32.6%      7.2%     24.1%     -1.0%     22.1%    -23.5%    -19.4%      7.7%     28.5%     18.2%     34.2%     16.2%     32.5%     28.6%    -13.8%      5.6%      5.6%      5.6%     11.3%     24.7%     23.5%  -1196.9%   -490.7%
+[13:42:15]   EBITDA                          -30,481   -14,108   -19,681     2,917    14,195     7,421    13,667     2,453     9,695      -439     8,213    17,877    -6,312     2,604    15,672    10,239    24,443     8,431    19,093    16,762    -6,609     3,004     2,140     2,219     4,273     9,613    12,033   -40,696    -4,362
+[13:42:15]   TOTAL MATCHA COMPANY              6,484     1,900         0     1,257     8,747     9,962     5,686     3,287     9,597     8,293     6,163    19,870     8,790     9,558     1,253    11,998    11,528    14,543    13,514     7,315     6,264     7,100     3,579    11,629      -649    11,601     5,050    10,064    -1,323
+[13:42:15]   EBT                             -36,965   -16,008   -19,681     1,660     5,448    -2,541     7,982      -833        99    -8,732     2,050   -29,521   -15,102    -6,954    14,419    -1,758    12,915    -6,112     5,579     9,447   -12,873    -4,096    -1,439    -9,411     4,922    -1,989     6,983   -50,759    -3,040
+
+[13:42:15] ─────────────────────────
+[13:42:15]   STEP 6 – Monthly KPIs
+[13:42:15] ─────────────────────────
+[13:42:15]   monthly_kpis.csv → 33 months × 11 KPIs
+
+[13:42:15] ──────────────────────────
+[13:42:15]   STEP 7 – Product Sales
+[13:42:15] ──────────────────────────
+[13:42:15]   No ProductReport files found – skipping.
+[13:42:15] 
+Done. Manifest updated with 1 source files.
