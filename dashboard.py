@@ -271,6 +271,8 @@ OPEX_COLORS = {
 # ─────────────────────────────────────────────────────────────────────────────
 # Tuple: (label, is_total, is_sub, is_header)
 PL_TABLE_LINES = [
+    ("Gross Revenue",           False, True,  False),
+    ("Payment Fees",            False, True,  False),
     ("TOTAL REVENUE",           True,  False, False),
     ("TOTAL COGS",              True,  False, False),
     ("Matcha Drinks Qty",       False, True,  False),
@@ -531,6 +533,13 @@ GL_VENDOR_DATA = _build_vendor_data()
 def _pl_val(label, months):
     """Return a pd.Series of P&L values for label over months."""
     m = months or OPERATING_MONTHS
+    if label == "Payment Fees":
+        return -(pl_series("Adyen Costs", m) + pl_series("PayPal Costs", m) +
+                 pl_series("Tebi / Other Payments", m))
+    if label == "Gross Revenue":
+        rev = _pl_val("TOTAL REVENUE", m)
+        fees = pl_series("Adyen Costs", m) + pl_series("PayPal Costs", m) + pl_series("Tebi / Other Payments", m)
+        return rev + fees
     if label == "Maintenance + Cleaning":
         return pl_series("Maintenance", m) + pl_series("Cleaning", m)
     if label == "Marketing & Advertising":
@@ -2440,8 +2449,10 @@ def render_pl_table(expanded, thresholds, matcha_data):
             row_bg = "#F0EBE3"
         elif label in ("TOTAL REVENUE", "E-com Revenue",
                        "E-com Net Sales", "E-com Shipping", "E-com Orders",
-                       "Wholesale Revenue"):
+                       "Wholesale Revenue", "Gross Revenue"):
             row_bg = "#EEF5EC"
+        elif label == "Payment Fees":
+            row_bg = "#FEF5EC"
         elif label == "TOTAL COGS":
             row_bg = "#FEF5EC"
         elif label in ("GROSS PROFIT", "EBIT", "EBITDA", "EBT"):
@@ -2508,7 +2519,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
         label_fw = "700" if (is_total or is_header) else ("500" if not (detail or vendor) else "400")
         label_color = (TAAL_GREEN if label in ("TOTAL REVENUE", "E-com Revenue",
                                                 "E-com Net Sales", "E-com Shipping", "E-com Orders",
-                                                "Wholesale Revenue")
+                                                "Wholesale Revenue", "Gross Revenue")
                        else ("#5A3A7C" if label == "TOTAL LABOR"
                              else (TAAL_MUTED if vendor else TAAL_DARK)))
 
@@ -2526,6 +2537,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "EBT", "EBT MARGIN %",
             "E-com Net Sales", "E-com Shipping", "E-com Orders",
             "E-com Revenue", "Wholesale Revenue",
+            "Gross Revenue", "Payment Fees",
         }
         # Whether to show per-cell % of revenue weight
         show_cell_pct = not is_header and not is_pct and label not in _NO_CELL_PCT
@@ -2543,8 +2555,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
         def _build_month_cells(months_group, border_first_left):
             row_group_total = 0.0
             group_cells = []
-            val_color = (TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
-                                                  "E-com Net Sales", "Wholesale Revenue")
+            val_color = (TAAL_RED if label == "Payment Fees"
+                         else TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
+                                                      "E-com Net Sales", "Wholesale Revenue", "Gross Revenue")
                          else ("#5A3A7C" if label == "TOTAL LABOR"
                                else (TAAL_MUTED if vendor else TAAL_DARK)))
             for i, m in enumerate(months_group):
@@ -2594,6 +2607,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "EBT", "EBT MARGIN %",
             "E-com Net Sales", "E-com Shipping", "E-com Orders",
             "E-com Revenue", "Wholesale Revenue",
+            "Gross Revenue", "Payment Fees",
         }
 
         def _pct_cost_cell(row_group_total, total_costs_year, pct_accent_color, border_left):
