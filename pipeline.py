@@ -589,7 +589,7 @@ PL_LINES = [
     ("8100", "Retail Sales – Product HV", "Revenue", "Retail",      -1),
     ("8140", "Retail Sales – Zero Rate",  "Revenue", "Retail",      -1),
     ("8199", "Retail Sales – Other",      "Revenue", "Retail",      -1),
-    ("8111", "E-com Revenue",             "Matcha Company", "E-com", +1),
+    ("8111", "E-com Revenue",             "Revenue", "E-com",  -1),
     ("8160", "Export (Outside EU)",       "Revenue", "Export & EU", -1),
     ("8170", "EU B2B Sales",              "Revenue", "Export & EU", -1),
     ("8260", "Service Export / EU",       "Revenue", "Export & EU", -1),

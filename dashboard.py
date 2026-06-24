@@ -308,14 +308,15 @@ PL_TABLE_LINES = [
     ("EBIT MARGIN %",           True,  False, False),
     ("EBITDA",                  True,  False, False),
     ("EBITDA MARGIN %",         True,  False, False),
-    # ── E-com (Shopify) ────────────────────────────────────────────────────────
-    ("E-COMMERCE (SHOPIFY)",    False, False, True),
+    # ── E-com & Wholesale ──────────────────────────────────────────────────────
+    ("E-COMMERCE & WHOLESALE",  False, False, True),
+    ("E-com Revenue",           False, True,  False),
     ("E-com Net Sales",         False, True,  False),
     ("E-com Shipping",          False, True,  False),
     ("E-com Orders",            False, True,  False),
+    ("Wholesale Revenue",       False, True,  False),
     # ── Matcha Company ─────────────────────────────────────────────────────────
     ("MATCHA COMPANY",          False, False, True),
-    ("E-com Revenue",           False, True,  False),
     ("Matcha Purchases (KG)",   False, True,  False),
     ("Matcha Retail Import",    False, True,  False),
     ("Matcha Calc. Cost (–)",   False, True,  False),
@@ -558,6 +559,10 @@ def _pl_val(label, months):
         return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("shipping", 0) for mo in m})
     if label == "E-com Orders":
         return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("orders", 0) for mo in m})
+    if label == "Wholesale Revenue":
+        return (pl_series("Export (Outside EU)", m) + pl_series("EU B2B Sales", m) +
+                pl_series("Service Export / EU", m) + pl_series("Other Export / EU", m) +
+                pl_series("Services – High VAT", m) + pl_series("Services – Low VAT", m))
     # Computed totals — look up directly from monthly_pl.csv (pipeline pre-computes these)
     for computed in ("TOTAL REVENUE", "TOTAL COGS", "GROSS PROFIT", "GROSS MARGIN %",
                      "TOTAL LABOR", "TOTAL OCCUPANCY", "TOTAL SG&A",
@@ -2219,8 +2224,6 @@ def render_pl_table(expanded, thresholds, matcha_data):
     def _adj_pl_val(label, months):
         base = _pl_val(label, months)
         adj  = matcha_calc.reindex(months).fillna(0)
-        if label == "E-com Revenue":
-            return -base  # stored negative (cost sign), display as positive income
         if label == "TOTAL COGS":
             return base + adj
         if label == "TOTAL MATCHA COMPANY":
@@ -2357,7 +2360,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
         elif is_header:
             row_bg = "#F0EBE3"
         elif label in ("TOTAL REVENUE", "E-com Revenue",
-                       "E-com Net Sales", "E-com Shipping", "E-com Orders"):
+                       "E-com Net Sales", "E-com Shipping", "E-com Orders",
+                       "Wholesale Revenue"):
             row_bg = "#EEF5EC"
         elif label == "TOTAL COGS":
             row_bg = "#FEF5EC"
@@ -2424,7 +2428,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
 
         label_fw = "700" if (is_total or is_header) else ("500" if not (detail or vendor) else "400")
         label_color = (TAAL_GREEN if label in ("TOTAL REVENUE", "E-com Revenue",
-                                                "E-com Net Sales", "E-com Shipping", "E-com Orders")
+                                                "E-com Net Sales", "E-com Shipping", "E-com Orders",
+                                                "Wholesale Revenue")
                        else ("#5A3A7C" if label == "TOTAL LABOR"
                              else (TAAL_MUTED if vendor else TAAL_DARK)))
 
@@ -2441,6 +2446,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "EBIT", "EBIT MARGIN %", "EBITDA", "EBITDA MARGIN %",
             "EBT", "EBT MARGIN %",
             "E-com Net Sales", "E-com Shipping", "E-com Orders",
+            "E-com Revenue", "Wholesale Revenue",
         }
         # Whether to show per-cell % of revenue weight
         show_cell_pct = not is_header and not is_pct and label not in _NO_CELL_PCT
@@ -2459,7 +2465,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             row_group_total = 0.0
             group_cells = []
             val_color = (TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
-                                                  "E-com Net Sales")
+                                                  "E-com Net Sales", "Wholesale Revenue")
                          else ("#5A3A7C" if label == "TOTAL LABOR"
                                else (TAAL_MUTED if vendor else TAAL_DARK)))
             for i, m in enumerate(months_group):
@@ -2508,6 +2514,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "EBIT", "EBIT MARGIN %", "EBITDA", "EBITDA MARGIN %",
             "EBT", "EBT MARGIN %",
             "E-com Net Sales", "E-com Shipping", "E-com Orders",
+            "E-com Revenue", "Wholesale Revenue",
         }
 
         def _pct_cost_cell(row_group_total, total_costs_year, pct_accent_color, border_left):
