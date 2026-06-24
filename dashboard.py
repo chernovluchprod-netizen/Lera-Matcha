@@ -308,13 +308,6 @@ PL_TABLE_LINES = [
     ("EBIT MARGIN %",           True,  False, False),
     ("EBITDA",                  True,  False, False),
     ("EBITDA MARGIN %",         True,  False, False),
-    # ── E-com & Wholesale ──────────────────────────────────────────────────────
-    ("E-COMMERCE & WHOLESALE",  False, False, True),
-    ("E-com Revenue",           False, True,  False),
-    ("E-com Net Sales",         False, True,  False),
-    ("E-com Shipping",          False, True,  False),
-    ("E-com Orders",            False, True,  False),
-    ("Wholesale Revenue",       False, True,  False),
     # ── Matcha Company ─────────────────────────────────────────────────────────
     ("MATCHA COMPANY",          False, False, True),
     ("Matcha Purchases (KG)",   False, True,  False),
@@ -328,6 +321,13 @@ PL_TABLE_LINES = [
     # ── EBT ────────────────────────────────────────────────────────────────────
     ("EBT",                     True,  False, False),
     ("EBT MARGIN %",            True,  False, False),
+    # ── Informational: E-com & Wholesale (already included in TOTAL REVENUE) ─
+    ("E-COM & WHOLESALE (incl. in Revenue)", False, False, True),
+    ("E-com Revenue",           False, True,  False),
+    ("E-com Net Sales",         False, True,  False),
+    ("E-com Shipping",          False, True,  False),
+    ("E-com Orders",            False, True,  False),
+    ("Wholesale Revenue",       False, True,  False),
 ]
 
 # Groups that can expand to show GL-level detail lines
