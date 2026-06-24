@@ -38,11 +38,13 @@ LOG_FILE      = OUT  / "pipeline_log.txt"
 
 WATCH_DIRS = {
     "sales":    BASE / "Sales",
+    "retail":   BASE / "Sales Retail",
     "hours":    BASE / "Hours",
     "costs":    BASE / "Costs",
     "products": BASE / "Product Sales",
     "labor":    BASE / "Labor",
     "ecom":     BASE / "e-com data",
+    "kiosk":    BASE / "Sales Kiosk (Onesix)",
 }
 
 # ---------------------------------------------------------------------------
@@ -1167,22 +1169,30 @@ def build_monthly_kpis():
 # STEP 7 – Product Sales
 # ---------------------------------------------------------------------------
 def build_product_sales():
-    log.section("STEP 7 – Product Sales")
-    prod_dir = BASE / "Product sales"
-    files = sorted(prod_dir.glob("ProductReport_*.csv"))
+    log.section("STEP 7 – Product Sales (Tebi Retail)")
+    search_dirs = [BASE / "Product sales", BASE / "Sales Retail"]
+    files = []
+    for d in search_dirs:
+        if d.exists():
+            files.extend(sorted(d.glob("ProductReport_*.csv")))
     if not files:
         log.log("  No ProductReport files found – skipping.")
         return
 
     frames = []
     for f in files:
-        # Extract month from filename  e.g. ProductReport_2025-10-01_...
-        m = re.search(r"(\d{4}-\d{2})-\d{2}_", f.name)
-        month_str = m.group(1) if m else None
+        m = re.search(r"ProductReport_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})", f.name)
+        if m:
+            period_label = f"{m.group(1)[:7]} to {m.group(2)[:7]}"
+        else:
+            period_label = re.search(r"(\d{4}-\d{2})", f.name)
+            period_label = period_label.group(1) if period_label else "unknown"
         df = pd.read_csv(f)
-        df["month"] = month_str
+        df["period"] = period_label
         df["source_file"] = f.name
+        df["source"] = "Tebi"
         frames.append(df)
+        log.log(f"  Read {f.name}: {len(df)} products, period {period_label}")
 
     products = pd.concat(frames, ignore_index=True)
 
@@ -1222,11 +1232,17 @@ def build_product_sales():
         products.get("net_revenue_0pct", 0)
     ).round(2)
 
+    # Dedup: if same product appears in overlapping period files, keep file with most rows
+    before = len(products)
+    if products.duplicated(subset=["product_name", "gtin", "period"], keep=False).any():
+        products = products.drop_duplicates(subset=["product_name", "gtin", "period"], keep="last")
+        log.log(f"  Deduplicated: {before} → {len(products)} rows")
+
     products = products[products["category"].notna()].copy()
     products.to_csv(OUT / "product_sales.csv", index=False)
     log.log(f"  product_sales.csv → {len(products)} rows, "
             f"{products['category'].nunique()} categories, "
-            f"{products['month'].nunique()} months")
+            f"{len(products['period'].unique())} periods")
 
 
 # ---------------------------------------------------------------------------
@@ -1234,27 +1250,36 @@ def build_product_sales():
 # ---------------------------------------------------------------------------
 def build_kiosk_sales():
     log.section("STEP 5b – Kiosk Sales (Onesix)")
-    kiosk_file = BASE / "Sales Kiosk (Onesix)" / "lera_completed_orders.xlsx"
-    if not kiosk_file.exists():
-        log.log("  lera_completed_orders.xlsx not found – skipping kiosk data.")
+    kiosk_dir = BASE / "Sales Kiosk (Onesix)"
+    order_files = sorted(f for f in kiosk_dir.glob("lera_completed_orders*.xlsx")
+                         if not f.name.startswith("~$"))
+    if not order_files:
+        log.log("  No Onesix order files found – skipping kiosk data.")
         pd.DataFrame(columns=["date","order_number","amount_eur","payment_method",
                                "month","entity","source_file"]).to_csv(
             OUT / "kiosk_transactions.csv", index=False)
         return
 
-    df = pd.read_excel(kiosk_file)
-    df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
-
-    # Normalise key columns (handle different export column names)
     rename_map = {
         "order_date": "date", "created_at": "date", "date_created": "date",
-        "amount": "amount_eur", "total": "amount_eur", "order_total": "amount_eur", "grand_total": "amount_eur",
+        "amount": "amount_eur", "total": "amount_eur", "order_total": "amount_eur",
+        "grand_total": "amount_eur",
         "payment": "payment_method", "payment_type": "payment_method",
         "order_id": "order_number", "id": "order_number",
     }
-    for old, new in rename_map.items():
-        if old in df.columns and new not in df.columns:
-            df.rename(columns={old: new}, inplace=True)
+
+    frames = []
+    for f in order_files:
+        raw = pd.read_excel(f)
+        raw.columns = [c.strip().lower().replace(" ", "_") for c in raw.columns]
+        for old, new in rename_map.items():
+            if old in raw.columns and new not in raw.columns:
+                raw.rename(columns={old: new}, inplace=True)
+        raw["source_file"] = f.name
+        frames.append(raw)
+        log.log(f"  Read {f.name}: {len(raw):,} orders")
+
+    df = pd.concat(frames, ignore_index=True)
 
     if "date" not in df.columns:
         log.log("  ⚠ Could not identify date column – skipping kiosk data.")
@@ -1263,11 +1288,17 @@ def build_kiosk_sales():
             OUT / "kiosk_transactions.csv", index=False)
         return
 
+    before = len(df)
+    df = df.drop_duplicates(subset=["order_number"], keep="last")
+    if before > len(df):
+        log.log(f"  Deduplicated: {before:,} → {len(df):,} orders "
+                f"({before - len(df):,} duplicates removed)")
+
     df["date"]       = pd.to_datetime(df["date"], errors="coerce")
-    df["amount_eur"] = pd.to_numeric(df.get("amount_eur", pd.Series(dtype=float)), errors="coerce").fillna(0)
+    df["amount_eur"] = pd.to_numeric(df.get("amount_eur", pd.Series(dtype=float)),
+                                     errors="coerce").fillna(0)
     df["month"]      = df["date"].dt.to_period("M").astype(str)
     df["entity"]     = "Lera World"
-    df["source_file"]= kiosk_file.name
     if "order_number" not in df.columns:
         df["order_number"] = range(len(df))
     if "payment_method" not in df.columns:

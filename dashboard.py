@@ -1342,173 +1342,174 @@ def make_product_tab():
             html.Div("No product sales data available.", style={"color": TAAL_MUTED, "padding": "40px"})
         ], style={"padding": "0 4px"})
     prod = products.copy()
-    prod["category"] = prod["category"].map(CATEGORY_MAP).fillna("Other")
-    prod["month"] = prod["month"].astype(str)
-    prod = prod[prod["month"] >= "2024-04"]
+    prod["category"] = prod["category"].astype(str)
 
     for col in ["items_sold", "net_revenue_eur", "gross_revenue_eur", "margin_eur", "margin_pct"]:
-        prod[col] = pd.to_numeric(prod[col], errors="coerce").fillna(0)
+        if col in prod.columns:
+            prod[col] = pd.to_numeric(prod[col], errors="coerce").fillna(0)
 
-    months_sorted = sorted(prod["month"].unique())
-    x_labels = [pd.Period(m, "M").strftime("%b %Y") for m in months_sorted]
-
-    # ── Category aggregates ───────────────────────────────────────────────────
-    cat_month = prod.groupby(["category", "month"]).agg(
-        items_sold=("items_sold", "sum"),
-        revenue=("gross_revenue_eur", "sum"),
-        margin=("margin_eur", "sum"),
-    ).reset_index()
-
-    total_by_month = cat_month.groupby("month")["revenue"].sum().reset_index()
-    total_by_month.columns = ["month", "total_revenue"]
-    cat_month = cat_month.merge(total_by_month, on="month")
-    cat_month["revenue_share"] = (cat_month["revenue"] / cat_month["total_revenue"] * 100).round(1)
-
-    cats = sorted(cat_month["category"].unique())
+    periods_sorted = sorted(prod["period"].unique()) if "period" in prod.columns else []
 
     # ── KPI row ───────────────────────────────────────────────────────────────
     total_rev    = prod["gross_revenue_eur"].sum()
     total_items  = prod["items_sold"].sum()
-    total_margin = prod["margin_eur"].sum()
-    avg_margin   = (total_margin / total_rev * 100) if total_rev else 0
-    _cat_totals  = cat_month.groupby("category")["revenue"].sum()
-    top_cat      = _cat_totals.idxmax() if not _cat_totals.empty else "—"
+    n_products   = prod["product_name"].nunique() if "product_name" in prod.columns else 0
 
-    kpi_row = dbc.Row([
-        dbc.Col(kpi_card("Total Product Revenue", fmt_eur(total_rev),  "All periods"), width="auto"),
-        dbc.Col(kpi_card("Items Sold",            f"{total_items:,.0f}", "All categories"),      width="auto"),
-        dbc.Col(kpi_card("Total Margin",          fmt_eur(total_margin), "All periods",
-                         color=TAAL_GREEN if total_margin >= 0 else TAAL_RED),                   width="auto"),
-        dbc.Col(kpi_card("Avg Margin %",          fmt_pct(avg_margin), "Gross margin",
-                         color=TAAL_GREEN),                                                      width="auto"),
-        dbc.Col(kpi_card("Top Category",          top_cat, "By total revenue"),                  width="auto"),
-    ], className="g-3 mb-4")
+    kpi_row = html.Div([
+        kpi_card("Retail Revenue", fmt_eur(total_rev), "Tebi POS"),
+        kpi_card("Items Sold", f"{total_items:,.0f}", "All periods"),
+        kpi_card("Products", f"{n_products}", "Unique SKUs"),
+        kpi_card("Periods", f"{len(periods_sorted)}", "Tebi reports"),
+    ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap", "marginBottom": "20px"})
 
-    # ── Chart 1 – Revenue by category stacked bar ────────────────────────────
-    fig_rev = go.Figure()
-    for i, cat in enumerate(cats):
-        sub = cat_month[cat_month["category"] == cat]
-        sub_by_month = {r["month"]: r["revenue"] for _, r in sub.iterrows()}
-        y = [sub_by_month.get(m, 0) for m in months_sorted]
-        fig_rev.add_trace(go.Bar(
-            name=cat, x=x_labels, y=y,
-            marker_color=CAT_COLORS[i % len(CAT_COLORS)],
-            hovertemplate="<b>%{x}</b><br>" + cat + ": €%{y:,.0f}<extra></extra>",
-        ))
-    apply_layout(fig_rev,
-        barmode="stack", height=380,
-        margin=MARGIN, legend=LEGEND_H,
-        title=dict(text="Revenue by Product Category", font=dict(size=14)),
+    # ── MATCHA TINS/CANS combined section ────────────────────────────────────
+    _MATCHA_TIN_KW = ["LERA Matcha, Kyushu", "LERA Matcha, Uji"]
+    matcha_tins = prod[prod["product_name"].str.contains("|".join(_MATCHA_TIN_KW), case=False, na=False)]
+
+    # Onesix estimated matcha tin sales (€42 orders → likely single tin purchase)
+    kiosk_tx = _safe_csv(DATA / "kiosk_transactions.csv")
+    onesix_matcha = pd.DataFrame()
+    if not kiosk_tx.empty and "amount_eur" in kiosk_tx.columns:
+        kiosk_tx["amount_eur"] = pd.to_numeric(kiosk_tx["amount_eur"], errors="coerce")
+        kiosk_tx["date"] = pd.to_datetime(kiosk_tx["date"], errors="coerce")
+        kiosk_tx["month"] = kiosk_tx["date"].dt.to_period("M").astype(str)
+        tin_orders = kiosk_tx[kiosk_tx["amount_eur"] == 42.0]
+        if not tin_orders.empty:
+            onesix_matcha = tin_orders.groupby("month").agg(
+                items=("amount_eur", "count"),
+                revenue=("amount_eur", "sum"),
+            ).reset_index()
+            onesix_matcha["source"] = "Onesix (Kiosk)"
+
+    # Tebi matcha tins by period
+    tebi_tins = matcha_tins.groupby(["period", "product_name"]).agg(
+        items=("items_sold", "sum"),
+        revenue=("gross_revenue_eur", "sum"),
+    ).reset_index()
+
+    # Matcha tins summary table
+    def _build_matcha_section():
+        rows = []
+        _hdr_s = {"padding": "8px 12px", "fontSize": "11px", "fontWeight": "600",
+                  "backgroundColor": TAAL_DARK, "color": "white"}
+
+        header = html.Tr([
+            html.Th("Source / Product", style={**_hdr_s, "textAlign": "left"}),
+            html.Th("Period", style={**_hdr_s, "textAlign": "left"}),
+            html.Th("Qty", style={**_hdr_s, "textAlign": "right"}),
+            html.Th("Revenue", style={**_hdr_s, "textAlign": "right"}),
+        ])
+
+        _cell = {"padding": "6px 12px", "fontSize": "12px", "borderBottom": "1px solid #F0EBE3"}
+        total_qty, total_rev_t = 0, 0.0
+
+        for _, r in tebi_tins.iterrows():
+            total_qty += int(r["items"])
+            total_rev_t += r["revenue"]
+            rows.append(html.Tr([
+                html.Td(f"Tebi · {r['product_name']}", style={**_cell, "color": TAAL_DARK}),
+                html.Td(r["period"], style={**_cell, "color": TAAL_MUTED}),
+                html.Td(f"{int(r['items']):,}", style={**_cell, "textAlign": "right"}),
+                html.Td(f"€{r['revenue']:,.0f}", style={**_cell, "textAlign": "right"}),
+            ]))
+
+        if not onesix_matcha.empty:
+            for _, r in onesix_matcha.iterrows():
+                total_qty += int(r["items"])
+                total_rev_t += r["revenue"]
+                rows.append(html.Tr([
+                    html.Td(f"Onesix · Matcha Tin (€42)", style={**_cell, "color": TAAL_DARK}),
+                    html.Td(r["month"], style={**_cell, "color": TAAL_MUTED}),
+                    html.Td(f"{int(r['items']):,}", style={**_cell, "textAlign": "right"}),
+                    html.Td(f"€{r['revenue']:,.0f}", style={**_cell, "textAlign": "right"}),
+                ]))
+
+        # Total row
+        rows.append(html.Tr([
+            html.Td("TOTAL", style={**_cell, "fontWeight": "700", "color": TAAL_GREEN}),
+            html.Td("", style=_cell),
+            html.Td(f"{total_qty:,}", style={**_cell, "textAlign": "right", "fontWeight": "700"}),
+            html.Td(f"€{total_rev_t:,.0f}", style={**_cell, "textAlign": "right", "fontWeight": "700",
+                     "color": TAAL_GREEN}),
+        ], style={"borderTop": "2px solid #D0C8B8"}))
+
+        return html.Table([html.Thead(header), html.Tbody(rows)],
+                          style={"width": "100%", "borderCollapse": "collapse"})
+
+    # ── Category revenue bar chart ───────────────────────────────────────────
+    cat_totals = prod.groupby("category").agg(
+        items_sold=("items_sold", "sum"),
+        revenue=("gross_revenue_eur", "sum"),
+    ).reset_index().sort_values("revenue", ascending=False)
+
+    fig_cat = go.Figure(go.Bar(
+        x=cat_totals["category"], y=cat_totals["revenue"],
+        marker_color=[CAT_COLORS[i % len(CAT_COLORS)] for i in range(len(cat_totals))],
+        text=[f"€{v:,.0f}" for v in cat_totals["revenue"]],
+        textposition="outside",
+    ))
+    apply_layout(fig_cat, height=380, margin=MARGIN, showlegend=False,
+        title=dict(text="Revenue by Category (Tebi Retail)", font=dict(size=14)),
         yaxis=dict(title="EUR", tickformat=",.0f", **AXIS_STYLE),
     )
 
-    # ── Chart 2 – Category weight % stacked area (100%) ──────────────────────
-    fig_share = go.Figure()
-    for i, cat in enumerate(cats):
-        sub = cat_month[cat_month["category"] == cat]
-        sub_by_month = {r["month"]: r["revenue_share"] for _, r in sub.iterrows()}
-        y = [sub_by_month.get(m, 0) for m in months_sorted]
-        fig_share.add_trace(go.Bar(
-            name=cat, x=x_labels, y=y,
-            marker_color=CAT_COLORS[i % len(CAT_COLORS)],
-            hovertemplate="<b>%{x}</b><br>" + cat + ": %{y:.1f}%<extra></extra>",
-        ))
-    apply_layout(fig_share,
-        barmode="stack", height=360,
-        margin=MARGIN, legend=LEGEND_H,
-        title=dict(text="Category Mix % (Revenue Share per Month)", font=dict(size=14)),
-        yaxis=dict(title="%", ticksuffix="%", **AXIS_STYLE),
-    )
-
-    # ── Chart 3 – Items sold by category ─────────────────────────────────────
-    fig_items = go.Figure()
-    for i, cat in enumerate(cats):
-        sub = cat_month[cat_month["category"] == cat]
-        sub_by_month = {r["month"]: r["items_sold"] for _, r in sub.iterrows()}
-        y = [sub_by_month.get(m, 0) for m in months_sorted]
-        fig_items.add_trace(go.Bar(
-            name=cat, x=x_labels, y=y,
-            marker_color=CAT_COLORS[i % len(CAT_COLORS)],
-            hovertemplate="<b>%{x}</b><br>" + cat + ": %{y:,.0f} items<extra></extra>",
-        ))
-    apply_layout(fig_items,
-        barmode="stack", height=340,
-        margin=MARGIN, legend=LEGEND_H,
-        title=dict(text="Items Sold by Category", font=dict(size=14)),
-        yaxis=dict(title="Items", tickformat=",.0f", **AXIS_STYLE),
-    )
-
-    # ── Chart 4 – Margin % by category (full period donut) ───────────────────
-    cat_totals = cat_month.groupby("category").agg(
-        revenue=("revenue", "sum"), margin=("margin", "sum")
-    ).reset_index()
-    cat_totals["margin_pct"] = (cat_totals["margin"] / cat_totals["revenue"] * 100).round(1)
-    cat_totals = cat_totals[cat_totals["revenue"] > 100].sort_values("revenue", ascending=False)
-
-    fig_cat_donut = go.Figure(go.Pie(
+    # ── Category donut ───────────────────────────────────────────────────────
+    fig_donut = go.Figure(go.Pie(
         labels=cat_totals["category"].tolist(),
         values=cat_totals["revenue"].tolist(),
-        hole=0.5,
-        textinfo="label+percent",
+        hole=0.5, textinfo="label+percent",
         marker=dict(colors=CAT_COLORS[:len(cat_totals)]),
-        hovertemplate="<b>%{label}</b><br>Revenue: €%{value:,.0f}<br>Share: %{percent}<extra></extra>",
     ))
-    apply_layout(fig_cat_donut,
-        height=360, showlegend=False,
+    apply_layout(fig_donut, height=360, showlegend=False,
         margin=dict(l=10, r=10, t=40, b=10),
-        title=dict(text="Revenue Share by Category (All Periods)", font=dict(size=14)),
+        title=dict(text="Category Mix (Tebi)", font=dict(size=14)),
     )
 
     # ── Top products table ────────────────────────────────────────────────────
-    top_products = prod.groupby(["category", "product_name"]).agg(
+    top = prod.groupby(["category", "product_name"]).agg(
         items_sold=("items_sold", "sum"),
         revenue=("gross_revenue_eur", "sum"),
-        margin=("margin_eur", "sum"),
-    ).reset_index()
-    top_products["margin_pct"] = (top_products["margin"] / top_products["revenue"] * 100).round(1)
-    top_products = top_products.sort_values("revenue", ascending=False).head(20)
-    top_products["revenue_fmt"]    = top_products["revenue"].apply(fmt_eur)
-    top_products["margin_fmt"]     = top_products["margin"].apply(fmt_eur)
-    top_products["margin_pct_fmt"] = top_products["margin_pct"].apply(fmt_pct)
+    ).reset_index().sort_values("revenue", ascending=False).head(25)
+
+    _hdr_s = {"backgroundColor": TAAL_DARK, "color": "white", "padding": "8px 12px",
+              "fontSize": "11px", "fontWeight": "600"}
+    _cell = {"padding": "6px 12px", "fontSize": "12px", "borderBottom": "1px solid #F0EBE3"}
 
     top_table = html.Table([
         html.Thead(html.Tr([
-            html.Th(h, style={"backgroundColor": TAAL_DARK, "color": "white",
-                              "padding": "8px 12px", "fontSize": "11px",
-                              "fontWeight": "600", "textAlign": "left" if i == 0 else "right"})
-            for i, h in enumerate(["Category", "Product", "Items Sold", "Revenue", "Margin", "Margin %"])
+            html.Th("Category", style={**_hdr_s, "textAlign": "left"}),
+            html.Th("Product", style={**_hdr_s, "textAlign": "left"}),
+            html.Th("Qty", style={**_hdr_s, "textAlign": "right"}),
+            html.Th("Revenue", style={**_hdr_s, "textAlign": "right"}),
         ])),
         html.Tbody([
             html.Tr([
-                html.Td(row["category"], style={"padding": "6px 12px", "fontSize": "12px",
-                                                "borderBottom": "1px solid #F0EBE3", "color": TAAL_MUTED}),
-                html.Td(row["product_name"], style={"padding": "6px 12px", "fontSize": "12px",
-                                                     "borderBottom": "1px solid #F0EBE3"}),
-                html.Td(f"{row['items_sold']:,.0f}", style={"padding": "6px 12px", "fontSize": "12px",
-                                                             "textAlign": "right", "borderBottom": "1px solid #F0EBE3"}),
-                html.Td(row["revenue_fmt"],    style={"padding": "6px 12px", "fontSize": "12px",
-                                                       "textAlign": "right", "borderBottom": "1px solid #F0EBE3"}),
-                html.Td(row["margin_fmt"],     style={"padding": "6px 12px", "fontSize": "12px",
-                                                       "textAlign": "right", "borderBottom": "1px solid #F0EBE3"}),
-                html.Td(row["margin_pct_fmt"], style={"padding": "6px 12px", "fontSize": "12px",
-                                                       "textAlign": "right", "borderBottom": "1px solid #F0EBE3",
-                                                       "color": TAAL_GREEN if row["margin_pct"] > 30 else TAAL_DARK}),
-            ]) for _, row in top_products.iterrows()
+                html.Td(r["category"], style={**_cell, "color": TAAL_MUTED}),
+                html.Td(r["product_name"], style=_cell),
+                html.Td(f"{int(r['items_sold']):,}", style={**_cell, "textAlign": "right"}),
+                html.Td(f"€{r['revenue']:,.0f}", style={**_cell, "textAlign": "right"}),
+            ]) for _, r in top.iterrows()
         ]),
-    ], style={"width": "100%", "borderCollapse": "collapse", "fontFamily": "Inter, sans-serif"})
+    ], style={"width": "100%", "borderCollapse": "collapse"})
 
     return html.Div([
         kpi_row,
-        dbc.Row([
-            dbc.Col(html.Div([dcc.Graph(figure=fig_rev,   config={"displayModeBar": False})], style=CARD_STYLE), md=7),
-            dbc.Col(html.Div([dcc.Graph(figure=fig_cat_donut, config={"displayModeBar": False})], style=CARD_STYLE), md=5),
-        ], className="g-3 mb-4"),
-        dbc.Row([
-            dbc.Col(html.Div([dcc.Graph(figure=fig_share, config={"displayModeBar": False})], style=CARD_STYLE), md=6),
-            dbc.Col(html.Div([dcc.Graph(figure=fig_items, config={"displayModeBar": False})], style=CARD_STYLE), md=6),
-        ], className="g-3 mb-4"),
+        # ── Matcha Tins section ──────────────────────────────────────────────
         html.Div([
-            html.Div("Top 20 Products by Revenue (All Periods)",
+            html.Div("Matcha Tins / Cans — Combined (Tebi + Onesix)", style={
+                "fontWeight": "700", "fontSize": "14px", "marginBottom": "14px", "color": TAAL_GREEN}),
+            _build_matcha_section(),
+        ], style=CARD_STYLE, className="mb-4"),
+        # ── Charts ───────────────────────────────────────────────────────────
+        html.Div([
+            html.Div([dcc.Graph(figure=fig_cat, config={"displayModeBar": False})],
+                     style={**CARD_STYLE, "flex": "1", "minWidth": "420px"}),
+            html.Div([dcc.Graph(figure=fig_donut, config={"displayModeBar": False})],
+                     style={**CARD_STYLE, "flex": "1", "minWidth": "340px"}),
+        ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap", "marginBottom": "20px"}),
+        # ── Top products ─────────────────────────────────────────────────────
+        html.Div([
+            html.Div("Top 25 Products by Revenue (Tebi Retail)",
                      style={"fontWeight": "700", "fontSize": "14px", "marginBottom": "14px", "color": TAAL_DARK}),
             html.Div(top_table, style={"overflowX": "auto"}),
         ], style=CARD_STYLE, className="mb-4"),
