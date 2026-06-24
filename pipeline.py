@@ -42,6 +42,7 @@ WATCH_DIRS = {
     "costs":    BASE / "Costs",
     "products": BASE / "Product Sales",
     "labor":    BASE / "Labor",
+    "ecom":     BASE / "e-com data",
 }
 
 # ---------------------------------------------------------------------------
@@ -1286,6 +1287,46 @@ def build_kiosk_sales():
 
 
 # ---------------------------------------------------------------------------
+# STEP 8 – E-commerce Sales (Shopify)
+# ---------------------------------------------------------------------------
+def build_ecom_sales():
+    log.section("STEP 8 – E-commerce Sales (Shopify)")
+    ecom_dir = BASE / "e-com data"
+    files = sorted(f for f in ecom_dir.glob("*.csv") if not f.name.startswith("."))
+    if not files:
+        log.log("  No e-com CSV files found – skipping.")
+        pd.DataFrame().to_csv(OUT / "ecom_sales.csv", index=False)
+        return
+
+    frames = [pd.read_csv(f) for f in files]
+    raw = pd.concat(frames, ignore_index=True)
+
+    raw.columns = [c.strip().lower().replace(" ", "_") for c in raw.columns]
+    raw["month"] = pd.to_datetime(raw["month"], errors="coerce").dt.to_period("M").astype(str)
+
+    num_cols = ["orders", "gross_sales", "discounts", "returns",
+                "net_sales", "shipping_charges", "taxes", "total_sales"]
+    for c in num_cols:
+        if c in raw.columns:
+            raw[c] = pd.to_numeric(raw[c], errors="coerce").fillna(0)
+
+    raw.to_csv(OUT / "ecom_sales.csv", index=False)
+
+    monthly = raw.groupby("month").agg(
+        orders=("orders", "sum"),
+        gross_sales=("gross_sales", "sum"),
+        net_sales=("net_sales", "sum"),
+        total_sales=("total_sales", "sum"),
+        countries=("billing_country", "nunique"),
+    ).reset_index()
+
+    log.log(f"  ecom_sales.csv → {len(raw)} rows, {raw['month'].nunique()} months, "
+            f"{raw['billing_country'].nunique()} countries")
+    log.log(f"  Total net sales: €{raw['net_sales'].sum():,.0f}, "
+            f"{int(raw['orders'].sum())} orders")
+
+
+# ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
 def run(force: bool = False):
@@ -1312,6 +1353,7 @@ def run(force: bool = False):
         build_monthly_pl()
         build_monthly_kpis()
         build_product_sales()
+        build_ecom_sales()
     except Exception as e:
         log.log(f"\n ERROR: {e}")
         import traceback

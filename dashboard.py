@@ -62,6 +62,7 @@ labor    = _safe_csv(DATA / "labor_hours.csv")
 tx       = _safe_csv(DATA / "transactions.csv", low_memory=False)
 ledger   = pd.read_csv(DATA / "costs_ledger.csv")
 products = _safe_csv(DATA / "product_sales.csv")
+ecom_raw = _safe_csv(DATA / "ecom_sales.csv")
 
 # Daily net revenue (excl. VAT) from POS reports
 _ds_raw = _safe_csv(DATA / "daily_summary.csv")
@@ -115,6 +116,17 @@ try:
         TRANSIT_MONTHS = set(json.load(_f))
 except Exception:
     TRANSIT_MONTHS = set()
+
+# E-com monthly aggregates for P&L table display
+_ECOM_MONTHLY = {}
+if not ecom_raw.empty:
+    _ec = ecom_raw.copy()
+    _ec["month"] = _ec["month"].astype(str)
+    _ECOM_MONTHLY = _ec.groupby("month").agg(
+        net_sales=("net_sales", "sum"),
+        shipping=("shipping_charges", "sum"),
+        orders=("orders", "sum"),
+    ).to_dict("index")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # COLOUR PALETTE
@@ -296,6 +308,11 @@ PL_TABLE_LINES = [
     ("EBIT MARGIN %",           True,  False, False),
     ("EBITDA",                  True,  False, False),
     ("EBITDA MARGIN %",         True,  False, False),
+    # ── E-com (Shopify) ────────────────────────────────────────────────────────
+    ("E-COMMERCE (SHOPIFY)",    False, False, True),
+    ("E-com Net Sales",         False, True,  False),
+    ("E-com Shipping",          False, True,  False),
+    ("E-com Orders",            False, True,  False),
     # ── Matcha Company ─────────────────────────────────────────────────────────
     ("MATCHA COMPANY",          False, False, True),
     ("E-com Revenue",           False, True,  False),
@@ -535,6 +552,12 @@ def _pl_val(label, months):
         return pl_series("Depreciation Inventaris", m)
     if label == "Other SG&A":
         return sum(pl_series(l, m) for l in _ADMIN_LINES)
+    if label == "E-com Net Sales":
+        return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("net_sales", 0) for mo in m})
+    if label == "E-com Shipping":
+        return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("shipping", 0) for mo in m})
+    if label == "E-com Orders":
+        return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("orders", 0) for mo in m})
     # Computed totals — look up directly from monthly_pl.csv (pipeline pre-computes these)
     for computed in ("TOTAL REVENUE", "TOTAL COGS", "GROSS PROFIT", "GROSS MARGIN %",
                      "TOTAL LABOR", "TOTAL OCCUPANCY", "TOTAL SG&A",
@@ -1523,6 +1546,164 @@ def _folder_file_count(path: Path) -> int:
         return 0
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB – E-COMMERCE (Shopify)
+# ─────────────────────────────────────────────────────────────────────────────
+def make_ecom_tab():
+    if ecom_raw.empty:
+        return html.Div("No e-commerce data available.", style={"padding": "40px", "color": TAAL_MUTED})
+
+    ec = ecom_raw.copy()
+    ec["month"] = ec["month"].astype(str)
+    ecom_months = sorted(ec["month"].unique())
+
+    # ── Monthly summary ──────────────────────────────────────────────────────
+    monthly = ec.groupby("month").agg(
+        orders=("orders", "sum"),
+        gross_sales=("gross_sales", "sum"),
+        discounts=("discounts", "sum"),
+        returns=("returns", "sum"),
+        net_sales=("net_sales", "sum"),
+        shipping=("shipping_charges", "sum"),
+        taxes=("taxes", "sum"),
+        total_sales=("total_sales", "sum"),
+        countries=("billing_country", "nunique"),
+    ).reset_index()
+
+    # Monthly revenue bar chart
+    fig_rev = go.Figure()
+    fig_rev.add_trace(go.Bar(
+        x=monthly["month"], y=monthly["net_sales"],
+        name="Net Sales", marker_color=TAAL_GREEN,
+    ))
+    fig_rev.add_trace(go.Bar(
+        x=monthly["month"], y=monthly["shipping"],
+        name="Shipping", marker_color=TAAL_CLAY,
+    ))
+    fig_rev.update_layout(
+        **CHART_LAYOUT, barmode="stack",
+        title=dict(text="E-com Monthly Revenue", font=dict(size=14)),
+        yaxis=dict(title="EUR", tickformat=",.0f", **AXIS_STYLE),
+        xaxis=dict(title="", **AXIS_STYLE),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    )
+
+    # Orders bar chart
+    fig_orders = go.Figure()
+    fig_orders.add_trace(go.Bar(
+        x=monthly["month"], y=monthly["orders"],
+        marker_color=TAAL_BLUE,
+    ))
+    fig_orders.update_layout(
+        **CHART_LAYOUT,
+        title=dict(text="E-com Monthly Orders", font=dict(size=14)),
+        yaxis=dict(title="Orders", tickformat=",d", **AXIS_STYLE),
+        xaxis=dict(title="", **AXIS_STYLE),
+        showlegend=False,
+    )
+
+    # ── Country breakdown ────────────────────────────────────────────────────
+    by_country = ec.groupby("billing_country").agg(
+        orders=("orders", "sum"),
+        net_sales=("net_sales", "sum"),
+        total_sales=("total_sales", "sum"),
+    ).reset_index().sort_values("net_sales", ascending=False)
+
+    fig_geo = px.pie(
+        by_country[by_country["net_sales"] > 0],
+        values="net_sales", names="billing_country",
+        color_discrete_sequence=px.colors.qualitative.Set3,
+    )
+    fig_geo.update_layout(
+        **CHART_LAYOUT,
+        title=dict(text="Net Sales by Country", font=dict(size=14)),
+    )
+    fig_geo.update_traces(textposition="inside", textinfo="percent+label")
+
+    # ── KPI cards ────────────────────────────────────────────────────────────
+    total_net     = ec["net_sales"].sum()
+    total_orders  = int(ec["orders"].sum())
+    total_gross   = ec["gross_sales"].sum()
+    total_returns = ec["returns"].sum()
+    n_countries   = ec["billing_country"].nunique()
+    avg_order     = total_net / total_orders if total_orders else 0
+
+    def kpi(label, value):
+        return html.Div([
+            html.Div(label, style={"fontSize": "10px", "color": TAAL_MUTED, "textTransform": "uppercase",
+                                   "letterSpacing": "0.05em", "marginBottom": "4px"}),
+            html.Div(value, style={"fontSize": "22px", "fontWeight": "700", "color": TAAL_DARK}),
+        ], style={**CARD_STYLE, "minWidth": "140px", "textAlign": "center"})
+
+    kpis_row = html.Div([
+        kpi("Total Net Sales", f"€{total_net:,.0f}"),
+        kpi("Total Orders", f"{total_orders:,}"),
+        kpi("Avg Order", f"€{avg_order:,.1f}"),
+        kpi("Countries", f"{n_countries}"),
+        kpi("Returns", f"€{abs(total_returns):,.0f}"),
+    ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap", "marginBottom": "20px"})
+
+    # ── Country monthly table ────────────────────────────────────────────────
+    recent_months = ecom_months[-6:]
+    pivot = ec.groupby(["billing_country", "month"])["net_sales"].sum().reset_index()
+    pivot = pivot.pivot(index="billing_country", columns="month", values="net_sales").fillna(0)
+    pivot["TOTAL"] = pivot.sum(axis=1)
+    pivot = pivot.sort_values("TOTAL", ascending=False)
+
+    header = [html.Th("Country", style={"textAlign": "left", "padding": "6px 12px",
+              "fontSize": "10px", "color": TAAL_MUTED})]
+    for m in recent_months:
+        header.append(html.Th(pd.Period(m, "M").strftime("%b %y"),
+                      style={"textAlign": "right", "padding": "6px 12px",
+                             "fontSize": "10px", "color": TAAL_MUTED}))
+    header.append(html.Th("Total", style={"textAlign": "right", "padding": "6px 12px",
+                  "fontSize": "10px", "color": TAAL_MUTED, "fontWeight": "700"}))
+
+    rows = []
+    for country in pivot.index[:15]:
+        cells = [html.Td(country, style={"padding": "5px 12px", "fontSize": "12px",
+                 "color": TAAL_DARK})]
+        for m in recent_months:
+            v = pivot.loc[country].get(m, 0)
+            cells.append(html.Td(f"€{v:,.0f}" if v else "—",
+                         style={"textAlign": "right", "padding": "5px 12px",
+                                "fontSize": "12px", "color": TAAL_DARK if v else TAAL_MUTED}))
+        t = pivot.loc[country, "TOTAL"]
+        cells.append(html.Td(f"€{t:,.0f}", style={"textAlign": "right", "padding": "5px 12px",
+                     "fontSize": "12px", "fontWeight": "600", "color": TAAL_DARK}))
+        rows.append(html.Tr(cells, style={"borderBottom": "1px solid #E8E0D4"}))
+
+    country_table = html.Table([
+        html.Thead(html.Tr(header), style={"borderBottom": "2px solid #D0C8B8"}),
+        html.Tbody(rows),
+    ], style={"width": "100%", "borderCollapse": "collapse"})
+
+    return html.Div([
+        kpis_row,
+        html.Div([
+            html.Div([
+                html.Div(dcc.Graph(figure=fig_rev, config={"displayModeBar": False}),
+                         style={**CARD_STYLE}),
+            ], style={"flex": "1", "minWidth": "420px"}),
+            html.Div([
+                html.Div(dcc.Graph(figure=fig_orders, config={"displayModeBar": False}),
+                         style={**CARD_STYLE}),
+            ], style={"flex": "1", "minWidth": "420px"}),
+        ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap", "marginBottom": "20px"}),
+        html.Div([
+            html.Div([
+                html.Div(dcc.Graph(figure=fig_geo, config={"displayModeBar": False}),
+                         style={**CARD_STYLE}),
+            ], style={"flex": "1", "minWidth": "340px"}),
+            html.Div([
+                html.Div("Sales by Country (last 6 months)", style={
+                    "fontWeight": "700", "fontSize": "14px", "marginBottom": "12px", "color": TAAL_DARK}),
+                country_table,
+            ], style={**CARD_STYLE, "flex": "2", "minWidth": "480px"}),
+        ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap"}),
+    ], style={"padding": "0 4px"})
+
+
 def make_settings_tab(creds=None):
     creds = creds or {}
     S = {"fontFamily": "Inter, sans-serif"}
@@ -1920,6 +2101,7 @@ app.layout = html.Div([
                     dcc.Tab(label="P&L Charts",      value="pl",        style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
                     dcc.Tab(label="Sales",           value="sales",     style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
                     dcc.Tab(label="Product Sales",   value="products",  style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
+                    dcc.Tab(label="E-com",           value="ecom",      style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
                     dcc.Tab(label="Labor & Costs",   value="labor",     style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
                     dcc.Tab(label="Scheduling",      value="scheduling",style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
                     dcc.Tab(label="⚙ Settings",      value="settings",  style=TAB_STYLE, selected_style=TAB_SELECTED_STYLE),
@@ -1962,6 +2144,8 @@ def render_tab(tab, stored_creds):
         return html.Div([dbc.Container(make_sales_tab(), fluid=True)], style=wrapper)
     if tab == "products":
         return html.Div([dbc.Container(make_product_tab(), fluid=True)], style=wrapper)
+    if tab == "ecom":
+        return html.Div([dbc.Container(make_ecom_tab(), fluid=True)], style=wrapper)
     if tab == "labor":
         return html.Div([dbc.Container(make_labor_tab(), fluid=True)], style=wrapper)
     if tab == "scheduling":
@@ -2086,11 +2270,13 @@ def render_pl_table(expanded, thresholds, matcha_data):
             return "#FDFAF3" if m in est_m else row_bg
         return "#FDFAF3" if m in est_m else "white"
 
-    def fmt_val(v, is_pct):
+    def fmt_val(v, is_pct, is_count=False):
         if v is None or (isinstance(v, float) and np.isnan(v)):
             return "—"
         if is_pct:
             return f"{v:.1f}%" if v != 0 else "—"
+        if is_count:
+            return f"{int(v):,}" if v != 0 else "—"
         return f"€{v:,.0f}" if v != 0 else "—"
 
     def pct_rev_color(pct):
@@ -2170,7 +2356,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
             row_bg = "#F7F5F2"
         elif is_header:
             row_bg = "#F0EBE3"
-        elif label in ("TOTAL REVENUE", "E-com Revenue"):
+        elif label in ("TOTAL REVENUE", "E-com Revenue",
+                       "E-com Net Sales", "E-com Shipping", "E-com Orders"):
             row_bg = "#EEF5EC"
         elif label == "TOTAL COGS":
             row_bg = "#FEF5EC"
@@ -2236,7 +2423,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
             label_content = ("▸ " if is_sub else "") + label
 
         label_fw = "700" if (is_total or is_header) else ("500" if not (detail or vendor) else "400")
-        label_color = (TAAL_GREEN if label in ("TOTAL REVENUE", "E-com Revenue")
+        label_color = (TAAL_GREEN if label in ("TOTAL REVENUE", "E-com Revenue",
+                                                "E-com Net Sales", "E-com Shipping", "E-com Orders")
                        else ("#5A3A7C" if label == "TOTAL LABOR"
                              else (TAAL_MUTED if vendor else TAAL_DARK)))
 
@@ -2252,6 +2440,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "TOTAL REVENUE", "GROSS PROFIT", "GROSS MARGIN %",
             "EBIT", "EBIT MARGIN %", "EBITDA", "EBITDA MARGIN %",
             "EBT", "EBT MARGIN %",
+            "E-com Net Sales", "E-com Shipping", "E-com Orders",
         }
         # Whether to show per-cell % of revenue weight
         show_cell_pct = not is_header and not is_pct and label not in _NO_CELL_PCT
@@ -2264,11 +2453,13 @@ def render_pl_table(expanded, thresholds, matcha_data):
             return 0.0
 
         is_transit_rev_row = (label == "TOTAL REVENUE")
+        is_count = (label == "E-com Orders")
 
         def _build_month_cells(months_group, border_first_left):
             row_group_total = 0.0
             group_cells = []
-            val_color = (TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue")
+            val_color = (TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
+                                                  "E-com Net Sales")
                          else ("#5A3A7C" if label == "TOTAL LABOR"
                                else (TAAL_MUTED if vendor else TAAL_DARK)))
             for i, m in enumerate(months_group):
@@ -2283,7 +2474,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
                     pct_str = f"{m_pct:.1f}%" if abs(m_pct) >= 0.05 else ""
                     pct_c = pct_rev_color(abs(m_pct)) if pct_str else TAAL_MUTED
                     cell_content = html.Div([
-                        html.Div(fmt_val(v, is_pct),
+                        html.Div(fmt_val(v, is_pct, is_count),
                                  style={"fontSize": "10px" if vendor else "12px",
                                         "fontWeight": "700" if is_total else "400",
                                         "color": val_color}),
@@ -2294,12 +2485,12 @@ def render_pl_table(expanded, thresholds, matcha_data):
                     ], style={"textAlign": "right"})
                 elif is_unclosed:
                     cell_content = html.Span([
-                        fmt_val(v, is_pct),
+                        fmt_val(v, is_pct, is_count),
                         html.Sup("*", style={"color": "#B8860B", "fontSize": "9px",
                                              "marginLeft": "2px", "fontWeight": "700"}),
                     ])
                 else:
-                    cell_content = fmt_val(v, is_pct)
+                    cell_content = fmt_val(v, is_pct, is_count)
 
                 group_cells.append(html.Td(cell_content, style={
                     **BASE_CELL,
@@ -2316,6 +2507,7 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "TOTAL REVENUE", "GROSS PROFIT", "GROSS MARGIN %",
             "EBIT", "EBIT MARGIN %", "EBITDA", "EBITDA MARGIN %",
             "EBT", "EBT MARGIN %",
+            "E-com Net Sales", "E-com Shipping", "E-com Orders",
         }
 
         def _pct_cost_cell(row_group_total, total_costs_year, pct_accent_color, border_left):
