@@ -1336,6 +1336,82 @@ CAT_COLORS = [
 ]
 
 
+def _build_top5_section(prod, periods_sorted):
+    """Top 5 products grouped bar chart + period breakdown table."""
+    top5_names = (prod.groupby("product_name")["gross_revenue_eur"].sum()
+                  .sort_values(ascending=False).head(5).index.tolist())
+    t5 = prod[prod["product_name"].isin(top5_names)].copy()
+
+    # Short labels for periods
+    def _period_label(p):
+        parts = str(p).split(" to ")
+        if len(parts) == 2:
+            return f"{pd.Period(parts[0], 'M').strftime('%b')}–{pd.Period(parts[1], 'M').strftime('%b %y')}"
+        return p
+    period_labels = [_period_label(p) for p in periods_sorted]
+
+    # Grouped bar chart: one group per product, one bar per period
+    fig = go.Figure()
+    colors = [TAAL_GREEN, TAAL_BLUE, "#E8C88A", TAAL_RED, "#5A3A7C"]
+    for i, period in enumerate(periods_sorted):
+        sub = t5[t5["period"] == period].set_index("product_name")
+        vals = [float(sub.loc[n, "gross_revenue_eur"]) if n in sub.index else 0 for n in top5_names]
+        fig.add_trace(go.Bar(
+            name=period_labels[i], x=top5_names, y=vals,
+            marker_color=colors[i % len(colors)],
+            text=[f"€{v:,.0f}" if v else "" for v in vals], textposition="outside",
+        ))
+    apply_layout(fig, barmode="group", height=400, margin=MARGIN,
+        title=dict(text="Top 5 Products — Revenue by Period", font=dict(size=14)),
+        yaxis=dict(title="EUR", tickformat=",.0f", **AXIS_STYLE),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    )
+
+    # Table: product × period with qty + revenue
+    _hdr_s = {"padding": "8px 12px", "fontSize": "11px", "fontWeight": "600",
+              "backgroundColor": TAAL_DARK, "color": "white"}
+    _cell = {"padding": "6px 12px", "fontSize": "12px", "borderBottom": "1px solid #F0EBE3"}
+
+    header_cells = [html.Th("Product", style={**_hdr_s, "textAlign": "left"})]
+    for pl in period_labels:
+        header_cells.append(html.Th(f"{pl} Qty", style={**_hdr_s, "textAlign": "right"}))
+        header_cells.append(html.Th(f"{pl} Rev", style={**_hdr_s, "textAlign": "right"}))
+    header_cells.append(html.Th("Total Qty", style={**_hdr_s, "textAlign": "right"}))
+    header_cells.append(html.Th("Total Rev", style={**_hdr_s, "textAlign": "right"}))
+
+    rows = []
+    for name in top5_names:
+        cells = [html.Td(name, style={**_cell, "fontWeight": "500"})]
+        total_qty, total_rev = 0, 0.0
+        for period in periods_sorted:
+            sub = t5[(t5["product_name"] == name) & (t5["period"] == period)]
+            qty = int(sub["items_sold"].sum()) if len(sub) else 0
+            rev = float(sub["gross_revenue_eur"].sum()) if len(sub) else 0
+            total_qty += qty
+            total_rev += rev
+            cells.append(html.Td(f"{qty:,}" if qty else "—",
+                         style={**_cell, "textAlign": "right", "color": TAAL_DARK if qty else TAAL_MUTED}))
+            cells.append(html.Td(f"€{rev:,.0f}" if rev else "—",
+                         style={**_cell, "textAlign": "right", "color": TAAL_DARK if rev else TAAL_MUTED}))
+        cells.append(html.Td(f"{total_qty:,}", style={**_cell, "textAlign": "right", "fontWeight": "700"}))
+        cells.append(html.Td(f"€{total_rev:,.0f}", style={**_cell, "textAlign": "right",
+                     "fontWeight": "700", "color": TAAL_GREEN}))
+        rows.append(html.Tr(cells))
+
+    table = html.Table([html.Thead(html.Tr(header_cells)), html.Tbody(rows)],
+                       style={"width": "100%", "borderCollapse": "collapse"})
+
+    return html.Div([
+        html.Div([dcc.Graph(figure=fig, config={"displayModeBar": False})],
+                 style={**CARD_STYLE, "marginBottom": "16px"}),
+        html.Div([
+            html.Div("Top 5 Products — Period Breakdown", style={
+                "fontWeight": "700", "fontSize": "14px", "marginBottom": "12px", "color": TAAL_DARK}),
+            html.Div(table, style={"overflowX": "auto"}),
+        ], style=CARD_STYLE),
+    ], className="mb-4")
+
+
 def make_product_tab():
     if products.empty or "gross_revenue_eur" not in products.columns:
         return html.Div([
@@ -1507,6 +1583,8 @@ def make_product_tab():
             html.Div([dcc.Graph(figure=fig_donut, config={"displayModeBar": False})],
                      style={**CARD_STYLE, "flex": "1", "minWidth": "340px"}),
         ], style={"display": "flex", "gap": "16px", "flexWrap": "wrap", "marginBottom": "20px"}),
+        # ── Top 5 products period breakdown ──────────────────────────────────
+        _build_top5_section(prod, periods_sorted),
         # ── Top products ─────────────────────────────────────────────────────
         html.Div([
             html.Div("Top 25 Products by Revenue (Tebi Retail)",
