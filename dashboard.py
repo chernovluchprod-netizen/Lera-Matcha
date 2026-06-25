@@ -935,14 +935,15 @@ def make_pl_table_tab():
         html.Div(id="pl-table-container"),
     ])
 
-    export_btn = html.Button(
+    export_btn = html.A(
         "Export to Excel",
-        id="pl-export-btn",
-        n_clicks=0,
+        href="/download/pl-export",
+        download="Lera_PL.xlsx",
         style={
             "backgroundColor": TAAL_GREEN, "color": "white", "border": "none",
             "borderRadius": "6px", "padding": "7px 18px", "fontSize": "12px",
             "fontWeight": "600", "cursor": "pointer", "fontFamily": "Inter, sans-serif",
+            "textDecoration": "none", "display": "inline-block",
         },
     )
 
@@ -957,7 +958,6 @@ def make_pl_table_tab():
                     export_btn,
                 ], style={"display": "flex", "justifyContent": "space-between",
                           "alignItems": "center", "marginBottom": "14px"}),
-                dcc.Download(id="pl-download"),
                 pl_table_section,
                 html.Div(
                     "* Revenue from POS system (GL not yet booked by accountant). "
@@ -2265,30 +2265,15 @@ def render_tab(tab, stored_creds):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# P&L EXCEL EXPORT
+# P&L EXCEL EXPORT (Flask route — works reliably behind gunicorn)
 # ─────────────────────────────────────────────────────────────────────────────
-@app.callback(
-    Output("pl-download", "data"),
-    Input("pl-export-btn", "n_clicks"),
-    State("matcha-inputs-store", "data"),
-    prevent_initial_call=True,
-)
-def export_pl_excel(n_clicks, matcha_data):
-    if not n_clicks:
-        return dash.no_update
-    import io
-    from datetime import datetime as _dt
+import io as _io
+from flask import send_file as _send_file
+from datetime import datetime as _dt_export
 
+@app.server.route("/download/pl-export")
+def download_pl_excel():
     show_months = list(OPERATING_MONTHS)
-    matcha_calc = pd.Series(0.0, index=show_months)
-    if matcha_data:
-        qty_d  = matcha_data.get("qty", {})
-        cost_d = matcha_data.get("cost_per_kg", {})
-        for m in show_months:
-            q = float(qty_d.get(m, 0) or 0)
-            c = float(cost_d.get(m, 0) or 0)
-            matcha_calc[m] = round(q * c, 2)
-
     rows = []
     for label, is_total, is_sub, is_header in PL_TABLE_LINES:
         if is_header:
@@ -2302,7 +2287,7 @@ def export_pl_excel(n_clicks, matcha_data):
         rows.append(row)
 
     df = pd.DataFrame(rows)
-    buf = io.BytesIO()
+    buf = _io.BytesIO()
     with pd.ExcelWriter(buf, engine="openpyxl") as writer:
         df.to_excel(writer, index=False, sheet_name="Monthly P&L")
         ws = writer.sheets["Monthly P&L"]
@@ -2310,8 +2295,9 @@ def export_pl_excel(n_clicks, matcha_data):
         for col_letter in [chr(c) for c in range(ord("B"), ord("B") + len(show_months))]:
             ws.column_dimensions[col_letter].width = 14
     buf.seek(0)
-    fname = f"Lera_PL_{_dt.now().strftime('%Y%m%d')}.xlsx"
-    return dcc.send_bytes(buf.getvalue(), fname)
+    fname = f"Lera_PL_{_dt_export.now().strftime('%Y%m%d')}.xlsx"
+    return _send_file(buf, download_name=fname, as_attachment=True,
+                      mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
