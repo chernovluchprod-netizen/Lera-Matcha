@@ -935,13 +935,29 @@ def make_pl_table_tab():
         html.Div(id="pl-table-container"),
     ])
 
+    export_btn = html.Button(
+        "Export to Excel",
+        id="pl-export-btn",
+        n_clicks=0,
+        style={
+            "backgroundColor": TAAL_GREEN, "color": "white", "border": "none",
+            "borderRadius": "6px", "padding": "7px 18px", "fontSize": "12px",
+            "fontWeight": "600", "cursor": "pointer", "fontFamily": "Inter, sans-serif",
+        },
+    )
+
     return html.Div([
         year_selector,
         html.Div(id="pl-kpi-row", className="mb-4"),
         html.Div([
             html.Div([
-                html.Div("Monthly P&L", style={"fontWeight": "700", "fontSize": "14px",
-                                               "marginBottom": "14px", "color": TAAL_DARK}),
+                html.Div([
+                    html.Div("Monthly P&L", style={"fontWeight": "700", "fontSize": "14px",
+                                                   "color": TAAL_DARK}),
+                    export_btn,
+                ], style={"display": "flex", "justifyContent": "space-between",
+                          "alignItems": "center", "marginBottom": "14px"}),
+                dcc.Download(id="pl-download"),
                 pl_table_section,
                 html.Div(
                     "* Revenue from POS system (GL not yet booked by accountant). "
@@ -2246,6 +2262,56 @@ def render_tab(tab, stored_creds):
     if tab == "settings":
         return html.Div([dbc.Container(make_settings_tab(stored_creds), fluid=True)], style=wrapper)
     return html.Div("Tab not found")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# P&L EXCEL EXPORT
+# ─────────────────────────────────────────────────────────────────────────────
+@app.callback(
+    Output("pl-download", "data"),
+    Input("pl-export-btn", "n_clicks"),
+    State("matcha-inputs-store", "data"),
+    prevent_initial_call=True,
+)
+def export_pl_excel(n_clicks, matcha_data):
+    if not n_clicks:
+        return dash.no_update
+    import io
+    from datetime import datetime as _dt
+
+    show_months = list(OPERATING_MONTHS)
+    matcha_calc = pd.Series(0.0, index=show_months)
+    if matcha_data:
+        qty_d  = matcha_data.get("qty", {})
+        cost_d = matcha_data.get("cost_per_kg", {})
+        for m in show_months:
+            q = float(qty_d.get(m, 0) or 0)
+            c = float(cost_d.get(m, 0) or 0)
+            matcha_calc[m] = round(q * c, 2)
+
+    rows = []
+    for label, is_total, is_sub, is_header in PL_TABLE_LINES:
+        if is_header:
+            rows.append({"Line Item": label, **{m: "" for m in show_months}})
+            continue
+        vals = _pl_val(label, show_months)
+        row = {"Line Item": label}
+        for m in show_months:
+            v = float(vals[m]) if m in vals.index else 0.0
+            row[m] = v if v != 0 else ""
+        rows.append(row)
+
+    df = pd.DataFrame(rows)
+    buf = io.BytesIO()
+    with pd.ExcelWriter(buf, engine="openpyxl") as writer:
+        df.to_excel(writer, index=False, sheet_name="Monthly P&L")
+        ws = writer.sheets["Monthly P&L"]
+        ws.column_dimensions["A"].width = 32
+        for col_letter in [chr(c) for c in range(ord("B"), ord("B") + len(show_months))]:
+            ws.column_dimensions[col_letter].width = 14
+    buf.seek(0)
+    fname = f"Lera_PL_{_dt.now().strftime('%Y%m%d')}.xlsx"
+    return dcc.send_bytes(buf.getvalue(), fname)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
