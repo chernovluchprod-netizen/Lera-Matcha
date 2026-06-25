@@ -2268,36 +2268,42 @@ def render_tab(tab, stored_creds):
 # P&L EXCEL EXPORT (Flask route — works reliably behind gunicorn)
 # ─────────────────────────────────────────────────────────────────────────────
 import io as _io
-from flask import send_file as _send_file
+from flask import make_response as _make_response
 from datetime import datetime as _dt_export
 
 @app.server.route("/download/pl-export")
 def download_pl_excel():
-    show_months = list(OPERATING_MONTHS)
-    rows = []
-    for label, is_total, is_sub, is_header in PL_TABLE_LINES:
-        if is_header:
-            rows.append({"Line Item": label, **{m: "" for m in show_months}})
-            continue
-        vals = _pl_val(label, show_months)
-        row = {"Line Item": label}
-        for m in show_months:
-            v = float(vals[m]) if m in vals.index else 0.0
-            row[m] = v if v != 0 else ""
-        rows.append(row)
+    try:
+        show_months = list(OPERATING_MONTHS)
+        rows = []
+        for label, is_total, is_sub, is_header in PL_TABLE_LINES:
+            if is_header:
+                rows.append({"Line Item": label, **{m: "" for m in show_months}})
+                continue
+            vals = _pl_val(label, show_months)
+            row = {"Line Item": label}
+            for m in show_months:
+                v = float(vals[m]) if m in vals.index else 0.0
+                row[m] = v if v != 0 else ""
+            rows.append(row)
 
-    df = pd.DataFrame(rows)
-    buf = _io.BytesIO()
-    with pd.ExcelWriter(buf, engine="openpyxl") as writer:
-        df.to_excel(writer, index=False, sheet_name="Monthly P&L")
-        ws = writer.sheets["Monthly P&L"]
-        ws.column_dimensions["A"].width = 32
-        for col_letter in [chr(c) for c in range(ord("B"), ord("B") + len(show_months))]:
-            ws.column_dimensions[col_letter].width = 14
-    buf.seek(0)
-    fname = f"Lera_PL_{_dt_export.now().strftime('%Y%m%d')}.xlsx"
-    return _send_file(buf, download_name=fname, as_attachment=True,
-                      mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        df = pd.DataFrame(rows)
+        buf = _io.BytesIO()
+        with pd.ExcelWriter(buf, engine="openpyxl") as writer:
+            df.to_excel(writer, index=False, sheet_name="Monthly P&L")
+            ws = writer.sheets["Monthly P&L"]
+            ws.column_dimensions["A"].width = 32
+            for i, _ in enumerate(show_months):
+                col_letter = chr(ord("B") + i) if i < 25 else "A" + chr(ord("A") + i - 25)
+                ws.column_dimensions[col_letter].width = 14
+
+        fname = f"Lera_PL_{_dt_export.now().strftime('%Y%m%d')}.xlsx"
+        resp = _make_response(buf.getvalue())
+        resp.headers["Content-Type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        resp.headers["Content-Disposition"] = f"attachment; filename={fname}"
+        return resp
+    except Exception as e:
+        return _make_response(f"Export error: {e}", 500)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
