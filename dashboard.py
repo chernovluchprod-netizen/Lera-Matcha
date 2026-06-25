@@ -2274,29 +2274,153 @@ from datetime import datetime as _dt_export
 @app.server.route("/download/pl-export")
 def download_pl_excel():
     try:
+        from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+        from openpyxl.utils import get_column_letter
+
         show_months = list(OPERATING_MONTHS)
-        rows = []
+        month_labels = [pd.Period(m, "M").strftime("%b %Y") for m in show_months]
+
+        # Build row data with metadata
+        row_data = []
         for label, is_total, is_sub, is_header in PL_TABLE_LINES:
-            if is_header:
-                rows.append({"Line Item": label, **{m: "" for m in show_months}})
-                continue
-            vals = _pl_val(label, show_months)
-            row = {"Line Item": label}
-            for m in show_months:
-                v = float(vals[m]) if m in vals.index else 0.0
-                row[m] = v if v != 0 else ""
-            rows.append(row)
+            is_pct = "MARGIN %" in label or label == "E-com Orders"
+            vals = {}
+            if not is_header:
+                s = _pl_val(label, show_months)
+                for m in show_months:
+                    vals[m] = float(s[m]) if m in s.index else 0.0
+            row_data.append((label, is_total, is_sub, is_header, is_pct, vals))
 
-        df = pd.DataFrame(rows)
         buf = _io.BytesIO()
-        with pd.ExcelWriter(buf, engine="openpyxl") as writer:
-            df.to_excel(writer, index=False, sheet_name="Monthly P&L")
-            ws = writer.sheets["Monthly P&L"]
-            ws.column_dimensions["A"].width = 32
-            for i, _ in enumerate(show_months):
-                col_letter = chr(ord("B") + i) if i < 25 else "A" + chr(ord("A") + i - 25)
-                ws.column_dimensions[col_letter].width = 14
+        from openpyxl import Workbook
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Monthly P&L"
+        ws.sheet_properties.pageSetUpPr.fitToPage = True
 
+        # ── Colours ──────────────────────────────────────────────────────────
+        _GREEN     = "4A6741"
+        _DARK      = "2C2416"
+        _SAND      = "F5EFE6"
+        _WHITE     = "FFFFFF"
+        _LIGHT_GRN = "EEF5EC"
+        _LIGHT_ORG = "FEF5EC"
+        _LIGHT_BLU = "EAF0F8"
+        _LIGHT_LAV = "F0EAF5"
+        _CREAM     = "FAF6F0"
+        _HDR_BG    = "2C2416"
+        _SECT_BG   = "F0EBE3"
+        _RED       = "8B3A2F"
+
+        thin_border = Border(
+            bottom=Side(style="thin", color="E0D5C5"),
+        )
+        thick_border = Border(
+            bottom=Side(style="medium", color="C4A882"),
+        )
+
+        # ── Header row (row 1) ───────────────────────────────────────────────
+        hdr_font = Font(name="Calibri", size=10, bold=True, color=_WHITE)
+        hdr_fill = PatternFill(start_color=_HDR_BG, end_color=_HDR_BG, fill_type="solid")
+        hdr_align_l = Alignment(horizontal="left", vertical="center")
+        hdr_align_r = Alignment(horizontal="right", vertical="center")
+
+        ws.cell(row=1, column=1, value="LERA WORLD — Monthly P&L").font = Font(
+            name="Calibri", size=12, bold=True, color=_GREEN)
+        ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=min(5, len(show_months)+1))
+        ws.row_dimensions[1].height = 28
+
+        # Month header row (row 2)
+        c = ws.cell(row=2, column=1, value="Line Item")
+        c.font, c.fill, c.alignment = hdr_font, hdr_fill, hdr_align_l
+        for i, ml in enumerate(month_labels):
+            c = ws.cell(row=2, column=i+2, value=ml)
+            c.font, c.fill, c.alignment = hdr_font, hdr_fill, hdr_align_r
+
+        ws.column_dimensions["A"].width = 34
+        for i in range(len(show_months)):
+            ws.column_dimensions[get_column_letter(i+2)].width = 13
+
+        ws.freeze_panes = "B3"
+
+        # ── Data rows ────────────────────────────────────────────────────────
+        num_fmt_eur = '#,##0'
+        num_fmt_pct = '0.0"%"'
+
+        _REVENUE_LABELS = {"Gross Revenue", "TOTAL REVENUE", "E-com Revenue",
+                           "E-com Net Sales", "E-com Shipping", "Wholesale Revenue"}
+        _PROFIT_LABELS  = {"GROSS PROFIT", "EBIT", "EBITDA", "EBT"}
+        _COST_LABELS    = {"TOTAL COGS", "TOTAL LABOR", "TOTAL OCCUPANCY", "TOTAL SG&A",
+                           "TOTAL MATCHA COMPANY", "Payment Fees"}
+
+        for row_idx, (label, is_total, is_sub, is_header, is_pct, vals) in enumerate(row_data, start=3):
+            # Determine row fill colour
+            if is_header:
+                fill = PatternFill(start_color=_SECT_BG, end_color=_SECT_BG, fill_type="solid")
+            elif label in _REVENUE_LABELS:
+                fill = PatternFill(start_color=_LIGHT_GRN, end_color=_LIGHT_GRN, fill_type="solid")
+            elif label in {"Payment Fees"}:
+                fill = PatternFill(start_color=_LIGHT_ORG, end_color=_LIGHT_ORG, fill_type="solid")
+            elif label in _PROFIT_LABELS:
+                fill = PatternFill(start_color=_CREAM, end_color=_CREAM, fill_type="solid")
+            elif label in _COST_LABELS:
+                fill = PatternFill(start_color=_LIGHT_ORG, end_color=_LIGHT_ORG, fill_type="solid")
+            elif label == "TOTAL LABOR":
+                fill = PatternFill(start_color=_LIGHT_LAV, end_color=_LIGHT_LAV, fill_type="solid")
+            elif is_sub:
+                fill = PatternFill(start_color=_WHITE, end_color=_WHITE, fill_type="solid")
+            else:
+                fill = PatternFill(start_color=_WHITE, end_color=_WHITE, fill_type="solid")
+
+            # Determine font
+            if is_header:
+                label_font = Font(name="Calibri", size=9, bold=True, color=_DARK)
+            elif is_total or label in _PROFIT_LABELS:
+                fc = _GREEN if label in (_REVENUE_LABELS | _PROFIT_LABELS) else (
+                     _RED if label in _COST_LABELS else _DARK)
+                label_font = Font(name="Calibri", size=10, bold=True, color=fc)
+            elif is_sub:
+                label_font = Font(name="Calibri", size=10, color="8A7968")
+            else:
+                label_font = Font(name="Calibri", size=10, color=_DARK)
+
+            val_font_bold = Font(name="Calibri", size=10, bold=True, color=_DARK)
+            val_font      = Font(name="Calibri", size=10, color=_DARK)
+
+            border = thick_border if (is_total or label in _PROFIT_LABELS) else thin_border
+            indent = "    " if is_sub else ""
+
+            # Label cell
+            c = ws.cell(row=row_idx, column=1, value=indent + label)
+            c.font, c.fill, c.border = label_font, fill, border
+            c.alignment = Alignment(horizontal="left", vertical="center")
+
+            # Value cells
+            if not is_header:
+                for i, m in enumerate(show_months):
+                    v = vals.get(m, 0)
+                    c = ws.cell(row=row_idx, column=i+2)
+                    if v and v != 0:
+                        c.value = v
+                        c.number_format = num_fmt_pct if is_pct else num_fmt_eur
+                    else:
+                        c.value = "—"
+                    c.font = val_font_bold if (is_total or label in _PROFIT_LABELS) else val_font
+                    c.fill = fill
+                    c.border = border
+                    c.alignment = Alignment(horizontal="right", vertical="center")
+
+                    if isinstance(v, (int, float)) and v < 0 and not is_pct:
+                        c.font = Font(name="Calibri", size=10,
+                                      bold=(is_total or label in _PROFIT_LABELS),
+                                      color=_RED)
+            else:
+                for i in range(len(show_months)):
+                    c = ws.cell(row=row_idx, column=i+2)
+                    c.fill, c.border = fill, border
+
+        wb.save(buf)
+        buf.seek(0)
         fname = f"Lera_PL_{_dt_export.now().strftime('%Y%m%d')}.xlsx"
         resp = _make_response(buf.getvalue())
         resp.headers["Content-Type"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
