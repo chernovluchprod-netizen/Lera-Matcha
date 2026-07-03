@@ -905,6 +905,213 @@ def make_pl_tab():
         yaxis2=dict(title="MoM Δ (EUR)", tickformat=",.0f", **AXIS_STYLE),
     )
 
+    # ── 2026 vs 2025 comparison ──────────────────────────────────────────────
+    m25_all = [m for m in OPERATING_MONTHS if m.startswith("2025")]
+    m26_all = [m for m in OPERATING_MONTHS if m.startswith("2026")]
+    # Use only months present in both years (Jan → smallest of 12 / len(m26))
+    common_month_nums = sorted({m[5:] for m in m26_all} & {m[5:] for m in m25_all})
+    m25_cmp = [f"2025-{mn}" for mn in common_month_nums]
+    m26_cmp = [f"2026-{mn}" for mn in common_month_nums]
+    cmp_labels = [MONTH_LABELS[m] for m in m25_cmp]   # "Jan", "Feb", …
+
+    # Key metric series for comparison
+    def _cmp(label, months):
+        s = _pl_val(label, months)
+        return [float(s[m]) if m in s.index else 0.0 for m in months]
+
+    rev25  = _cmp("TOTAL REVENUE",  m25_cmp)
+    rev26  = _cmp("TOTAL REVENUE",  m26_cmp)
+    gp25   = _cmp("GROSS PROFIT",   m25_cmp)
+    gp26   = _cmp("GROSS PROFIT",   m26_cmp)
+    gm25   = _cmp("GROSS MARGIN %", m25_cmp)
+    gm26   = _cmp("GROSS MARGIN %", m26_cmp)
+    ebit25 = _cmp("EBIT",           m25_cmp)
+    ebit26 = _cmp("EBIT",           m26_cmp)
+    ebd25  = _cmp("EBITDA",         m25_cmp)
+    ebd26  = _cmp("EBITDA",         m26_cmp)
+
+    # YTD totals for comparison KPI cards
+    def _ytd(vals): return sum(v for v in vals if v == v)  # skip NaN
+    def _yoy(v26, v25): return (v26 / v25 - 1) * 100 if v25 else float("nan")
+    def _yoy_str(v26, v25):
+        if v25 == 0: return "—"
+        d = (v26 / v25 - 1) * 100
+        return f"{d:+.1f}%"
+    def _yoy_color(v26, v25, invert=False):
+        if v25 == 0: return TAAL_MUTED
+        better = v26 >= v25 if not invert else v26 <= v25
+        return TAAL_GREEN if better else TAAL_RED
+
+    ytd_rev25, ytd_rev26   = _ytd(rev25),  _ytd(rev26)
+    ytd_gp25,  ytd_gp26    = _ytd(gp25),   _ytd(gp26)
+    ytd_ebit25,ytd_ebit26  = _ytd(ebit25), _ytd(ebit26)
+    ytd_ebd25, ytd_ebd26   = _ytd(ebd25),  _ytd(ebd26)
+
+    n_cmp = len(common_month_nums)
+    period_label = f"Jan–{MONTH_LABELS[m26_cmp[-1]]} {n_cmp}mo" if m26_cmp else ""
+
+    def cmp_kpi(title, v25, v26, fmt=fmt_eur, invert=False):
+        color = _yoy_color(v26, v25, invert)
+        return dbc.Col(html.Div([
+            html.Div(title, style={"fontSize": "11px", "color": TAAL_MUTED,
+                                   "fontWeight": "600", "marginBottom": "4px"}),
+            html.Div([
+                html.Span("2025 ", style={"fontSize": "11px", "color": TAAL_MUTED}),
+                html.Span(fmt(v25), style={"fontSize": "14px", "fontWeight": "700",
+                                           "color": TAAL_DARK}),
+            ], style={"marginBottom": "2px"}),
+            html.Div([
+                html.Span("2026 ", style={"fontSize": "11px", "color": TAAL_MUTED}),
+                html.Span(fmt(v26), style={"fontSize": "16px", "fontWeight": "800",
+                                           "color": color}),
+                html.Span(_yoy_str(v26, v25), style={"fontSize": "11px", "marginLeft": "8px",
+                                                      "color": color, "fontWeight": "600"}),
+            ]),
+        ], style={**CARD_STYLE, "padding": "16px 20px"}), md=3)
+
+    cmp_kpi_row = dbc.Row([
+        cmp_kpi("Revenue YTD", ytd_rev25, ytd_rev26),
+        cmp_kpi("Gross Profit YTD", ytd_gp25, ytd_gp26),
+        cmp_kpi("EBIT YTD", ytd_ebit25, ytd_ebit26),
+        cmp_kpi("EBITDA YTD", ytd_ebd25, ytd_ebd26),
+    ], className="g-3 mb-4")
+
+    # Grouped bar: Revenue by month 2025 vs 2026
+    fig_rev_cmp = go.Figure()
+    fig_rev_cmp.add_trace(go.Bar(
+        name="Revenue 2025", x=cmp_labels, y=rev25,
+        marker_color="#8FAB84", opacity=0.8,
+        hovertemplate="<b>%{x} 2025</b><br>Revenue: €%{y:,.0f}<extra></extra>",
+    ))
+    fig_rev_cmp.add_trace(go.Bar(
+        name="Revenue 2026", x=cmp_labels, y=rev26,
+        marker_color=TAAL_GREEN, opacity=0.9,
+        hovertemplate="<b>%{x} 2026</b><br>Revenue: €%{y:,.0f}<extra></extra>",
+    ))
+    fig_rev_cmp.add_trace(go.Scatter(
+        name="GP 2025", x=cmp_labels, y=gp25,
+        mode="lines+markers", line=dict(color="#A09878", width=1.5, dash="dot"),
+        marker=dict(size=5), yaxis="y",
+        hovertemplate="<b>%{x} 2025</b><br>Gross Profit: €%{y:,.0f}<extra></extra>",
+    ))
+    fig_rev_cmp.add_trace(go.Scatter(
+        name="GP 2026", x=cmp_labels, y=gp26,
+        mode="lines+markers", line=dict(color=TAAL_DARK, width=2),
+        marker=dict(size=6), yaxis="y",
+        hovertemplate="<b>%{x} 2026</b><br>Gross Profit: €%{y:,.0f}<extra></extra>",
+    ))
+    apply_layout(fig_rev_cmp,
+        barmode="group", height=380,
+        margin=MARGIN, legend=LEGEND_H,
+        title=dict(text=f"Revenue & Gross Profit — 2026 vs 2025 ({period_label})", font=dict(size=14)),
+        yaxis=dict(title="EUR", tickformat=",.0f", **AXIS_STYLE),
+    )
+
+    # Line chart: Gross Margin % and EBITDA margin comparison
+    fig_margin_cmp = make_subplots(rows=1, cols=2,
+        subplot_titles=("Gross Margin %", "EBIT"))
+    fig_margin_cmp.add_trace(go.Scatter(
+        name="GM% 2025", x=cmp_labels, y=gm25,
+        mode="lines+markers", line=dict(color="#8FAB84", width=2, dash="dot"),
+        marker=dict(size=6),
+        hovertemplate="<b>%{x} 2025</b><br>GM: %{y:.1f}%<extra></extra>",
+    ), row=1, col=1)
+    fig_margin_cmp.add_trace(go.Scatter(
+        name="GM% 2026", x=cmp_labels, y=gm26,
+        mode="lines+markers", line=dict(color=TAAL_GREEN, width=2.5),
+        marker=dict(size=7),
+        hovertemplate="<b>%{x} 2026</b><br>GM: %{y:.1f}%<extra></extra>",
+    ), row=1, col=1)
+    fig_margin_cmp.add_trace(go.Bar(
+        name="EBIT 2025", x=cmp_labels, y=ebit25,
+        marker_color="#8FAB84", opacity=0.75,
+        hovertemplate="<b>%{x} 2025</b><br>EBIT: €%{y:,.0f}<extra></extra>",
+    ), row=1, col=2)
+    fig_margin_cmp.add_trace(go.Bar(
+        name="EBIT 2026", x=cmp_labels, y=ebit26,
+        marker_color=TAAL_GREEN, opacity=0.9,
+        hovertemplate="<b>%{x} 2026</b><br>EBIT: €%{y:,.0f}<extra></extra>",
+    ), row=1, col=2)
+    fig_margin_cmp.add_hline(y=0, line_color="#DDD", row=1, col=2)
+    apply_layout(fig_margin_cmp,
+        barmode="group", height=340,
+        margin=MARGIN, legend=LEGEND_H,
+        title=dict(text=f"Margin & EBIT — 2026 vs 2025", font=dict(size=14)),
+        yaxis=dict(ticksuffix="%", tickformat=".0f", **AXIS_STYLE),
+        yaxis2=dict(tickformat=",.0f", **AXIS_STYLE),
+    )
+
+    # Comparison summary table
+    _TBL_ROWS = [
+        ("Revenue",      rev25,  rev26,  False),
+        ("Gross Profit", gp25,   gp26,   False),
+        ("Gross Margin", gm25,   gm26,   True),
+        ("EBIT",         ebit25, ebit26, False),
+        ("EBITDA",       ebd25,  ebd26,  False),
+    ]
+    tbl_hdr = [html.Th("", style={"width": "130px", "padding": "8px 12px",
+                                   "backgroundColor": TAAL_DARK, "color": "white",
+                                   "fontSize": "11px", "fontWeight": "600"})]
+    for lbl in cmp_labels:
+        for yr in ("'25", "'26"):
+            tbl_hdr.append(html.Th(f"{lbl} {yr}", style={
+                "padding": "8px 10px", "textAlign": "right", "whiteSpace": "nowrap",
+                "backgroundColor": "#3A3020" if yr == "'25" else "#1E2D3A",
+                "color": "white", "fontSize": "10px", "fontWeight": "600",
+            }))
+        tbl_hdr.append(html.Th("YoY", style={
+            "padding": "8px 10px", "textAlign": "right", "whiteSpace": "nowrap",
+            "backgroundColor": "#2C2416", "color": TAAL_ACCENT,
+            "fontSize": "10px", "fontWeight": "600",
+        }))
+    tbl_rows = []
+    for row_name, v25_list, v26_list, is_pct in _TBL_ROWS:
+        cells = [html.Td(row_name, style={"padding": "7px 12px", "fontWeight": "600",
+                                          "fontSize": "12px", "color": TAAL_DARK,
+                                          "backgroundColor": "#F8F5F0"})]
+        for i, (v25m, v26m) in enumerate(zip(v25_list, v26_list)):
+            fmt_fn = (lambda v: f"{v:.1f}%") if is_pct else fmt_eur
+            diff = v26m - v25m
+            diff_c = TAAL_GREEN if diff >= 0 else TAAL_RED
+            bg_odd = "#FAFAF8" if i % 2 == 0 else "white"
+            cells.append(html.Td(fmt_fn(v25m), style={"padding": "7px 10px",
+                "textAlign": "right", "fontSize": "11px", "color": TAAL_MUTED,
+                "backgroundColor": bg_odd}))
+            cells.append(html.Td(fmt_fn(v26m), style={"padding": "7px 10px",
+                "textAlign": "right", "fontSize": "12px", "fontWeight": "600",
+                "color": TAAL_DARK, "backgroundColor": bg_odd}))
+            cells.append(html.Td(_yoy_str(v26m, v25m), style={"padding": "7px 10px",
+                "textAlign": "right", "fontSize": "11px", "fontWeight": "700",
+                "color": diff_c, "backgroundColor": bg_odd}))
+        tbl_rows.append(html.Tr(cells))
+
+    cmp_table = html.Div([
+        html.Table(
+            [html.Thead(html.Tr(tbl_hdr)), html.Tbody(tbl_rows)],
+            style={"width": "100%", "borderCollapse": "collapse",
+                   "fontFamily": "Inter, sans-serif", "fontSize": "12px"},
+        )
+    ], style={"overflowX": "auto"})
+
+    cmp_section = html.Div([
+        html.Div("2026 vs 2025 — Year-on-Year Performance", style={
+            "fontWeight": "700", "fontSize": "14px", "color": TAAL_DARK,
+            "marginBottom": "16px", "paddingTop": "4px",
+        }),
+        cmp_kpi_row,
+        dbc.Row([
+            dbc.Col(html.Div([dcc.Graph(figure=fig_rev_cmp,
+                                        config={"displayModeBar": False})],
+                             style=CARD_STYLE), md=12),
+        ], className="g-3 mb-4"),
+        dbc.Row([
+            dbc.Col(html.Div([dcc.Graph(figure=fig_margin_cmp,
+                                        config={"displayModeBar": False})],
+                             style=CARD_STYLE), md=12),
+        ], className="g-3 mb-4"),
+        html.Div([cmp_table], style={**CARD_STYLE, "padding": "0"}),
+    ], style={"marginTop": "8px"})
+
     # ── Layout assembly (charts only) ────────────────────────────────────────
     return html.Div([
         kpi_row,
@@ -930,6 +1137,8 @@ def make_pl_tab():
             html.Div([dcc.Graph(figure=fig_donut, config={"displayModeBar": False})],
                      style={**CARD_STYLE, "maxWidth": "520px"}),
         ], className="mb-4"),
+        # Row 5: 2026 vs 2025 comparison
+        cmp_section,
     ], style={"padding": "0 4px"})
 
 
@@ -977,17 +1186,28 @@ def make_pl_table_tab():
         },
     )
 
+    hide_2025_btn = html.Button(
+        id="pl-hide-2025-btn",
+        n_clicks=0,
+        style={
+            "backgroundColor": "transparent", "color": TAAL_MUTED,
+            "border": "1px solid #D0C8B8", "borderRadius": "6px",
+            "padding": "6px 14px", "fontSize": "12px", "fontWeight": "600",
+            "cursor": "pointer", "fontFamily": "Inter, sans-serif",
+        },
+    )
+
     return html.Div([
         year_selector,
         html.Div(id="pl-kpi-row", className="mb-4"),
         html.Div([
             html.Div([
-                html.Div([
-                    html.Div("Monthly P&L", style={"fontWeight": "700", "fontSize": "14px",
-                                                   "color": TAAL_DARK}),
-                    export_btn,
-                ], style={"display": "flex", "justifyContent": "space-between",
-                          "alignItems": "center", "marginBottom": "14px"}),
+                html.Div("Monthly P&L", style={"fontWeight": "700", "fontSize": "14px",
+                                               "color": TAAL_DARK}),
+                html.Div([hide_2025_btn, export_btn],
+                         style={"display": "flex", "gap": "10px", "alignItems": "center"}),
+            ], style={"display": "flex", "justifyContent": "space-between",
+                      "alignItems": "center", "marginBottom": "14px"}),
                 pl_table_section,
                 html.Div(
                     "* Revenue from POS system (GL not yet booked by accountant). "
@@ -1011,8 +1231,7 @@ def make_pl_table_tab():
                     ),
                 ], style={"fontSize": "10px", "marginTop": "4px", "fontStyle": "italic"}
                 ) if TRANSIT_MONTHS else None,
-            ], style=CARD_STYLE),
-        ], className="mb-4"),
+        ], style=CARD_STYLE),
     ], style={"padding": "0 4px"})
 
 
@@ -2199,6 +2418,7 @@ app.layout = html.Div([
     dcc.Store(id="matcha-inputs-store", storage_type="local",
               data=_load_matcha_inputs()),
     dcc.Store(id="eitje-creds-store", storage_type="local", data={}),
+    dcc.Store(id="pl-hide-2025", storage_type="session", data=False),
 
     # ── Scheduling stores (session = survives tab navigation, reset on hard reload) ──
     dcc.Store(id="sched-shifts-store",  storage_type="session", data={}),
@@ -2482,15 +2702,47 @@ def toggle_pl_group(n_clicks_list, expanded):
 
 
 @app.callback(
+    Output("pl-hide-2025", "data"),
+    Input("pl-hide-2025-btn", "n_clicks"),
+    State("pl-hide-2025", "data"),
+    prevent_initial_call=True,
+)
+def toggle_hide_2025(n_clicks, current):
+    return not bool(current)
+
+
+@app.callback(
+    Output("pl-hide-2025-btn", "children"),
+    Output("pl-hide-2025-btn", "style"),
+    Input("pl-hide-2025", "data"),
+)
+def update_hide_2025_btn(hidden):
+    if hidden:
+        return ("▶ Show 2025", {
+            "backgroundColor": "#3A3020", "color": "white",
+            "border": "1px solid #3A3020", "borderRadius": "6px",
+            "padding": "6px 14px", "fontSize": "12px", "fontWeight": "600",
+            "cursor": "pointer", "fontFamily": "Inter, sans-serif",
+        })
+    return ("◀ Hide 2025", {
+        "backgroundColor": "transparent", "color": TAAL_MUTED,
+        "border": "1px solid #D0C8B8", "borderRadius": "6px",
+        "padding": "6px 14px", "fontSize": "12px", "fontWeight": "600",
+        "cursor": "pointer", "fontFamily": "Inter, sans-serif",
+    })
+
+
+@app.callback(
     Output("pl-table-container", "children"),
     Input("pl-expanded", "data"),
     Input("thresholds-store", "data"),
     Input("matcha-inputs-store", "data"),
+    Input("pl-hide-2025", "data"),
 )
-def render_pl_table(expanded, thresholds, matcha_data):
+def render_pl_table(expanded, thresholds, matcha_data, hide_2025):
     expanded = set(expanded or [])
     show_months = list(OPERATING_MONTHS)
-    months_2025 = [m for m in show_months if m.startswith("2025")]
+    months_2025 = [] if hide_2025 else [m for m in show_months if m.startswith("2025")]
     months_2026 = [m for m in show_months if m.startswith("2026")]
     est_m     = set(ESTIMATED_MONTHS)
     transit_m = set(TRANSIT_MONTHS)
@@ -2616,12 +2868,13 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "fontWeight": "600", "fontSize": "11px", "borderBottom": "none",
             "borderLeft": border_left,
         }))
-    # % Cost 2025 column
-    hdr_cells.append(html.Th("% Cost '25", style={
-        **BASE_CELL, "backgroundColor": HDR_PCT, "color": TAAL_ACCENT,
-        "fontWeight": "600", "fontSize": "11px", "borderBottom": "none",
-        "minWidth": "74px", "borderLeft": "1px solid #6A5A40",
-    }))
+    # % Cost 2025 column (hidden when 2025 is collapsed)
+    if months_2025:
+        hdr_cells.append(html.Th("% Cost '25", style={
+            **BASE_CELL, "backgroundColor": HDR_PCT, "color": TAAL_ACCENT,
+            "fontWeight": "600", "fontSize": "11px", "borderBottom": "none",
+            "minWidth": "74px", "borderLeft": "1px solid #6A5A40",
+        }))
     # 2026 month columns
     for i, m in enumerate(months_2026):
         bg = "#5A4A30" if m in est_m else HDR_2026
@@ -2854,11 +3107,12 @@ def render_pl_table(expanded, thresholds, matcha_data):
                 "borderLeft": border_left,
             })
 
-        # ── 2025 months ──────────────────────────────────────────────────────
-        cells_2025, total_2025 = _build_month_cells(months_2025, "3px solid #6A5A40")
-        cells.extend(cells_2025)
-        cells.append(_pct_cost_cell(total_2025, total_costs_2025, TAAL_ACCENT,
-                                    "1px solid #D0C8B8"))
+        # ── 2025 months (omitted when hide_2025 is active) ───────────────────
+        if months_2025:
+            cells_2025, total_2025 = _build_month_cells(months_2025, "3px solid #6A5A40")
+            cells.extend(cells_2025)
+            cells.append(_pct_cost_cell(total_2025, total_costs_2025, TAAL_ACCENT,
+                                        "1px solid #D0C8B8"))
 
         # ── 2026 months ──────────────────────────────────────────────────────
         if months_2026:
@@ -2900,8 +3154,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
                 style={**BASE_CELL, "backgroundColor": row_bg,
                        "padding": "4px 6px", "borderLeft": border_left},
             ))
-        cells.append(html.Td("", style={**BASE_CELL, "backgroundColor": row_bg,
-                                        "borderLeft": "1px solid #D0C8B8"}))
+        if months_2025:
+            cells.append(html.Td("", style={**BASE_CELL, "backgroundColor": row_bg,
+                                            "borderLeft": "1px solid #D0C8B8"}))
         for i, m in enumerate(months_2026):
             border_left = "3px solid #3A5A7C" if i == 0 else "none"
             val = store_vals.get(m)
@@ -2946,10 +3201,11 @@ def render_pl_table(expanded, thresholds, matcha_data):
                 style={**BASE_CELL, "backgroundColor": cell_bg(m, row_bg),
                        "fontWeight": "600", "color": "#2D5A2D", "borderLeft": border_left},
             ))
-        pct25 = (f"{tot25/total_costs_2025*100:.1f}%" if total_costs_2025 else "—")
-        cells.append(html.Td(pct25, style={**BASE_CELL, "backgroundColor": row_bg,
-                                           "color": TAAL_MUTED, "fontSize": "10px",
-                                           "borderLeft": "1px solid #D0C8B8"}))
+        if months_2025:
+            pct25 = (f"{tot25/total_costs_2025*100:.1f}%" if total_costs_2025 else "—")
+            cells.append(html.Td(pct25, style={**BASE_CELL, "backgroundColor": row_bg,
+                                               "color": TAAL_MUTED, "fontSize": "10px",
+                                               "borderLeft": "1px solid #D0C8B8"}))
         if months_2026:
             tot26 = 0.0
             for i, m in enumerate(months_2026):
@@ -2995,10 +3251,11 @@ def render_pl_table(expanded, thresholds, matcha_data):
                 style={**BASE_CELL, "backgroundColor": cell_bg(m, row_bg),
                        "fontWeight": "600", "color": "#8B2020", "borderLeft": border_left},
             ))
-        pct25 = (f"{-tot25/total_costs_2025*100:.1f}%" if total_costs_2025 and tot25 else "—")
-        cells.append(html.Td(pct25, style={**BASE_CELL, "backgroundColor": row_bg,
-                                           "color": TAAL_MUTED, "fontSize": "10px",
-                                           "borderLeft": "1px solid #D0C8B8"}))
+        if months_2025:
+            pct25 = (f"{-tot25/total_costs_2025*100:.1f}%" if total_costs_2025 and tot25 else "—")
+            cells.append(html.Td(pct25, style={**BASE_CELL, "backgroundColor": row_bg,
+                                               "color": TAAL_MUTED, "fontSize": "10px",
+                                               "borderLeft": "1px solid #D0C8B8"}))
         if months_2026:
             tot26 = 0.0
             for i, m in enumerate(months_2026):
