@@ -334,6 +334,14 @@ PL_TABLE_LINES = [
 
 # Groups that can expand to show GL-level detail lines
 PL_DETAIL_LINES = {
+    "Gross Revenue": [
+        "Kiosk Revenue",
+        "Retail Revenue",
+        "E-com Revenue (channel)",
+        "Export & EU Revenue",
+        "Services Revenue",
+        "Transit Revenue *",
+    ],
     "TOTAL COGS": COGS_LINES,
     "Freelancers / Outsourced Work": ["Freelancers / Outsourced Work"],
     "Payroll":                       ["Payroll"],
@@ -368,6 +376,12 @@ PL_DETAIL_LINES = {
 _OUTSOURCED_LINES = ["Freelancers / Outsourced Work"]
 _WAGES_LINES      = ["Payroll"]
 _MKT_LINES        = ["Marketing & Advertising", "Client Gifts", "Advertising EU"]
+_RETAIL_REV_LINES = ["Retail Sales – High VAT", "Retail Sales – Low VAT",
+                     "Retail Sales – Product HV", "Retail Sales – Zero Rate",
+                     "Retail Sales – Other"]
+_EXPORT_EU_LINES  = ["Export (Outside EU)", "EU B2B Sales",
+                     "Service Export / EU", "Other Export / EU"]
+_SERVICES_LINES   = ["Services – High VAT", "Services – Low VAT"]
 _ADMIN_LINES      = ["Postage & Shipping", "Bank Charges", "Canteen Costs", "Uniforms",
                      "Other Sales Costs", "Car Rental", "Fines & Penalties",
                      "Other Admin Costs", "Liability Insurance", "Other Insurance",
@@ -540,6 +554,18 @@ def _pl_val(label, months):
         rev = _pl_val("TOTAL REVENUE", m)
         fees = pl_series("Adyen Costs", m) + pl_series("PayPal Costs", m) + pl_series("Tebi / Other Payments", m)
         return rev + fees
+    if label == "Kiosk Revenue":
+        return pl_series("Kiosk Sales", m)
+    if label == "Retail Revenue":
+        return sum(pl_series(l, m) for l in _RETAIL_REV_LINES)
+    if label == "E-com Revenue (channel)":
+        return pl_series("E-com Revenue", m)
+    if label == "Export & EU Revenue":
+        return sum(pl_series(l, m) for l in _EXPORT_EU_LINES)
+    if label == "Services Revenue":
+        return sum(pl_series(l, m) for l in _SERVICES_LINES)
+    if label == "Transit Revenue *":
+        return pl_series("Transit Revenue (uncleared *)", m)
     if label == "Maintenance + Cleaning":
         return pl_series("Maintenance", m) + pl_series("Cleaning", m)
     if label == "Marketing & Advertising":
@@ -2643,6 +2669,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
             row_bg = "#F0EAF5"
         elif is_total:
             row_bg = "#FAF6F0"
+        elif label in ("Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
+                       "Export & EU Revenue", "Services Revenue", "Transit Revenue *"):
+            row_bg = "#F0F7EF"
         elif detail:
             row_bg = "#FAFAF8"
         else:
@@ -2699,9 +2728,13 @@ def render_pl_table(expanded, thresholds, matcha_data):
             label_content = ("▸ " if is_sub else "") + label
 
         label_fw = "700" if (is_total or is_header) else ("500" if not (detail or vendor) else "400")
-        label_color = (TAAL_GREEN if label in ("TOTAL REVENUE", "E-com Revenue",
-                                                "E-com Net Sales", "E-com Shipping", "E-com Orders",
-                                                "Wholesale Revenue", "Gross Revenue")
+        _REV_GREEN_SET = {
+            "TOTAL REVENUE", "E-com Revenue", "E-com Net Sales", "E-com Shipping", "E-com Orders",
+            "Wholesale Revenue", "Gross Revenue",
+            "Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
+            "Export & EU Revenue", "Services Revenue", "Transit Revenue *",
+        }
+        label_color = (TAAL_GREEN if label in _REV_GREEN_SET
                        else ("#5A3A7C" if label == "TOTAL LABOR"
                              else (TAAL_MUTED if vendor else TAAL_DARK)))
 
@@ -2739,7 +2772,9 @@ def render_pl_table(expanded, thresholds, matcha_data):
             group_cells = []
             val_color = (TAAL_RED if label == "Payment Fees"
                          else TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
-                                                      "E-com Net Sales", "Wholesale Revenue", "Gross Revenue")
+                                                      "E-com Net Sales", "Wholesale Revenue", "Gross Revenue",
+                                                      "Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
+                                                      "Export & EU Revenue", "Services Revenue", "Transit Revenue *")
                          else ("#5A3A7C" if label == "TOTAL LABOR"
                                else (TAAL_MUTED if vendor else TAAL_DARK)))
             for i, m in enumerate(months_group):
@@ -3018,6 +3053,11 @@ def render_pl_table(expanded, thresholds, matcha_data):
         # inject GL detail rows if this group is expanded
         if label in PL_DETAIL_LINES and label in expanded:
             for detail_label in PL_DETAIL_LINES[label]:
+                # skip revenue channels that have no data at all
+                if label == "Gross Revenue":
+                    dv = _pl_val(detail_label, show_months)
+                    if hasattr(dv, "sum") and dv.sum() == 0:
+                        continue
                 tbody_rows.append(make_row(detail_label, False, False, False, detail=True))
                 # inject vendor rows if this GL detail is expanded
                 if f"vendor::{detail_label}" in expanded and detail_label in GL_VENDOR_DATA:
