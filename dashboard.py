@@ -338,6 +338,7 @@ PL_DETAIL_LINES = {
         "Kiosk Revenue",
         "Retail Revenue",
         "E-com Revenue (channel)",
+        "Wholesale B2B Revenue",
         "Export & EU Revenue",
         "Services Revenue",
         "Transit Revenue *",
@@ -379,6 +380,7 @@ _MKT_LINES        = ["Marketing & Advertising", "Client Gifts", "Advertising EU"
 _RETAIL_REV_LINES = ["Retail Sales – High VAT", "Retail Sales – Low VAT",
                      "Retail Sales – Product HV", "Retail Sales – Zero Rate",
                      "Retail Sales – Other"]
+_WHOLESALE_LINES  = ["Wholesale NL", "Wholesale EU", "Wholesale Outside EU"]
 _EXPORT_EU_LINES  = ["Export (Outside EU)", "EU B2B Sales",
                      "Service Export / EU", "Other Export / EU"]
 _SERVICES_LINES   = ["Services – High VAT", "Services – Low VAT"]
@@ -560,6 +562,8 @@ def _pl_val(label, months):
         return sum(pl_series(l, m) for l in _RETAIL_REV_LINES)
     if label == "E-com Revenue (channel)":
         return pl_series("E-com Revenue", m)
+    if label == "Wholesale B2B Revenue":
+        return sum(pl_series(l, m) for l in _WHOLESALE_LINES)
     if label == "Export & EU Revenue":
         return sum(pl_series(l, m) for l in _EXPORT_EU_LINES)
     if label == "Services Revenue":
@@ -595,9 +599,9 @@ def _pl_val(label, months):
     if label == "E-com Orders":
         return pd.Series({mo: _ECOM_MONTHLY.get(mo, {}).get("orders", 0) for mo in m})
     if label == "Wholesale Revenue":
-        return (pl_series("Export (Outside EU)", m) + pl_series("EU B2B Sales", m) +
-                pl_series("Service Export / EU", m) + pl_series("Other Export / EU", m) +
-                pl_series("Services – High VAT", m) + pl_series("Services – Low VAT", m))
+        return (sum(pl_series(l, m) for l in _WHOLESALE_LINES) +
+                sum(pl_series(l, m) for l in _EXPORT_EU_LINES) +
+                sum(pl_series(l, m) for l in _SERVICES_LINES))
     # Computed totals — look up directly from monthly_pl.csv (pipeline pre-computes these)
     for computed in ("TOTAL REVENUE", "TOTAL COGS", "GROSS PROFIT", "GROSS MARGIN %",
                      "TOTAL LABOR", "TOTAL OCCUPANCY", "TOTAL SG&A",
@@ -2670,7 +2674,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
         elif is_total:
             row_bg = "#FAF6F0"
         elif label in ("Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
-                       "Export & EU Revenue", "Services Revenue", "Transit Revenue *"):
+                       "Wholesale B2B Revenue", "Export & EU Revenue",
+                       "Services Revenue", "Transit Revenue *"):
             row_bg = "#F0F7EF"
         elif detail:
             row_bg = "#FAFAF8"
@@ -2732,7 +2737,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
             "TOTAL REVENUE", "E-com Revenue", "E-com Net Sales", "E-com Shipping", "E-com Orders",
             "Wholesale Revenue", "Gross Revenue",
             "Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
-            "Export & EU Revenue", "Services Revenue", "Transit Revenue *",
+            "Wholesale B2B Revenue", "Export & EU Revenue",
+            "Services Revenue", "Transit Revenue *",
         }
         label_color = (TAAL_GREEN if label in _REV_GREEN_SET
                        else ("#5A3A7C" if label == "TOTAL LABOR"
@@ -2774,7 +2780,8 @@ def render_pl_table(expanded, thresholds, matcha_data):
                          else TAAL_GREEN if label in ("GROSS PROFIT", "EBITDA", "EBT", "E-com Revenue",
                                                       "E-com Net Sales", "Wholesale Revenue", "Gross Revenue",
                                                       "Kiosk Revenue", "Retail Revenue", "E-com Revenue (channel)",
-                                                      "Export & EU Revenue", "Services Revenue", "Transit Revenue *")
+                                                      "Wholesale B2B Revenue", "Export & EU Revenue",
+                                                      "Services Revenue", "Transit Revenue *")
                          else ("#5A3A7C" if label == "TOTAL LABOR"
                                else (TAAL_MUTED if vendor else TAAL_DARK)))
             for i, m in enumerate(months_group):
